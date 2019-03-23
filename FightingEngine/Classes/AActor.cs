@@ -3,10 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FightingEngine.Classes
 {
-    //An object which can render itself
-    abstract class RenderableObject
+    public abstract class AActor
     {
-        protected Point _position;
+        public Point position { get; private set; }
+
+        public AActor() { }
+
+        public abstract void Tick();
 
         public abstract void Draw(SpriteBatch spriteBatch);
     }

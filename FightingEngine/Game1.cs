@@ -13,16 +13,12 @@ namespace FightingEngine
         SpriteBatch spriteBatch;
         RenderTarget2D renderTarget;
 
-        List<RenderableObject> RenderObjects;
-
         Character char1;
         
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
-            RenderObjects = new List<RenderableObject>();
         }
 
         protected override void Initialize()
@@ -46,11 +42,10 @@ namespace FightingEngine
             List<Texture2D> texs = new List<Texture2D>();
             List<string> strings = new List<string>() { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10" };
             foreach (string s in strings)
-                texs.Add(Content.Load<Texture2D>("RyuIdle/" + s));
+                texs.Add(Content.Load<Texture2D>("Ryu/Idle/" + s));
             List<int> lengths = new List<int>() { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3};
 
             char1 = new Character(texs, lengths);
-            RenderObjects.Add(char1.Animator);
             //END TODO
 
             renderTarget = new RenderTarget2D(GraphicsDevice, 1920, 1080);
@@ -69,7 +64,6 @@ namespace FightingEngine
 
             char1.Tick();
 
-            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -77,11 +71,9 @@ namespace FightingEngine
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            foreach (RenderableObject obj in RenderObjects)
-                obj.Draw(spriteBatch);
+            char1.Draw(spriteBatch);
             spriteBatch.End();
 
-            base.Draw(gameTime);
         }
     }
 }

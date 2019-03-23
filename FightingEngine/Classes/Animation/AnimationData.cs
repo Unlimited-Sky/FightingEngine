@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FightingEngine.Classes.Animation
 {
-    //Holds animation key frame data to be used by the Animation class
+    //Holds animation & key frame data to be used by the Animator class
     //Along with useful helper functions
     class AnimationData
     {
@@ -22,9 +22,7 @@ namespace FightingEngine.Classes.Animation
 
         public int GetTotalFrames()
         {
-            int result = _keyFrameLengths.AsQueryable().Sum();
-            return result;
-           //return _keyFrameLengths.AsQueryable().Sum();
+           return _keyFrameLengths.AsQueryable().Sum();
         }
 
         private int GetKeyFrameFromAnimationFrame(int frame)

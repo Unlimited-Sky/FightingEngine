@@ -3,10 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FightingEngine.Classes.Animation
 {
-    //An object which handles animations. It itself doesnt draw, but only handles the logic for frames.
-    class Animator : RenderableObject
+    //An object which handles the logic for animations and frames
+    class Animator
     {
-        private AnimationData AnimData;
+        public AnimationData AnimData { get; private set; }
 
         private int _currentFrame = 0;
         private bool _isPlaying = true;
@@ -38,9 +38,20 @@ namespace FightingEngine.Classes.Animation
             _currentFrame = 0;
         }
 
+        public void ChangeAnimation(AnimationData newAnimation)
+        {
+            AnimData = newAnimation;
+            Restart();
+        }
+
         public Animator(AnimationData animData)
         {
             AnimData = animData;
+        }
+
+        public Animator()
+        {
+            AnimData = null;
         }
 
         public void Tick()
@@ -57,9 +68,9 @@ namespace FightingEngine.Classes.Animation
                     Stop();
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            spriteBatch.Draw(AnimData.GetTextureFromAnimationFrame(_currentFrame), _position.ToVector2(), Color.White);
+            spriteBatch.Draw(AnimData.GetTextureFromAnimationFrame(_currentFrame), position, Color.White);
         }
     }
 }
