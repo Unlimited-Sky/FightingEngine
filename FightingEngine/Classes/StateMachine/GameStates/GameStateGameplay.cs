@@ -1,6 +1,6 @@
-﻿using FightingEngine.Classes.StateMachines;
+﻿using FightingEngine.StateMachine;
 
-namespace FightingEngine.Classes.GameStates
+namespace FightingEngine.StateMachine
 {
     public class GameStateGameplay : AState
     {

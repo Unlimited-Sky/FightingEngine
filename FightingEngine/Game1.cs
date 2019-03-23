@@ -1,4 +1,5 @@
-﻿using FightingEngine.Classes;
+﻿using FightingEngine;
+using FightingEngine.StateMachine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -14,6 +15,8 @@ namespace FightingEngine
         RenderTarget2D renderTarget;
 
         Character char1;
+
+        StateMachine<AGameState> GameStateMachine;
         
         public Game1()
         {

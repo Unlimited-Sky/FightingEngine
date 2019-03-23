@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FightingEngine.Classes.Animation
+namespace FightingEngine.Animation
 {
     //An object which handles the logic for animations and frames
     class Animator

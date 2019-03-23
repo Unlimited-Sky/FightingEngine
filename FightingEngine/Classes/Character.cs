@@ -1,11 +1,10 @@
-﻿using FightingEngine.Classes.Animation;
-using FightingEngine.Classes.CharacterStates;
-using FightingEngine.Classes.StateMachines;
+﻿using FightingEngine.Animation;
+using FightingEngine.StateMachine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace FightingEngine.Classes
+namespace FightingEngine
 {
     class Character : AActor
     {

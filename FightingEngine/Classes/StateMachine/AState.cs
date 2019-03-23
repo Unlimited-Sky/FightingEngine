@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FightingEngine.Classes.StateMachines
+namespace FightingEngine.StateMachine
 {
     public abstract class AState
     {

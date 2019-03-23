@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FightingEngine.Classes.Animation
+namespace FightingEngine.Animation
 {
     //Holds animation & key frame data to be used by the Animator class
     //Along with useful helper functions

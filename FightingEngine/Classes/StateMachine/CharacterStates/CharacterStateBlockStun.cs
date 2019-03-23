@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FightingEngine.Classes.CharacterStates
+namespace FightingEngine.StateMachine
 {
-    class CharacterStateHitStun : ACharacterState
+    class CharacterStateBlockStun : ACharacterState
     {
         public override void Draw()
         {

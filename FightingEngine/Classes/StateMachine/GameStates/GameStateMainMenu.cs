@@ -1,11 +1,11 @@
-﻿using FightingEngine.Classes.GameStates;
+﻿using FightingEngine.StateMachine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FightingEngine.Classes.StateMachines.GameStates
+namespace FightingEngine.StateMachine
 {
     class GameStateMainMenu : AGameState
     {

@@ -1,11 +1,11 @@
-﻿using FightingEngine.Classes.StateMachines;
+﻿using FightingEngine.StateMachine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FightingEngine.Classes.StateMachines
+namespace FightingEngine.StateMachine
 {
     class StateMachine<T> where T : AState
     {
@@ -14,6 +14,13 @@ namespace FightingEngine.Classes.StateMachines
         public AState GetCurrentState()
         {
             return _states.Peek();
+        }
+
+        public AState ChangeState(AState state)
+        {
+            AState result = PopState();
+            PushState(state);
+            return result;
         }
 
         public void PushState(AState state)
