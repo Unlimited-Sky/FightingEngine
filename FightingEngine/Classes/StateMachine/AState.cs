@@ -8,6 +8,13 @@ namespace FightingEngine.StateMachine
 {
     public abstract class AState
     {
+        protected FightingEngine _game;
+
+        public AState(FightingEngine game)
+        {
+            _game = game;
+        }
+
         public abstract void Enter();
 
         public abstract void Exit();

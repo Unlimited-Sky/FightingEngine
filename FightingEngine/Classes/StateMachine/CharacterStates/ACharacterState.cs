@@ -2,5 +2,8 @@
 
 namespace FightingEngine.StateMachine
 {
-    public abstract class ACharacterState : AState { }
+    public abstract class ACharacterState : AState
+    { 
+        public ACharacterState(FightingEngine game) : base(game) { }
+    }
 }

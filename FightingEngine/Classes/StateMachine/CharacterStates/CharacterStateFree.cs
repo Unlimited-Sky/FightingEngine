@@ -8,6 +8,10 @@ namespace FightingEngine.StateMachine
 {
     class CharacterStateFree : ACharacterState
     {
+        public CharacterStateFree(FightingEngine game) : base(game)
+        {
+        }
+
         public override void Draw()
         {
             throw new NotImplementedException();

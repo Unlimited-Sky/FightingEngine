@@ -9,6 +9,9 @@ namespace FightingEngine.StateMachine
 {
     class GameStateMainMenu : AGameState
     {
+        public GameStateMainMenu(FightingEngine game) : base(game) { }
+
+
         public override void Draw()
         {
             throw new NotImplementedException();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FightingEngine.Classes
 {
+    //TODO this class
     class InputManager
     {
     }

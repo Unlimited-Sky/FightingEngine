@@ -8,6 +8,10 @@ namespace FightingEngine.StateMachine
 {
     class CharacterStateBlockStun : ACharacterState
     {
+        public CharacterStateBlockStun(FightingEngine game) : base(game)
+        {
+        }
+
         public override void Draw()
         {
             throw new NotImplementedException();

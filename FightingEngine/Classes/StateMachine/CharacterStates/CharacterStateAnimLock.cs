@@ -8,6 +8,10 @@ namespace FightingEngine.StateMachine
 {
     class CharacterStateAnimLock : ACharacterState
     {
+        public CharacterStateAnimLock(FightingEngine game) : base(game)
+        {
+        }
+
         public override void Draw()
         {
             throw new NotImplementedException();

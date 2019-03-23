@@ -55,10 +55,13 @@
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateBlockStun.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateHitStun.cs" />
     <Compile Include="Classes\StateMachine\GameStates\AGameState.cs" />
+    <Compile Include="Classes\StateMachine\GameStates\GameStateSplashScreen.cs" />
+    <Compile Include="Classes\StateMachine\GameStates\GameStateTitleScreen.cs" />
+    <Compile Include="Classes\StateMachine\GameStates\GameStateOptionsMenu.cs" />
     <Compile Include="Classes\StateMachine\GameStates\GameStateGameplay.cs" />
     <Compile Include="Classes\StateMachine\GameStates\GameStateMainMenu.cs" />
     <Compile Include="Classes\StateMachine\StateMachine.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="FightingEngine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

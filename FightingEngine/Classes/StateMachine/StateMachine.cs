@@ -11,6 +11,11 @@ namespace FightingEngine.StateMachine
     {
         private Stack<AState> _states;
 
+        public StateMachine()
+        {
+            _states = new Stack<AState>();
+        }
+
         public AState GetCurrentState()
         {
             return _states.Peek();

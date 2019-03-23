@@ -8,17 +8,16 @@ using System.Collections.Generic;
 
 namespace FightingEngine
 {
-    public class Game1 : Game
+    public class FightingEngine : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
         RenderTarget2D renderTarget;
 
-        Character char1;
+        public SpriteBatch spriteBatch;
 
         StateMachine<AGameState> GameStateMachine;
         
-        public Game1()
+        public FightingEngine()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -35,24 +34,17 @@ namespace FightingEngine
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
+
+            //TODO Change this to "Splash Screen / Main Menu stuff"
+            GameStateMachine = new StateMachine<AGameState>();
+            GameStateMachine.PushState(new GameStateGameplay(this));
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //TODO CLEAN UP
-            List<Texture2D> texs = new List<Texture2D>();
-            List<string> strings = new List<string>() { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10" };
-            foreach (string s in strings)
-                texs.Add(Content.Load<Texture2D>("Ryu/Idle/" + s));
-            List<int> lengths = new List<int>() { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3};
-
-            char1 = new Character(texs, lengths);
-            //END TODO
-
             renderTarget = new RenderTarget2D(GraphicsDevice, 1920, 1080);
-
         }
 
         protected override void UnloadContent()
@@ -65,7 +57,7 @@ namespace FightingEngine
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            char1.Tick();
+            GameStateMachine.Tick();
 
         }
 
@@ -73,10 +65,8 @@ namespace FightingEngine
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-            char1.Draw(spriteBatch);
-            spriteBatch.End();
-
+            GameStateMachine.Draw();
+        
         }
     }
 }
