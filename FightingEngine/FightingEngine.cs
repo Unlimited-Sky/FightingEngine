@@ -14,6 +14,8 @@ namespace FightingEngine
         RenderTarget2D renderTarget;
 
         public SpriteBatch spriteBatch;
+        public InputManager inputManager;
+
 
         StateMachine<AGameState> GameStateMachine;
         
@@ -34,6 +36,8 @@ namespace FightingEngine
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
+
+            inputManager = new InputManager();
 
             //TODO Change this to "Splash Screen / Main Menu stuff"
             GameStateMachine = new StateMachine<AGameState>();
@@ -56,6 +60,8 @@ namespace FightingEngine
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            inputManager.Tick();
 
             GameStateMachine.Tick();
 

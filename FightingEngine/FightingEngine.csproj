@@ -46,7 +46,8 @@
     <Compile Include="Classes\Animation\AnimationData.cs" />
     <Compile Include="Classes\Character.cs" />
     <Compile Include="Classes\AActor.cs" />
-    <Compile Include="Classes\InputManager.cs" />
+    <Compile Include="Classes\Managers\CharacterLoader.cs" />
+    <Compile Include="Classes\Managers\InputManager.cs" />
     <Compile Include="Classes\StateMachine\AState.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\ACharacterState.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateFree.cs" />
