@@ -39,7 +39,6 @@ namespace FightingEngine.StateMachine
         public void PushState(AState state)
         {
             _stack.Push(state);
-            Console.WriteLine(state.GetType().ToString());
             state.Enter();
         }
 

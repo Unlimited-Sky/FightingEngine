@@ -64,7 +64,6 @@ namespace FightingEngine
             inputManager.Tick();
 
             GameStateMachine.Tick();
-
         }
 
         protected override void Draw(GameTime gameTime)

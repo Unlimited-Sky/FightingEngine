@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
@@ -34,6 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
@@ -46,6 +48,7 @@
     <Compile Include="Classes\Animation\AnimationData.cs" />
     <Compile Include="Classes\Character.cs" />
     <Compile Include="Classes\AActor.cs" />
+    <Compile Include="Classes\Managers\Input.cs" />
     <Compile Include="Classes\Managers\CharacterLoader.cs" />
     <Compile Include="Classes\Managers\InputManager.cs" />
     <Compile Include="Classes\StateMachine\AState.cs" />

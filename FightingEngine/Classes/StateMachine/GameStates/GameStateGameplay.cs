@@ -42,12 +42,21 @@ namespace FightingEngine.StateMachine
 
         public override void Tick()
         {
-
+            //TODO REMOVE THIS CODE (its for testing...)
             currentSpace = Keyboard.GetState().IsKeyDown(Keys.Space);
 
             if (currentSpace == true && lastSpace != currentSpace)
             {
                 char1.PushState<CharacterStateHitStop>(25);
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            {
+
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+
             }
 
             lastSpace = currentSpace;

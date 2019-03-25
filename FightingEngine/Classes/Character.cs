@@ -50,11 +50,27 @@ namespace FightingEngine
             _stateMachine.PopState();
         }       
 
-        public void PushState<CS>(int numFrames) where CS : CharacterStateHitStop
+        public void PushState<CS>(int param = 0) where CS : CharacterState
         {
-            CharacterStateHitStop state = _characterStateFactory.Get<CharacterStateHitStop>();
+            CS state = _characterStateFactory.Get<CS>();
             _stateMachine.PushState(state);
-            state.SetStopFrames(numFrames);
+
+            switch (state)
+            {
+                case CharacterStateAnimLock cs:
+                    break;
+                case CharacterStateBlockStun cs:
+                    break;
+                case CharacterStateFree cs:
+                    break;
+                case CharacterStateHitStop cs:
+                    cs.SetStopFrames(param);
+                    break;
+                case CharacterStateHitStun cs:
+                    break;
+                default:
+                    throw new System.NotImplementedException();           
+            }          
         }
     }
 }

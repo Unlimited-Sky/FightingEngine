@@ -24,10 +24,7 @@ namespace FightingEngine.StateMachine
         {
             Type type = typeof(CS);
             if (_states.ContainsKey(type))
-            {
-                Console.WriteLine("ALREADY EXISTS!");
                 return (CS)_states[type];
-            }
             else
             {
                 CS newState = (CS)type.GetConstructor(new[] { typeof(FightingEngine), typeof(Character) }).Invoke(new object[] { _game, _character });
