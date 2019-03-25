@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace FightingEngine.Animation
 {
     //An object which handles the logic for animations and frames
-    class Animator
+    public class Animator
     {
         public AnimationData AnimData { get; private set; }
 
@@ -16,7 +16,7 @@ namespace FightingEngine.Animation
             return _isPlaying;
         }
 
-        public void Play()
+        public void Resume()
         {
             _isPlaying = true;
         }
@@ -34,7 +34,7 @@ namespace FightingEngine.Animation
 
         public void Restart()
         {
-            Play();
+            Resume();
             _currentFrame = 0;
         }
 

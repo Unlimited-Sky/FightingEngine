@@ -6,30 +6,8 @@ using System.Threading.Tasks;
 
 namespace FightingEngine.StateMachine
 {
-    class CharacterStateHitStun : ACharacterState
+    class CharacterStateHitStun : CharacterState
     {
-        public CharacterStateHitStun(FightingEngine game) : base(game)
-        {
-        }
-
-        public override void Draw()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Enter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Tick()
-        {
-            throw new NotImplementedException();
-        }
+        public CharacterStateHitStun(FightingEngine game, Character character) : base(game, character) { }
     }
 }

@@ -2,6 +2,7 @@
 using FightingEngine;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
 
 namespace FightingEngine.StateMachine
 {
@@ -10,6 +11,9 @@ namespace FightingEngine.StateMachine
         Character char1;
 
         public GameStateGameplay(FightingEngine game) : base(game) { }
+
+        bool lastSpace = false;
+        bool currentSpace = false;
 
         public override void Draw()
         {
@@ -27,7 +31,7 @@ namespace FightingEngine.StateMachine
                 texs.Add(_game.Content.Load<Texture2D>("Ryu/Idle/" + s));
             List<int> lengths = new List<int>() { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
 
-            char1 = new Character(texs, lengths);
+            char1 = new Character(_game, texs, lengths);
             //END TODO
         }
 
@@ -38,6 +42,16 @@ namespace FightingEngine.StateMachine
 
         public override void Tick()
         {
+
+            currentSpace = Keyboard.GetState().IsKeyDown(Keys.Space);
+
+            if (currentSpace == true && lastSpace != currentSpace)
+            {
+                char1.PushState(new CharacterStateHitStop(_game, char1, 25));
+            }
+
+            lastSpace = currentSpace;
+
             char1.Tick();
         }
     }

@@ -6,30 +6,9 @@ using System.Threading.Tasks;
 
 namespace FightingEngine.StateMachine
 {
-    class CharacterStateBlockStun : ACharacterState
+    class CharacterStateBlockStun : CharacterState
     {
-        public CharacterStateBlockStun(FightingEngine game) : base(game)
-        {
-        }
+        public CharacterStateBlockStun(FightingEngine game, Character character) : base(game, character) { }
 
-        public override void Draw()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Enter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Tick()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

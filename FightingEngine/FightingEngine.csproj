@@ -49,13 +49,14 @@
     <Compile Include="Classes\Managers\CharacterLoader.cs" />
     <Compile Include="Classes\Managers\InputManager.cs" />
     <Compile Include="Classes\StateMachine\AState.cs" />
-    <Compile Include="Classes\StateMachine\CharacterStates\ACharacterState.cs" />
+    <Compile Include="Classes\StateMachine\CharacterStates\CharacterState.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateFree.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateAnimLock.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateHitStop.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateBlockStun.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateHitStun.cs" />
     <Compile Include="Classes\StateMachine\GameStates\AGameState.cs" />
+    <Compile Include="Classes\StateMachine\GameStates\GameStatePause.cs" />
     <Compile Include="Classes\StateMachine\GameStates\GameStateSplashScreen.cs" />
     <Compile Include="Classes\StateMachine\GameStates\GameStateTitleScreen.cs" />
     <Compile Include="Classes\StateMachine\GameStates\GameStateOptionsMenu.cs" />

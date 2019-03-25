@@ -6,30 +6,33 @@ using System.Threading.Tasks;
 
 namespace FightingEngine.StateMachine
 {
-    class CharacterStateHitStop : ACharacterState
+    class CharacterStateHitStop : CharacterState
     {
-        public CharacterStateHitStop(FightingEngine game) : base(game)
-        {
-        }
 
-        public override void Draw()
+        private int _stopFrames;
+
+        public CharacterStateHitStop(FightingEngine game, Character character, int numFrames) : base(game, character)
         {
-            throw new NotImplementedException();
+            _stopFrames = numFrames;
         }
 
         public override void Enter()
         {
-            throw new NotImplementedException();
+            _character.Animator.Pause();
         }
 
         public override void Exit()
         {
-            throw new NotImplementedException();
+            _character.Animator.Resume();
         }
 
         public override void Tick()
         {
-            throw new NotImplementedException();
+            _stopFrames -= 1;
+
+            if (_stopFrames <= 0)
+                _character.PopState();
         }
+
     }
 }

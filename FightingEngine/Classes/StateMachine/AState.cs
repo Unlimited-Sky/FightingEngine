@@ -22,5 +22,6 @@ namespace FightingEngine.StateMachine
         public abstract void Tick();
 
         public abstract void Draw();
+
     }
 }

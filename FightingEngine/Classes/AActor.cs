@@ -5,9 +5,13 @@ namespace FightingEngine
 {
     public abstract class AActor
     {
+        protected FightingEngine _game;
         public Point position { get; private set; }
 
-        public AActor() { }
+        public AActor(FightingEngine game)
+        {
+            _game = game;
+        }
 
         public abstract void Tick();
 

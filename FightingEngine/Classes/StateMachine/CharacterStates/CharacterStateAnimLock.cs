@@ -6,30 +6,8 @@ using System.Threading.Tasks;
 
 namespace FightingEngine.StateMachine
 {
-    class CharacterStateAnimLock : ACharacterState
+    class CharacterStateAnimLock : CharacterState
     {
-        public CharacterStateAnimLock(FightingEngine game) : base(game)
-        {
-        }
-
-        public override void Draw()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Enter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Tick()
-        {
-            throw new NotImplementedException();
-        }
+        public CharacterStateAnimLock(FightingEngine game, Character character) : base(game, character) { }
     }
 }

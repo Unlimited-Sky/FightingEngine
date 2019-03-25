@@ -6,7 +6,7 @@ namespace FightingEngine.Animation
 {
     //Holds animation & key frame data to be used by the Animator class
     //Along with useful helper functions
-    class AnimationData
+    public class AnimationData
     {
         private List<int> _keyFrameLengths;
         private List<Texture2D> _textures;
@@ -23,6 +23,14 @@ namespace FightingEngine.Animation
         public int GetTotalFrames()
         {
            return _keyFrameLengths.AsQueryable().Sum();
+        }
+
+        public int GetFramesRemaining(int currentFrame)
+        {
+            if (IsLooping)
+                return 0;
+            else
+                return GetTotalFrames() - currentFrame;
         }
 
         private int GetKeyFrameFromAnimationFrame(int frame)
