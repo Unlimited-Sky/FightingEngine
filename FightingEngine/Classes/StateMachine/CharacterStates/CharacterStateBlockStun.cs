@@ -9,6 +9,5 @@ namespace FightingEngine.StateMachine
     class CharacterStateBlockStun : CharacterState
     {
         public CharacterStateBlockStun(FightingEngine game, Character character) : base(game, character) { }
-
     }
 }

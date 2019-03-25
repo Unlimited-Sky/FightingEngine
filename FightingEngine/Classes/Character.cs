@@ -12,13 +12,15 @@ namespace FightingEngine
         public Animator Animator { get; private set; }
         private List<AnimationData> _animations;
         private StateMachine<CharacterState> _stateMachine;
+        private CharacterStateFactory _characterStateFactory;
         
         public Character(FightingEngine game, List<Texture2D> texs, List<int> lengths) : base(game)
         {
             Animator = new Animator(new AnimationData(texs, lengths, true));
+            _characterStateFactory = new CharacterStateFactory(_game, this);
 
             _stateMachine = new StateMachine<CharacterState>();
-            _stateMachine.PushState(new CharacterStateFree(_game, this));
+            _stateMachine.PushState(_characterStateFactory.Get<CharacterStateFree>());
         }
 
         //Called from AActor
@@ -46,11 +48,13 @@ namespace FightingEngine
         public void PopState()
         {
             _stateMachine.PopState();
-        }
+        }       
 
-        public void PushState(CharacterState state)
+        public void PushState<CS>(int numFrames) where CS : CharacterStateHitStop
         {
+            CharacterStateHitStop state = _characterStateFactory.Get<CharacterStateHitStop>();
             _stateMachine.PushState(state);
-        }           
+            state.SetStopFrames(numFrames);
+        }
     }
 }

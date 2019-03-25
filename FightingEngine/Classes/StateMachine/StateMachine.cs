@@ -11,17 +11,22 @@ namespace FightingEngine.StateMachine
     class StateMachine<T> where T : AState
     {
         private Stack<AState> _stack;
-        private Dictionary<Type, AState> _states;
 
         public StateMachine()
         {
             _stack = new Stack<AState>();
-            _states = new Dictionary<Type, AState>();
         }
 
         public AState GetCurrentState()
         {
             return _stack.Peek();
+        }
+       
+        public AState PopState()
+        {
+            AState result = _stack.Pop();
+            result.Exit();
+            return result;
         }
 
         public AState ChangeState(AState state)
@@ -34,30 +39,9 @@ namespace FightingEngine.StateMachine
         public void PushState(AState state)
         {
             _stack.Push(state);
+            Console.WriteLine(state.GetType().ToString());
             state.Enter();
         }
-       
-
-        public AState PopState()
-        {
-            AState result = _stack.Pop();
-            result.Exit();
-            return result;
-        }
-
-        //private AState GetOrCreate(Type state)
-        //{
-        //    if (_states.TryGetValue(state, out AState result))
-        //        return result;
-        //    else
-        //        return (AState)Activator.CreateInstance(state);
-        //}
-
-        //public void PushState(Type state)
-        //{
-        //    _stack.Push(GetOrCreate(state));
-        //    GetCurrentState().Enter();
-        //}
 
         public void Tick()
         {

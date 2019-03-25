@@ -55,6 +55,7 @@
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateHitStop.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateBlockStun.cs" />
     <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateHitStun.cs" />
+    <Compile Include="Classes\StateMachine\CharacterStates\CharacterStateFactory.cs" />
     <Compile Include="Classes\StateMachine\GameStates\AGameState.cs" />
     <Compile Include="Classes\StateMachine\GameStates\GameStatePause.cs" />
     <Compile Include="Classes\StateMachine\GameStates\GameStateSplashScreen.cs" />

@@ -47,7 +47,7 @@ namespace FightingEngine.StateMachine
 
             if (currentSpace == true && lastSpace != currentSpace)
             {
-                char1.PushState(new CharacterStateHitStop(_game, char1, 25));
+                char1.PushState<CharacterStateHitStop>(25);
             }
 
             lastSpace = currentSpace;

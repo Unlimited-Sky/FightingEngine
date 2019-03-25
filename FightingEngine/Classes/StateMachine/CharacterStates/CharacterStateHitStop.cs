@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace FightingEngine.StateMachine
 {
-    class CharacterStateHitStop : CharacterState
+    public class CharacterStateHitStop : CharacterState
     {
 
-        private int _stopFrames;
+        private int _stopFrames = 0;
+
+        public CharacterStateHitStop(FightingEngine game, Character character) : base(game, character) { }
 
         public CharacterStateHitStop(FightingEngine game, Character character, int numFrames) : base(game, character)
         {
             _stopFrames = numFrames;
+        }
+
+        public void SetStopFrames(int frames)
+        {
+            _stopFrames = frames;
         }
 
         public override void Enter()
