@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightingEngine", "FightingEngine\FightingEngine.csproj", "{CFA326AB-57D8-401E-905F-04221CCFD0E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FightingEditor", "FightingEditor\FightingEditor.csproj", "{BB3709AD-CF4D-444C-B863-070FB94758DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CFA326AB-57D8-401E-905F-04221CCFD0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA326AB-57D8-401E-905F-04221CCFD0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA326AB-57D8-401E-905F-04221CCFD0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB3709AD-CF4D-444C-B863-070FB94758DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3709AD-CF4D-444C-B863-070FB94758DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3709AD-CF4D-444C-B863-070FB94758DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3709AD-CF4D-444C-B863-070FB94758DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,7 +10,7 @@ namespace FightingEngine
     public class Character : AActor
     {
         public Animator Animator { get; private set; }
-        private List<AnimationData> _animations;
+        //private List<AnimationData> _animations;
         private StateMachine<CharacterState> _stateMachine;
         private CharacterStateFactory _characterStateFactory;
         
