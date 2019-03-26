@@ -35,7 +35,7 @@ namespace FightingEngine.Animation
 
         private int GetKeyFrameFromAnimationFrame(int frame)
         {
-            //TODO: OPTIMIZE THIS
+            //TODO: OPTIMIZE THIS?
             int sum = 0;
             int keyFrame = 0;
 
