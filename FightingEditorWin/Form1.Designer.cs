@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.animationRenderer1 = new FightingEditor.AnimationRenderer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnFirst = new System.Windows.Forms.Button();
@@ -75,7 +74,7 @@
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.label26 = new System.Windows.Forms.Label();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkColliderDisabled = new System.Windows.Forms.CheckBox();
             this.txtKeyframeTags = new System.Windows.Forms.TextBox();
             this.btnIsAirborne = new System.Windows.Forms.CheckBox();
             this.label30 = new System.Windows.Forms.Label();
@@ -136,6 +135,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,10 +187,10 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.animationRenderer1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.renderPreview, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -199,15 +199,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1584, 837);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // animationRenderer1
-            // 
-            this.animationRenderer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.animationRenderer1.Location = new System.Drawing.Point(3, 3);
-            this.animationRenderer1.Name = "animationRenderer1";
-            this.animationRenderer1.Size = new System.Drawing.Size(1182, 621);
-            this.animationRenderer1.TabIndex = 0;
-            this.animationRenderer1.Text = "animationRenderer1";
             // 
             // tableLayoutPanel2
             // 
@@ -506,6 +497,7 @@
             this.treeImages.Name = "treeImages";
             this.treeImages.Size = new System.Drawing.Size(163, 116);
             this.treeImages.TabIndex = 11;
+            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
             // 
             // flowLayoutPanel5
             // 
@@ -706,7 +698,6 @@
             this.cmbAnimType.Name = "cmbAnimType";
             this.cmbAnimType.Size = new System.Drawing.Size(111, 21);
             this.cmbAnimType.TabIndex = 10;
-            this.cmbAnimType.SelectedIndexChanged += new System.EventHandler(this.cmbAnimType_SelectedIndexChanged);
             // 
             // flowLayoutPanel6
             // 
@@ -733,7 +724,7 @@
             this.tableLayoutPanel13.ColumnCount = 2;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.38095F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.61905F));
-            this.tableLayoutPanel13.Controls.Add(this.checkBox1, 1, 0);
+            this.tableLayoutPanel13.Controls.Add(this.chkColliderDisabled, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.txtKeyframeTags, 1, 1);
             this.tableLayoutPanel13.Controls.Add(this.btnIsAirborne, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.label30, 0, 1);
@@ -745,17 +736,17 @@
             this.tableLayoutPanel13.Size = new System.Drawing.Size(210, 122);
             this.tableLayoutPanel13.TabIndex = 1;
             // 
-            // checkBox1
+            // chkColliderDisabled
             // 
-            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(97, 22);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 17);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Collider Disabled";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.chkColliderDisabled.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chkColliderDisabled.AutoSize = true;
+            this.chkColliderDisabled.Location = new System.Drawing.Point(97, 22);
+            this.chkColliderDisabled.Name = "chkColliderDisabled";
+            this.chkColliderDisabled.Size = new System.Drawing.Size(104, 17);
+            this.chkColliderDisabled.TabIndex = 11;
+            this.chkColliderDisabled.Text = "Collider Disabled";
+            this.chkColliderDisabled.UseVisualStyleBackColor = true;
+            this.chkColliderDisabled.CheckedChanged += new System.EventHandler(this.chkColliderDisabled_CheckedChanged);
             // 
             // txtKeyframeTags
             // 
@@ -765,7 +756,6 @@
             this.txtKeyframeTags.Name = "txtKeyframeTags";
             this.txtKeyframeTags.Size = new System.Drawing.Size(116, 55);
             this.txtKeyframeTags.TabIndex = 10;
-            this.txtKeyframeTags.TextChanged += new System.EventHandler(this.txtKeyframeTags_TextChanged);
             // 
             // btnIsAirborne
             // 
@@ -777,7 +767,6 @@
             this.btnIsAirborne.TabIndex = 0;
             this.btnIsAirborne.Text = "Airborne";
             this.btnIsAirborne.UseVisualStyleBackColor = true;
-            this.btnIsAirborne.CheckedChanged += new System.EventHandler(this.btnIsAirborne_CheckedChanged);
             // 
             // label30
             // 
@@ -1160,7 +1149,6 @@
             this.numericHitStop.Name = "numericHitStop";
             this.numericHitStop.Size = new System.Drawing.Size(116, 20);
             this.numericHitStop.TabIndex = 9;
-            this.numericHitStop.ValueChanged += new System.EventHandler(this.numericHitStop_ValueChanged);
             // 
             // numericHitStun
             // 
@@ -1169,7 +1157,6 @@
             this.numericHitStun.Name = "numericHitStun";
             this.numericHitStun.Size = new System.Drawing.Size(116, 20);
             this.numericHitStun.TabIndex = 10;
-            this.numericHitStun.ValueChanged += new System.EventHandler(this.numericHitStun_ValueChanged);
             // 
             // numericBlockStun
             // 
@@ -1178,7 +1165,6 @@
             this.numericBlockStun.Name = "numericBlockStun";
             this.numericBlockStun.Size = new System.Drawing.Size(116, 20);
             this.numericBlockStun.TabIndex = 11;
-            this.numericBlockStun.ValueChanged += new System.EventHandler(this.numericBlockStun_ValueChanged);
             // 
             // numericDamage
             // 
@@ -1192,7 +1178,6 @@
             this.numericDamage.Name = "numericDamage";
             this.numericDamage.Size = new System.Drawing.Size(116, 20);
             this.numericDamage.TabIndex = 12;
-            this.numericDamage.ValueChanged += new System.EventHandler(this.numericDamage_ValueChanged);
             // 
             // cmbHitType
             // 
@@ -1210,7 +1195,6 @@
             this.cmbHitType.Name = "cmbHitType";
             this.cmbHitType.Size = new System.Drawing.Size(116, 21);
             this.cmbHitType.TabIndex = 2;
-            this.cmbHitType.SelectedIndexChanged += new System.EventHandler(this.cmbHitType_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1281,7 +1265,6 @@
             this.cmbHitResult.Name = "cmbHitResult";
             this.cmbHitResult.Size = new System.Drawing.Size(121, 21);
             this.cmbHitResult.TabIndex = 1;
-            this.cmbHitResult.SelectedIndexChanged += new System.EventHandler(this.cmbHitResult_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -1306,7 +1289,6 @@
             this.cmbJuggleProperties.Name = "cmbJuggleProperties";
             this.cmbJuggleProperties.Size = new System.Drawing.Size(121, 21);
             this.cmbJuggleProperties.TabIndex = 3;
-            this.cmbJuggleProperties.SelectedIndexChanged += new System.EventHandler(this.cmbJuggleProperties_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -1351,7 +1333,6 @@
             this.chkSpecialCancel.TabIndex = 4;
             this.chkSpecialCancel.Text = "Special Cancel";
             this.chkSpecialCancel.UseVisualStyleBackColor = true;
-            this.chkSpecialCancel.CheckedChanged += new System.EventHandler(this.chkSpecialCancel_CheckedChanged);
             // 
             // chkJumpCancel
             // 
@@ -1363,7 +1344,6 @@
             this.chkJumpCancel.TabIndex = 5;
             this.chkJumpCancel.Text = "Jump Cancel";
             this.chkJumpCancel.UseVisualStyleBackColor = true;
-            this.chkJumpCancel.CheckedChanged += new System.EventHandler(this.chkJumpCancel_CheckedChanged);
             // 
             // chkDashCancel
             // 
@@ -1375,7 +1355,6 @@
             this.chkDashCancel.TabIndex = 6;
             this.chkDashCancel.Text = "Dash Cancel";
             this.chkDashCancel.UseVisualStyleBackColor = true;
-            this.chkDashCancel.CheckedChanged += new System.EventHandler(this.chkDashCancel_CheckedChanged);
             // 
             // chkUniqueActionCancel
             // 
@@ -1387,7 +1366,6 @@
             this.chkUniqueActionCancel.TabIndex = 7;
             this.chkUniqueActionCancel.Text = "Unq Actn Cancel";
             this.chkUniqueActionCancel.UseVisualStyleBackColor = true;
-            this.chkUniqueActionCancel.CheckedChanged += new System.EventHandler(this.chkUniqueActionCancel_CheckedChanged);
             // 
             // label27
             // 
@@ -1407,7 +1385,6 @@
             this.txtCancelRoute.Name = "txtCancelRoute";
             this.txtCancelRoute.Size = new System.Drawing.Size(109, 69);
             this.txtCancelRoute.TabIndex = 9;
-            this.txtCancelRoute.TextChanged += new System.EventHandler(this.txtCancelRoute_TextChanged);
             // 
             // HurtboxPanel
             // 
@@ -1457,7 +1434,6 @@
             this.chkProjectileImmune.TabIndex = 1;
             this.chkProjectileImmune.Text = "Projectile Immunity";
             this.chkProjectileImmune.UseVisualStyleBackColor = true;
-            this.chkProjectileImmune.CheckedChanged += new System.EventHandler(this.chkProjectileImmune_CheckedChanged);
             // 
             // chkLowImmune
             // 
@@ -1469,7 +1445,16 @@
             this.chkLowImmune.TabIndex = 2;
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
-            this.chkLowImmune.CheckedChanged += new System.EventHandler(this.chkLowImmune_CheckedChanged);
+            // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
             // 
             // toolStripMenuItem1
             // 
@@ -1592,7 +1577,6 @@
         }
 
         #endregion
-        private AnimationRenderer animationRenderer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label1;
@@ -1702,10 +1686,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox cmbAnimType;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkColliderDisabled;
         private System.Windows.Forms.TextBox txtKeyframeTags;
         private System.Windows.Forms.CheckBox btnIsAirborne;
         private System.Windows.Forms.Label label30;
+        private RenderPreview renderPreview;
     }
 }
 

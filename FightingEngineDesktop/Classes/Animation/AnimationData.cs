@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace FightingEngine.Animation
 {
@@ -52,6 +53,26 @@ namespace FightingEngine.Animation
         public Texture2D GetTextureFromAnimationFrame(int frame)
         {
             return _textures[GetKeyFrameFromAnimationFrame(frame)];
+        }
+
+        public int GetNextKeyFrameFromFrame(int frame)
+        {
+            return Math.Min(GetNumKeyFrames(), GetKeyFrameFromAnimationFrame(frame) + 1);
+        }
+
+        public int GetPreviousKeyFrameFromFrame(int frame)
+        {
+            return Math.Max(GetNumKeyFrames(), GetKeyFrameFromAnimationFrame(frame) - 1);
+        }
+
+        public int GetNumKeyFrames()
+        {
+            return _keyFrameLengths.Count();
+        }
+
+        public int GetFirstFrameOfKeyframe(int keyFrame)
+        {
+            return _keyFrameLengths.Take(keyFrame).Sum();
         }
 
     }

@@ -61,7 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimationRenderer.cs">
+    <Compile Include="RenderPreview.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form1.cs">

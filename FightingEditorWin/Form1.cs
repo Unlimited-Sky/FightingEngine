@@ -43,7 +43,8 @@ namespace FightingEditor
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO
+            //TODO: Add save dialog
+            Close();
         }
 
         //
@@ -51,88 +52,103 @@ namespace FightingEditor
         //
         private void btnFirst_Click(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.animator.SetFrameToFirstOfKeyFrame(1);
+            updateFrameData();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.animator.SetFrameToFirstOfKeyFrame(
+                renderPreview.animator.AnimData.GetPreviousKeyFrameFromFrame(
+                    renderPreview.animator.CurrentFrame));
+            updateFrameData();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.animator.SetFrameToFirstOfKeyFrame(
+                renderPreview.animator.AnimData.GetNextKeyFrameFromFrame(
+                    renderPreview.animator.CurrentFrame));
+            updateFrameData();
         }
 
         private void btnLast_Click(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.animator.SetFrameToFirstOfKeyFrame(
+                renderPreview.animator.AnimData.GetFirstFrameOfKeyframe(
+                    renderPreview.animator.AnimData.GetNumKeyFrames()));
+            updateFrameData();
         }
 
         private void btnPlayPause_Click(object sender, EventArgs e)
         {
-            //TODO
+            if (renderPreview.animator.IsPlaying)
+                renderPreview.animator.Pause();
+            else
+                renderPreview.animator.Resume();
+
+            updateFrameData();
         }
 
         private void animScrubber_Scroll(object sender, EventArgs e)
         {
             //TODO
+            updateFrameData();
         }
 
         //
         //Image Controls
         //
+        private void treeImages_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
         private void btnAddImage_Click(object sender, EventArgs e)
         {
             //TODO
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = true;
             DialogResult result = dialog.ShowDialog();
 
             if (result == DialogResult.OK)
             {
+                foreach(string filePath in dialog.FileNames)
+                    renderPreview.LoadTexture(filePath);
 
+                foreach(string safePath in dialog.SafeFileNames)
+                    treeImages.Nodes.Add(safePath);
+
+                updateFrameData();
             }
         }
 
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
             //TODO
+
+            updateFrameData();
         }
 
         private void btnMoveUp_Click(object sender, EventArgs e)
         {
             //TODO
+            updateFrameData();
         }
 
         private void btnMoveDown_Click(object sender, EventArgs e)
         {
             //TODO
+            updateFrameData();
         }
 
         private void numericKeyframeLength_ValueChanged(object sender, EventArgs e)
         {
             //TODO
+            updateFrameData();
         }
 
-        private void cmbAnimType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        //
-        //Keyframe Properties
-        //
-        private void btnIsAirborne_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void txtKeyframeTags_TextChanged(object sender, EventArgs e)
+        private void chkColliderDisabled_CheckedChanged(object sender, EventArgs e)
         {
             //TODO
         }
@@ -253,80 +269,30 @@ namespace FightingEditor
             //TODO
         }
 
-        //
-        //Hit Properties
-        //
-        private void cmbHitType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
+        //DATA I NEED TO LOAD/SAVE BEFORE EXPORT:
+        //ALL ANIM DATA
+        //cmbAnimType
 
-        private void numericHitStop_ValueChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
+        //KEYFRAME DATA
+        //btnIsAirborne
+        //txtKeyframeTags
 
-        private void numericHitStun_ValueChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
+        //HIT PROPERTIES
+        //cmbHitType
+        //numericHitStop
+        //numericHitStun
+        //numericBlockStun
+        //numericDamage
+        //cmbHitResult
+        //cmbJuggleProperties
+        //chkSpecialCancel
+        //chkJumpCancel
+        //chkUniqueActionCancel
+        //chkDashCancel
+        //txtCancelRoute
 
-        private void numericBlockStun_ValueChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void numericDamage_ValueChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void cmbHitResult_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void cmbJuggleProperties_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void chkSpecialCancel_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void chkJumpCancel_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void chkUniqueActionCancel_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void chkDashCancel_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void txtCancelRoute_TextChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        //
-        //Hurtbox Properties
-        //
-        private void chkProjectileImmune_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void chkLowImmune_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO
-        }
+        //HURT PROPERTIES
+        //chkProjectileImmune
+        //chkLowImmune
     }
 }

@@ -13,15 +13,6 @@ namespace FightingEngine.StateMachine
     { 
         //TODO FOR TESTING FIX THIS
         Character char1;
-        bool lastSpace = false;
-        bool currentSpace = false;
-
-        SimpleShapeRenderer ssr;
-
-        HitBox hitboxTest;
-        HurtBox hurtboxTest;
-        CharacterCollider colliderTest;
-
         //Rectangle rect;
         //END TESTING
 
@@ -35,10 +26,6 @@ namespace FightingEngine.StateMachine
         {
             _game.spriteBatch.Begin();       
             char1.Draw(_game.spriteBatch);
-
-            ssr.DrawCollision(hitboxTest);
-            ssr.DrawCollision(hurtboxTest);
-            ssr.DrawCollision(colliderTest);
             _game.spriteBatch.End();
         }
 
@@ -52,12 +39,6 @@ namespace FightingEngine.StateMachine
             List<int> lengths = new List<int>() { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
 
             char1 = new Character(_game, texs, lengths);
-
-            ssr = new SimpleShapeRenderer(_game.spriteBatch, _game.GraphicsDevice);
-
-            hitboxTest = new HitBox(new Point(50, 50), new Point(100, 100));
-            hurtboxTest = new HurtBox(new Point(200, 225), new Point(400, 450));
-            colliderTest = new CharacterCollider(new Point(250, 50), new Point(300, 70));
             //END TODO
 
 
@@ -70,25 +51,6 @@ namespace FightingEngine.StateMachine
 
         public override void Tick()
         {
-            //TODO REMOVE THIS CODE (its for testing...)
-            currentSpace = Keyboard.GetState().IsKeyDown(Keys.Space);
-
-            if (currentSpace == true && lastSpace != currentSpace)
-            {
-                char1.PushState<CharacterStateHitStop>(25);
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-
-            }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D))
-            {
-
-            }
-
-            lastSpace = currentSpace;
-
             char1.Tick();
         }
     }
