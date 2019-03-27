@@ -75,5 +75,10 @@ namespace FightingEngine.Animation
             return _keyFrameLengths.Take(keyFrame).Sum();
         }
 
+        public int GetKeyFrameLengthAtIndex(int index)
+        {
+            return _keyFrameLengths[index];
+        }
+
     }
 }

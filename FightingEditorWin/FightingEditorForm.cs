@@ -101,7 +101,8 @@ namespace FightingEditor
         //
         private void treeImages_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(treeImages.SelectedNode.Index);
+            updateFrameData();
         }
 
         private void btnAddImage_Click(object sender, EventArgs e)
@@ -126,27 +127,56 @@ namespace FightingEditor
 
         private void btnRemoveImage_Click(object sender, EventArgs e)
         {
-            //TODO
+            if (treeImages.Nodes.Count == 1)
+                return;
+
+            renderPreview.RemoveKeyFrame(treeImages.SelectedNode.Index);
+            treeImages.SelectedNode.Remove();
 
             updateFrameData();
         }
 
         private void btnMoveUp_Click(object sender, EventArgs e)
         {
-            //TODO
+            int index = treeImages.SelectedNode.Index;
+
+            if (treeImages.Nodes.Count == 1 || index == 0)
+                return;
+
+            renderPreview.SwapKeyFrames(index, index - 1);
+            moveDown(index - 1);
+            treeImages.SelectedNode = treeImages.Nodes[index - 1];
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(index - 1);
+
             updateFrameData();
         }
 
         private void btnMoveDown_Click(object sender, EventArgs e)
         {
-            //TODO
+            int index = treeImages.SelectedNode.Index;
+
+            if (treeImages.Nodes.Count == 1 || index == treeImages.Nodes.Count - 1)
+                return;
+
+            renderPreview.SwapKeyFrames(index, index + 1);
+            moveDown(index);
+            treeImages.SelectedNode = treeImages.Nodes[index + 1];
+
             updateFrameData();
         }
 
-        private void numericKeyframeLength_ValueChanged(object sender, EventArgs e)
+        private void moveDown(int i)
         {
-            //TODO
-            updateFrameData();
+            TreeNode tempNode = treeImages.Nodes[i];
+            treeImages.Nodes.RemoveAt(i);
+            treeImages.Nodes.Insert(i + 1, tempNode);
+        }
+
+        private void numericKeyFrameLength_ValueChanged(object sender, EventArgs e)
+        {
+            //TODO fix this buggy mess
+            //renderPreview.AdjustKeyFrameLength(treeImages.SelectedNode.Index, (int)numericKeyFrameLength.Value);
+            //updateFrameData();
         }
 
         private void chkColliderDisabled_CheckedChanged(object sender, EventArgs e)
@@ -163,26 +193,32 @@ namespace FightingEditor
         //
         private void updateFrameData()
         {
-            int animKeyframe = renderPreview.animator.GetAnimKeyFrameIndex();
-
-            lblCurrentKeyFrame.Text = (animKeyframe + 1).ToString();
-            lblTotalKeyFrames.Text = renderPreview.animator.AnimData.GetNumKeyFrames().ToString();
-            lblTotalPrevFrames.Text = getTotalPrevFrames();
+            lblTotalPrevFrames.Text = (renderPreview.animator.AnimData.GetTotalFrames() - renderPreview.animator.CurrentFrame).ToString();
 
             lblStartupFrames.Text = getStartupFrames();
             lblActiveFrames.Text = getActiveFrames();
             lblOnHitFrames.Text = getOnHitFrames();
             lblOnBlockFrames.Text = getOnBlockFrames();
+
+            updateKeyFrameData();
+        }
+
+        private void updateKeyFrameData()
+        {
+            int animKeyFrameIndex = renderPreview.animator.GetAnimKeyFrameIndex();
+
+            lblTotalKeyFrames.Text = renderPreview.animator.AnimData.GetNumKeyFrames().ToString();
+            lblCurrentKeyFrame.Text = (animKeyFrameIndex + 1).ToString();
+
+            animScrubber.Value = animKeyFrameIndex;
+
             lblTotalFrames.Text = renderPreview.animator.AnimData.GetTotalFrames().ToString();
 
-            animScrubber.Value = animKeyframe;
+            treeImages.SelectedNode = treeImages.Nodes[animKeyFrameIndex];
+
+            numericKeyFrameLength.Value = renderPreview.animator.AnimData.GetKeyFrameLengthAtIndex(animKeyFrameIndex);
         }
 
-        //TODO
-        private string getTotalPrevFrames()
-        {
-            return "";
-        }
         //TODO
         private string getStartupFrames()
         {
@@ -262,11 +298,7 @@ namespace FightingEditor
 
         public void UpdateFormFields()
         {
-            int animKeyframe = renderPreview.animator.GetAnimKeyFrameIndex();
-
-            lblCurrentKeyFrame.Text = (animKeyframe + 1).ToString();
-
-            animScrubber.Value = animKeyframe;
+            updateKeyFrameData();
         }
 
         //DATA I NEED TO LOAD/SAVE BEFORE EXPORT:

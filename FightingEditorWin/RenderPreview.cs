@@ -12,7 +12,7 @@ namespace FightingEditor
     {
         public Animator animator;
         public List<Texture2D> textures;
-        public List<int> keyFrameLenghts;
+        public List<int> keyFrameLengths;
         public FightingEditorForm editorForm;
 
         public float renderScale = 3.0f;
@@ -24,7 +24,7 @@ namespace FightingEditor
             animator = new Animator();
 
             textures = new List<Texture2D>();
-            keyFrameLenghts = new List<int>();
+            keyFrameLengths = new List<int>();
         }
 
         protected override void Update(GameTime gameTime)
@@ -59,13 +59,48 @@ namespace FightingEditor
             Editor.spriteBatch.End();
         }
 
+        private void InitAnimator()
+        {
+            bool lastPlaying = animator.IsPlaying;
+            animator.ChangeAnimation(new AnimationData(textures, keyFrameLengths, true));
+
+            if (lastPlaying == false && animator.IsPlaying)
+                animator.Pause();
+        }
+
         public void LoadTexture(string filePath)
         {
             FileStream stream = new FileStream(filePath, FileMode.Open);
             textures.Add(Texture2D.FromStream(Editor.graphics, stream));
-            keyFrameLenghts.Add(3);
+            keyFrameLengths.Add(3);
+            InitAnimator();
+        }
 
-            animator.ChangeAnimation(new AnimationData(textures, keyFrameLenghts, true));
+        public void RemoveKeyFrame(int index)
+        {
+            keyFrameLengths.RemoveAt(index);
+            textures.RemoveAt(index);
+            InitAnimator();
+        }
+
+        public void SwapKeyFrames(int i1, int i2)
+        {
+            int tempLength = keyFrameLengths[i1];
+            keyFrameLengths[i1] = keyFrameLengths[i2];
+            keyFrameLengths[i2] = tempLength;
+
+            Texture2D tempTex = textures[i1];
+            textures[i1] = textures[i2];
+            textures[i2] = tempTex;
+
+            InitAnimator();
+        }
+
+        public void AdjustKeyFrameLength(int index, int newLength)
+        {
+            keyFrameLengths[index] = newLength;
+
+            InitAnimator();
         }
     }
 }

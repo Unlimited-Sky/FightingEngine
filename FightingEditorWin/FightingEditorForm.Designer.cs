@@ -69,7 +69,7 @@
             this.lblCurrentKeyFrame = new System.Windows.Forms.Label();
             this.lblTotalKeyFrames = new System.Windows.Forms.Label();
             this.lblTotalPrevFrames = new System.Windows.Forms.Label();
-            this.numericKeyframeLength = new System.Windows.Forms.NumericUpDown();
+            this.numericKeyFrameLength = new System.Windows.Forms.NumericUpDown();
             this.cmbAnimType = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.label26 = new System.Windows.Forms.Label();
@@ -135,13 +135,13 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
-            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -153,7 +153,7 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericKeyframeLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericKeyFrameLength)).BeginInit();
             this.flowLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.flowLayoutPanel7.SuspendLayout();
@@ -493,6 +493,8 @@
             // treeImages
             // 
             this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeImages.FullRowSelect = true;
+            this.treeImages.HideSelection = false;
             this.treeImages.Location = new System.Drawing.Point(3, 3);
             this.treeImages.Name = "treeImages";
             this.treeImages.Size = new System.Drawing.Size(163, 116);
@@ -565,7 +567,7 @@
             this.tableLayoutPanel12.Controls.Add(this.lblCurrentKeyFrame, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.lblTotalKeyFrames, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.lblTotalPrevFrames, 1, 3);
-            this.tableLayoutPanel12.Controls.Add(this.numericKeyframeLength, 1, 2);
+            this.tableLayoutPanel12.Controls.Add(this.numericKeyFrameLength, 1, 2);
             this.tableLayoutPanel12.Controls.Add(this.cmbAnimType, 1, 4);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(274, 3);
@@ -593,31 +595,31 @@
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(14, 5);
+            this.label16.Location = new System.Drawing.Point(12, 5);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 13);
+            this.label16.Size = new System.Drawing.Size(91, 13);
             this.label16.TabIndex = 0;
-            this.label16.Text = "Current Keyframe";
+            this.label16.Text = "Current KeyFrame";
             // 
             // label17
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 28);
+            this.label17.Location = new System.Drawing.Point(15, 28);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 13);
+            this.label17.Size = new System.Drawing.Size(86, 13);
             this.label17.TabIndex = 1;
-            this.label17.Text = "Total Keyframes";
+            this.label17.Text = "Total KeyFrames";
             // 
             // label23
             // 
             this.label23.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(14, 51);
+            this.label23.Location = new System.Drawing.Point(13, 51);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(87, 13);
+            this.label23.Size = new System.Drawing.Size(90, 13);
             this.label23.TabIndex = 2;
-            this.label23.Text = "Keyframe Length";
+            this.label23.Text = "KeyFrame Length";
             // 
             // label25
             // 
@@ -659,23 +661,23 @@
             this.lblTotalPrevFrames.TabIndex = 7;
             this.lblTotalPrevFrames.Text = "lblTotalPrevFrames";
             // 
-            // numericKeyframeLength
+            // numericKeyFrameLength
             // 
-            this.numericKeyframeLength.Location = new System.Drawing.Point(119, 49);
-            this.numericKeyframeLength.Minimum = new decimal(new int[] {
+            this.numericKeyFrameLength.Location = new System.Drawing.Point(119, 49);
+            this.numericKeyFrameLength.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericKeyframeLength.Name = "numericKeyframeLength";
-            this.numericKeyframeLength.Size = new System.Drawing.Size(111, 20);
-            this.numericKeyframeLength.TabIndex = 8;
-            this.numericKeyframeLength.Value = new decimal(new int[] {
+            this.numericKeyFrameLength.Name = "numericKeyFrameLength";
+            this.numericKeyFrameLength.Size = new System.Drawing.Size(111, 20);
+            this.numericKeyFrameLength.TabIndex = 8;
+            this.numericKeyFrameLength.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericKeyframeLength.ValueChanged += new System.EventHandler(this.numericKeyframeLength_ValueChanged);
+            this.numericKeyFrameLength.ValueChanged += new System.EventHandler(this.numericKeyFrameLength_ValueChanged);
             // 
             // cmbAnimType
             // 
@@ -819,6 +821,8 @@
             // 
             // treeCollisions
             // 
+            this.treeCollisions.FullRowSelect = true;
+            this.treeCollisions.HideSelection = false;
             this.treeCollisions.Location = new System.Drawing.Point(3, 16);
             this.treeCollisions.Name = "treeCollisions";
             this.treeCollisions.Size = new System.Drawing.Size(387, 365);
@@ -1446,16 +1450,6 @@
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
             // 
-            // renderPreview
-            // 
-            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPreview.Location = new System.Drawing.Point(3, 3);
-            this.renderPreview.MouseHoverUpdatesOnly = false;
-            this.renderPreview.Name = "renderPreview";
-            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
-            this.renderPreview.TabIndex = 4;
-            this.renderPreview.Text = "renderPreview1";
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1505,6 +1499,16 @@
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
+            // 
             // FightingEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1532,7 +1536,7 @@
             this.flowLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericKeyframeLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericKeyFrameLength)).EndInit();
             this.flowLayoutPanel6.ResumeLayout(false);
             this.flowLayoutPanel6.PerformLayout();
             this.tableLayoutPanel13.ResumeLayout(false);
@@ -1675,7 +1679,7 @@
         private System.Windows.Forms.Label lblCurrentKeyFrame;
         private System.Windows.Forms.Label lblTotalKeyFrames;
         private System.Windows.Forms.Label lblTotalPrevFrames;
-        private System.Windows.Forms.NumericUpDown numericKeyframeLength;
+        private System.Windows.Forms.NumericUpDown numericKeyFrameLength;
         private System.Windows.Forms.Button btnSelectCollider;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox txtCancelRoute;
