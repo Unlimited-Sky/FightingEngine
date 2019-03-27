@@ -98,5 +98,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FightingEngineDesktop\FightingEngineDesktop.csproj">
+      <Project>{CFA326AB-57D8-401E-905F-04221CCFD0E1}</Project>
+      <Name>FightingEngineDesktop</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

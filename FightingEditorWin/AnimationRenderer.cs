@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FightingEngine.Animation;
+using Microsoft.Xna.Framework;
 using MonoGame.Forms.Controls;
 
 namespace FightingEditor
@@ -6,9 +7,12 @@ namespace FightingEditor
     public class AnimationRenderer : InvalidationControl
     {
 
+        public Animator animator;
+
         protected override void Initialize()
         {
             base.Initialize();
+            animator = new Animator();
         }
 
         protected override void Draw()
