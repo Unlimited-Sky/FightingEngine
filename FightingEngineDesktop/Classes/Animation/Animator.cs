@@ -38,7 +38,7 @@ namespace FightingEngine.Animation
             CurrentFrame = 0;
         }
 
-        public void SetFrameToFirstOfKeyFrame(int keyFrame)
+        public void SetFrameToFirstOfKeyFrameIndex(int keyFrame)
         {
             CurrentFrame = AnimData.GetFirstFrameOfKeyframe(keyFrame);
         }
@@ -80,6 +80,11 @@ namespace FightingEngine.Animation
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             spriteBatch.Draw(AnimData.GetTextureFromAnimationFrame(CurrentFrame), position, Color.White);
+        }
+
+        public int GetAnimKeyFrameIndex()
+        {
+            return AnimData.GetKeyFrameFromAnimationFrame(CurrentFrame);
         }
     }
 }

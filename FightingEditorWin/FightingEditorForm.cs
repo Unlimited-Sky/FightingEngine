@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FightingEditor
 {
-    public partial class Form1 : Form
+    public partial class FightingEditorForm : Form
     {
-        public Form1()
+        public FightingEditorForm()
         {
             InitializeComponent();
         }
@@ -20,7 +20,7 @@ namespace FightingEditor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            renderPreview.editorForm = this;
         }
 
         //
@@ -52,31 +52,30 @@ namespace FightingEditor
         //
         private void btnFirst_Click(object sender, EventArgs e)
         {
-            renderPreview.animator.SetFrameToFirstOfKeyFrame(1);
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(0);
             updateFrameData();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            renderPreview.animator.SetFrameToFirstOfKeyFrame(
-                renderPreview.animator.AnimData.GetPreviousKeyFrameFromFrame(
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(
+                renderPreview.animator.AnimData.GetPreviousKeyFrameIndexFromFrame(
                     renderPreview.animator.CurrentFrame));
             updateFrameData();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            renderPreview.animator.SetFrameToFirstOfKeyFrame(
-                renderPreview.animator.AnimData.GetNextKeyFrameFromFrame(
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(
+                renderPreview.animator.AnimData.GetNextKeyFrameIndexFromFrame(
                     renderPreview.animator.CurrentFrame));
             updateFrameData();
         }
 
         private void btnLast_Click(object sender, EventArgs e)
         {
-            renderPreview.animator.SetFrameToFirstOfKeyFrame(
-                renderPreview.animator.AnimData.GetFirstFrameOfKeyframe(
-                    renderPreview.animator.AnimData.GetNumKeyFrames()));
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(   
+                    renderPreview.animator.AnimData.GetNumKeyFrames() - 1);
             updateFrameData();
         }
 
@@ -92,7 +91,8 @@ namespace FightingEditor
 
         private void animScrubber_Scroll(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(animScrubber.Value);
+       
             updateFrameData();
         }
 
@@ -106,7 +106,6 @@ namespace FightingEditor
 
         private void btnAddImage_Click(object sender, EventArgs e)
         {
-            //TODO
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = true;
             DialogResult result = dialog.ShowDialog();
@@ -118,6 +117,8 @@ namespace FightingEditor
 
                 foreach(string safePath in dialog.SafeFileNames)
                     treeImages.Nodes.Add(safePath);
+
+                animScrubber.Maximum = treeImages.Nodes.Count - 1;
 
                 updateFrameData();
             }
@@ -162,27 +163,21 @@ namespace FightingEditor
         //
         private void updateFrameData()
         {
-            lblCurrentKeyframe.Text = getCurrentKeyFrame();
-            lblTotalFrames.Text = getTotalKeyframes();
+            int animKeyframe = renderPreview.animator.GetAnimKeyFrameIndex();
+
+            lblCurrentKeyFrame.Text = (animKeyframe + 1).ToString();
+            lblTotalKeyFrames.Text = renderPreview.animator.AnimData.GetNumKeyFrames().ToString();
             lblTotalPrevFrames.Text = getTotalPrevFrames();
 
             lblStartupFrames.Text = getStartupFrames();
             lblActiveFrames.Text = getActiveFrames();
             lblOnHitFrames.Text = getOnHitFrames();
             lblOnBlockFrames.Text = getOnBlockFrames();
-            lblTotalFrames.Text = getTotalFrames();
+            lblTotalFrames.Text = renderPreview.animator.AnimData.GetTotalFrames().ToString();
+
+            animScrubber.Value = animKeyframe;
         }
 
-        //TODO
-        private string getCurrentKeyFrame()
-        {
-            return "";
-        }
-        //TODO
-        private string getTotalKeyframes()
-        {
-            return "";
-        }
         //TODO
         private string getTotalPrevFrames()
         {
@@ -208,11 +203,7 @@ namespace FightingEditor
         {
             return "";
         }
-        //TODO
-        private string getTotalFrames()
-        {
-            return "";
-        }
+ 
         //TODO
         private void btnAddRootHitbox_Click(object sender, EventArgs e)
         {
@@ -267,6 +258,15 @@ namespace FightingEditor
         private void numericBottom_ValueChanged(object sender, EventArgs e)
         {
             //TODO
+        }
+
+        public void UpdateFormFields()
+        {
+            int animKeyframe = renderPreview.animator.GetAnimKeyFrameIndex();
+
+            lblCurrentKeyFrame.Text = (animKeyframe + 1).ToString();
+
+            animScrubber.Value = animKeyframe;
         }
 
         //DATA I NEED TO LOAD/SAVE BEFORE EXPORT:

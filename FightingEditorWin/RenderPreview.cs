@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -12,12 +13,14 @@ namespace FightingEditor
         public Animator animator;
         public List<Texture2D> textures;
         public List<int> keyFrameLenghts;
+        public FightingEditorForm editorForm;
 
         public float renderScale = 3.0f;
        
         protected override void Initialize()
         {
             base.Initialize();
+
             animator = new Animator();
 
             textures = new List<Texture2D>();
@@ -29,7 +32,12 @@ namespace FightingEditor
             base.Update(gameTime);
 
             if (animator != null && animator.AnimData != null)
+            {
                 animator.Tick();
+
+                if (animator.IsPlaying)
+                    editorForm.UpdateFormFields();
+            }
         }
 
         protected override void Draw()
@@ -39,8 +47,14 @@ namespace FightingEditor
             Editor.spriteBatch.Begin();
 
             if (animator != null && animator.AnimData != null)
-            animator.Draw(Editor.spriteBatch, 
-                new Vector2(Editor.graphics.Viewport.Width / 2, Editor.graphics.Viewport.Height / 2));
+            {
+                animator.Draw(Editor.spriteBatch,
+                    new Vector2(Editor.graphics.Viewport.Width / 2, Editor.graphics.Viewport.Height / 2));
+                Editor.spriteBatch.DrawString(Editor.Font, animator.CurrentFrame.ToString(), new Vector2(
+                (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(animator.CurrentFrame.ToString()).X / 2),
+                (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
+                Color.White);
+            }
 
             Editor.spriteBatch.End();
         }

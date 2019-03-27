@@ -34,7 +34,7 @@ namespace FightingEngine.Animation
                 return GetTotalFrames() - currentFrame;
         }
 
-        private int GetKeyFrameFromAnimationFrame(int frame)
+        public int GetKeyFrameFromAnimationFrame(int frame)
         {
             //TODO: OPTIMIZE THIS?
             int sum = 0;
@@ -43,7 +43,7 @@ namespace FightingEngine.Animation
             foreach (int length in _keyFrameLengths)
             {
                 sum += length;
-                if (sum >= frame) break;
+                if (sum > frame) break;
                 else keyFrame += 1;
             }
 
@@ -55,14 +55,14 @@ namespace FightingEngine.Animation
             return _textures[GetKeyFrameFromAnimationFrame(frame)];
         }
 
-        public int GetNextKeyFrameFromFrame(int frame)
+        public int GetNextKeyFrameIndexFromFrame(int frame)
         {
-            return Math.Min(GetNumKeyFrames(), GetKeyFrameFromAnimationFrame(frame) + 1);
+            return Math.Min(GetNumKeyFrames() - 1 , GetKeyFrameFromAnimationFrame(frame) + 1);
         }
 
-        public int GetPreviousKeyFrameFromFrame(int frame)
+        public int GetPreviousKeyFrameIndexFromFrame(int frame)
         {
-            return Math.Max(GetNumKeyFrames(), GetKeyFrameFromAnimationFrame(frame) - 1);
+            return Math.Max(0, GetKeyFrameFromAnimationFrame(frame) - 1);
         }
 
         public int GetNumKeyFrames()

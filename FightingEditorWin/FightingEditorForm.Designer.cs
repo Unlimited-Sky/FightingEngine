@@ -1,6 +1,6 @@
 ﻿namespace FightingEditor
 {
-    partial class Form1
+    partial class FightingEditorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -66,8 +66,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.lblCurrentKeyframe = new System.Windows.Forms.Label();
-            this.lblTotalkeyframes = new System.Windows.Forms.Label();
+            this.lblCurrentKeyFrame = new System.Windows.Forms.Label();
+            this.lblTotalKeyFrames = new System.Windows.Forms.Label();
             this.lblTotalPrevFrames = new System.Windows.Forms.Label();
             this.numericKeyframeLength = new System.Windows.Forms.NumericUpDown();
             this.cmbAnimType = new System.Windows.Forms.ComboBox();
@@ -562,8 +562,8 @@
             this.tableLayoutPanel12.Controls.Add(this.label17, 0, 1);
             this.tableLayoutPanel12.Controls.Add(this.label23, 0, 2);
             this.tableLayoutPanel12.Controls.Add(this.label25, 0, 3);
-            this.tableLayoutPanel12.Controls.Add(this.lblCurrentKeyframe, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.lblTotalkeyframes, 1, 1);
+            this.tableLayoutPanel12.Controls.Add(this.lblCurrentKeyFrame, 1, 0);
+            this.tableLayoutPanel12.Controls.Add(this.lblTotalKeyFrames, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.lblTotalPrevFrames, 1, 3);
             this.tableLayoutPanel12.Controls.Add(this.numericKeyframeLength, 1, 2);
             this.tableLayoutPanel12.Controls.Add(this.cmbAnimType, 1, 4);
@@ -629,25 +629,25 @@
             this.label25.TabIndex = 3;
             this.label25.Text = "Total Prev Frames";
             // 
-            // lblCurrentKeyframe
+            // lblCurrentKeyFrame
             // 
-            this.lblCurrentKeyframe.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblCurrentKeyframe.AutoSize = true;
-            this.lblCurrentKeyframe.Location = new System.Drawing.Point(119, 5);
-            this.lblCurrentKeyframe.Name = "lblCurrentKeyframe";
-            this.lblCurrentKeyframe.Size = new System.Drawing.Size(95, 13);
-            this.lblCurrentKeyframe.TabIndex = 4;
-            this.lblCurrentKeyframe.Text = "lblCurrentKeyframe";
+            this.lblCurrentKeyFrame.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblCurrentKeyFrame.AutoSize = true;
+            this.lblCurrentKeyFrame.Location = new System.Drawing.Point(119, 5);
+            this.lblCurrentKeyFrame.Name = "lblCurrentKeyFrame";
+            this.lblCurrentKeyFrame.Size = new System.Drawing.Size(98, 13);
+            this.lblCurrentKeyFrame.TabIndex = 4;
+            this.lblCurrentKeyFrame.Text = "lblCurrentKeyFrame";
             // 
-            // lblTotalkeyframes
+            // lblTotalKeyFrames
             // 
-            this.lblTotalkeyframes.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblTotalkeyframes.AutoSize = true;
-            this.lblTotalkeyframes.Location = new System.Drawing.Point(119, 28);
-            this.lblTotalkeyframes.Name = "lblTotalkeyframes";
-            this.lblTotalkeyframes.Size = new System.Drawing.Size(89, 13);
-            this.lblTotalkeyframes.TabIndex = 5;
-            this.lblTotalkeyframes.Text = "lblTotalkeyframes";
+            this.lblTotalKeyFrames.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblTotalKeyFrames.AutoSize = true;
+            this.lblTotalKeyFrames.Location = new System.Drawing.Point(119, 28);
+            this.lblTotalKeyFrames.Name = "lblTotalKeyFrames";
+            this.lblTotalKeyFrames.Size = new System.Drawing.Size(89, 13);
+            this.lblTotalKeyFrames.TabIndex = 5;
+            this.lblTotalKeyFrames.Text = "lblTotalkeyframes";
             // 
             // lblTotalPrevFrames
             // 
@@ -1505,7 +1505,7 @@
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // Form1
+            // FightingEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1513,7 +1513,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "FightingEditorForm";
             this.Text = "Fighting Editor";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1672,8 +1672,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label lblCurrentKeyframe;
-        private System.Windows.Forms.Label lblTotalkeyframes;
+        private System.Windows.Forms.Label lblCurrentKeyFrame;
+        private System.Windows.Forms.Label lblTotalKeyFrames;
         private System.Windows.Forms.Label lblTotalPrevFrames;
         private System.Windows.Forms.NumericUpDown numericKeyframeLength;
         private System.Windows.Forms.Button btnSelectCollider;
