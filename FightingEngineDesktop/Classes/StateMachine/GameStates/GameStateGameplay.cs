@@ -4,22 +4,41 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using FightingEngine.Actor;
+using FightingEngine.Collision;
+using Microsoft.Xna.Framework;
 
 namespace FightingEngine.StateMachine
 {
     public class GameStateGameplay : AState
     { 
+        //TODO FOR TESTING FIX THIS
         Character char1;
+        bool lastSpace = false;
+        bool currentSpace = false;
+
+        SimpleShapeRenderer ssr;
+
+        HitBox hitboxTest;
+        HurtBox hurtboxTest;
+        CharacterCollider colliderTest;
+
+        //Rectangle rect;
+        //END TESTING
+
 
         public GameStateGameplay(FightingEngine game) : base(game) { }
 
-        bool lastSpace = false;
-        bool currentSpace = false;
+
+       
 
         public override void Draw()
         {
             _game.spriteBatch.Begin();       
             char1.Draw(_game.spriteBatch);
+
+            ssr.DrawCollision(hitboxTest);
+            ssr.DrawCollision(hurtboxTest);
+            ssr.DrawCollision(colliderTest);
             _game.spriteBatch.End();
         }
 
@@ -33,7 +52,15 @@ namespace FightingEngine.StateMachine
             List<int> lengths = new List<int>() { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
 
             char1 = new Character(_game, texs, lengths);
+
+            ssr = new SimpleShapeRenderer(_game.spriteBatch, _game.GraphicsDevice);
+
+            hitboxTest = new HitBox(new Point(50, 50), new Point(100, 100));
+            hurtboxTest = new HurtBox(new Point(200, 225), new Point(400, 450));
+            colliderTest = new CharacterCollider(new Point(250, 50), new Point(300, 70));
             //END TODO
+
+
         }
 
         public override void Exit()

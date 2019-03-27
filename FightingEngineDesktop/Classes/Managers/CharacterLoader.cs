@@ -10,6 +10,7 @@ namespace FightingEngine
     //Handles loading of character images and data into memory
     public class CharacterLoader
     {
+
         public CharacterLoader()
         {
             //TODO: initialize stuff here
