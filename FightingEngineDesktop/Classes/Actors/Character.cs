@@ -1,15 +1,17 @@
 ﻿using FightingEngine.Animation;
+using FightingEngine.Collision;
 using FightingEngine.StateMachine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace FightingEngine
+namespace FightingEngine.Actor
 {
     public class Character : AActor
     {
         public Animator Animator { get; private set; }
+        public CharacterCollider CharacterCollider { get; private set; }
         //private List<AnimationData> _animations;
         private StateMachine<CharacterState> _stateMachine;
         private CharacterStateFactory _characterStateFactory;

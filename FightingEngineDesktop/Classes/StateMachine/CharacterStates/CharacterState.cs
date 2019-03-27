@@ -1,4 +1,5 @@
-﻿using FightingEngine.StateMachine;
+﻿using FightingEngine.Actor;
+using FightingEngine.StateMachine;
 
 namespace FightingEngine.StateMachine
 {

@@ -18,9 +18,7 @@ namespace FightingEngine
         //TODO: This function
         public void LoadCharacter()
         {
-            //Load character from "character files"
-            //But we'll just hard code it for now since we
-            //don't have a character editor
+            
         }
     }
 }
