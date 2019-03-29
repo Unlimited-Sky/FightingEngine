@@ -135,13 +135,13 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.renderPreview = new FightingEditor.RenderPreview();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -1450,6 +1450,16 @@
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
             // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1498,16 +1508,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1584, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // renderPreview
-            // 
-            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPreview.Location = new System.Drawing.Point(3, 3);
-            this.renderPreview.MouseHoverUpdatesOnly = false;
-            this.renderPreview.Name = "renderPreview";
-            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
-            this.renderPreview.TabIndex = 4;
-            this.renderPreview.Text = "renderPreview1";
             // 
             // FightingEditorForm
             // 

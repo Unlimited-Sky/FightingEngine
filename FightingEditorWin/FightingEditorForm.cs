@@ -174,9 +174,11 @@ namespace FightingEditor
 
         private void numericKeyFrameLength_ValueChanged(object sender, EventArgs e)
         {
-            //TODO fix this buggy mess
-            //renderPreview.AdjustKeyFrameLength(treeImages.SelectedNode.Index, (int)numericKeyFrameLength.Value);
-            //updateFrameData();
+            int selectedIndex = treeImages.SelectedNode.Index;
+            int currKeyframe = renderPreview.animator.GetAnimKeyFrameIndex();
+            renderPreview.AdjustKeyFrameLength(selectedIndex, (int)numericKeyFrameLength.Value);
+            renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(currKeyframe);
+            updateFrameData();
         }
 
         private void chkColliderDisabled_CheckedChanged(object sender, EventArgs e)
@@ -193,7 +195,7 @@ namespace FightingEditor
         //
         private void updateFrameData()
         {
-            lblTotalPrevFrames.Text = (renderPreview.animator.AnimData.GetTotalFrames() - renderPreview.animator.CurrentFrame).ToString();
+            lblTotalPrevFrames.Text = renderPreview.animator.CurrentFrame.ToString();
 
             lblStartupFrames.Text = getStartupFrames();
             lblActiveFrames.Text = getActiveFrames();
@@ -216,7 +218,14 @@ namespace FightingEditor
 
             treeImages.SelectedNode = treeImages.Nodes[animKeyFrameIndex];
 
-            numericKeyFrameLength.Value = renderPreview.animator.AnimData.GetKeyFrameLengthAtIndex(animKeyFrameIndex);
+            ChangeNumericKeyFrameValue(renderPreview.animator.AnimData.GetKeyFrameLengthAtIndex(animKeyFrameIndex));
+        }
+
+        private void ChangeNumericKeyFrameValue(int newValue)
+        {
+            numericKeyFrameLength.ValueChanged -= numericKeyFrameLength_ValueChanged;
+            numericKeyFrameLength.Value = newValue;
+            numericKeyFrameLength.ValueChanged += numericKeyFrameLength_ValueChanged;
         }
 
         //TODO
