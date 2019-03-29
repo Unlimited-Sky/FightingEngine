@@ -17,8 +17,8 @@ namespace FightingEditor
         public List<int> keyFrameLengths;
         public FightingEditorForm editorForm;
 
-        public List<HurtBoxRootNode> hurtBoxRootNodes;
-        public List<HitBoxRootNode> hitBoxRootNodes;
+        public Dictionary<int, List<HurtBoxRootNode>> hurtBoxKeyFrameData;
+        public Dictionary<int, List<HitBoxRootNode>> hitBoxKeyFrameData;
         public CharacterCollider characterCollider;
 
         public SimpleShapeRenderer ssr;
@@ -38,8 +38,8 @@ namespace FightingEditor
 
             //TODO lock to 60fps
 
-            hitBoxRootNodes = new List<HitBoxRootNode>();
-            hurtBoxRootNodes = new List<HurtBoxRootNode>();
+            hitBoxKeyFrameData = new Dictionary<int, List<HitBoxRootNode>>();
+            hurtBoxKeyFrameData = new Dictionary<int, List<HurtBoxRootNode>>();
         }
 
         protected override void Update(GameTime gameTime)
@@ -66,6 +66,7 @@ namespace FightingEditor
 
             if (animator != null && animator.AnimData != null)
             {
+                int keyFrameIndex = animator.GetAnimKeyFrameIndex();
                 animator.Draw(Editor.spriteBatch, center);
                 
                 //Draw frame counter
@@ -73,21 +74,21 @@ namespace FightingEditor
                 (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(animator.CurrentFrame.ToString()).X / 2),
                 (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
                 Color.White);
+
+
+                if (hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
+                {
+                    foreach (HitBoxRootNode root in hitBoxKeyFrameData[keyFrameIndex])
+                        ssr.DrawCollisions(root);
+
+                }
+
+                if (hurtBoxKeyFrameData.ContainsKey(keyFrameIndex))
+                {
+                    foreach (HurtBoxRootNode root in hurtBoxKeyFrameData[keyFrameIndex])
+                        ssr.DrawCollisions(root);
+                }
             }
-
-            if (hitBoxRootNodes.Count > 0)
-            {
-                foreach (HitBoxRootNode root in hitBoxRootNodes)
-                    ssr.DrawCollisions(root);
-
-            }
-
-            if (hurtBoxRootNodes.Count > 0)
-            {
-                foreach (HurtBoxRootNode root in hurtBoxRootNodes)
-                    ssr.DrawCollisions(root);
-            }
-
             Editor.spriteBatch.End();
         }
 
@@ -135,9 +136,17 @@ namespace FightingEditor
             InitAnimator();
         }
 
-        public void AddRootHitBox()
+        public void AddRootHitBox(int keyFrame)
         {
-            hitBoxRootNodes.Add(new HitBoxRootNode());
+            if (hitBoxKeyFrameData.ContainsKey(keyFrame))
+            {
+                hitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode());
+            }
+            else
+            {
+                hitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode() });
+            }
+
         }
 
         public void AddHitBox()
@@ -150,9 +159,16 @@ namespace FightingEditor
             //TODO
         }
 
-        public void AddRootHurtBox()
+        public void AddRootHurtBox(int keyFrame)
         {
-            hurtBoxRootNodes.Add(new HurtBoxRootNode());
+            if (hurtBoxKeyFrameData.ContainsKey(keyFrame))
+            {
+                hurtBoxKeyFrameData[keyFrame].Add(new HurtBoxRootNode());
+            }
+            else
+            {
+                hurtBoxKeyFrameData.Add(keyFrame, new List<HurtBoxRootNode> { new HurtBoxRootNode() });
+            }
         }
 
 

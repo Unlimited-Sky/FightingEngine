@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FightingEngine.Collision;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -203,6 +204,8 @@ namespace FightingEditor
             lblOnBlockFrames.Text = getOnBlockFrames();
 
             updateKeyFrameData();
+
+            updateCollisionsTree();
         }
 
         private void updateKeyFrameData()
@@ -251,7 +254,11 @@ namespace FightingEditor
 
         private void btnAddRootHitbox_Click(object sender, EventArgs e)
         {
-            renderPreview.AddRootHitBox();
+            //TODO pull the relevant hitbox data
+            //damage, cancel routes etc
+            renderPreview.AddRootHitBox(animScrubber.Value);
+
+            updateCollisionsTree();
         }
 
         private void btnAddHitbox_Click(object sender, EventArgs e)
@@ -266,7 +273,11 @@ namespace FightingEditor
 
         private void btnAddRootHurtbox_Click(object sender, EventArgs e)
         {
-            renderPreview.AddRootHurtBox();
+            //todo pull the relevant hurtbox data
+            //bools etc
+            renderPreview.AddRootHurtBox(animScrubber.Value);
+
+            updateCollisionsTree();
         }
 
         private void btnAddHurtbox_Click(object sender, EventArgs e)
@@ -304,6 +315,66 @@ namespace FightingEditor
             //TODO
         }
 
+        private void updateCollisionsTree()
+        {
+            //TODO FINISH THIS
+            int currentKeyFrameIndex = renderPreview.animator.GetAnimKeyFrameIndex();
+
+            treeCollisions.Nodes.Clear();
+
+            int counter = 0;
+
+            if (renderPreview.hitBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
+            {
+                List<HitBoxRootNode> hitBoxRoots = renderPreview.hitBoxKeyFrameData[currentKeyFrameIndex];
+
+                foreach (HitBoxRootNode hitBox in hitBoxRoots)
+                {
+                    addHitBoxes(hitBox, counter.ToString());
+                    counter += 1;
+                }
+            }
+
+            if (renderPreview.hurtBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
+            {
+                counter = 0;
+
+                List<HurtBoxRootNode> hurtBoxRoots = renderPreview.hurtBoxKeyFrameData[currentKeyFrameIndex];
+
+                foreach (HurtBoxRootNode hurtBox in hurtBoxRoots)
+                {
+                    addHurtBoxes(hurtBox, counter.ToString());
+                    counter += 1;
+                }
+            }
+        }
+
+        private void addHitBoxes(HitBoxRootNode hitBox, string count)
+        {
+            int counter = 0;
+            TreeNode root = new TreeNode("HitRoot" + count);
+            foreach (SimpleRectNode node in hitBox.Children)
+            {
+                root.Nodes.Add(new TreeNode("HitBox" + counter));
+            }
+
+            treeCollisions.Nodes.Add(root);
+        }
+
+        private void addHurtBoxes(HurtBoxRootNode hurtBox, string count)
+        {
+            int counter = 0;
+            TreeNode root = new TreeNode("HurtRoot" + count);
+            foreach(SimpleRectNode node in hurtBox.Children)
+            {
+                root.Nodes.Add(new TreeNode("HurtBox" + counter));
+            }
+
+            treeCollisions.Nodes.Add(root);
+        }
+
+
+        //Called from tick in the render preview
         public void UpdateFormFields()
         {
             updateKeyFrameData();
