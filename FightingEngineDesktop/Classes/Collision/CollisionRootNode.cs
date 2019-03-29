@@ -8,21 +8,17 @@ namespace FightingEngine.Collision
 {
     public class CollisionRootNode
     {
-        private List<SimpleRectNode> _children;
+        public List<SimpleRectNode> Children;
 
         public CollisionRootNode()
         {
-            _children = new List<SimpleRectNode>();
+            Children = new List<SimpleRectNode>();
         }
 
         public CollisionRootNode(List<SimpleRectNode> children)
         {
-            _children = children;
+            Children = children;
         }
 
-        public List<SimpleRectNode> GetChildren()
-        {
-            return _children;
-        }
     }
 }

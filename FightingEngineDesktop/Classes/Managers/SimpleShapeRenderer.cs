@@ -50,13 +50,13 @@ namespace FightingEngine
 
         public void DrawCollisions(HitBoxRootNode hitBoxRootNode)
         {
-            foreach(SimpleRect rect in hitBoxRootNode.GetChildren())
+            foreach(SimpleRect rect in hitBoxRootNode.Children)
                 drawCollisionBox(rect, _hitBoxColor);
         }
 
         public void DrawCollisions(HurtBoxRootNode hurtBoxRootNode)
         {
-            foreach (SimpleRect rect in hurtBoxRootNode.GetChildren())
+            foreach (SimpleRect rect in hurtBoxRootNode.Children)
                 drawCollisionBox(rect, _hurtBoxColor);
         }
 

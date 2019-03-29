@@ -248,11 +248,10 @@ namespace FightingEditor
         {
             return "";
         }
- 
-        //TODO
+
         private void btnAddRootHitbox_Click(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.AddRootHitBox();
         }
 
         private void btnAddHitbox_Click(object sender, EventArgs e)
@@ -267,7 +266,7 @@ namespace FightingEditor
 
         private void btnAddRootHurtbox_Click(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.AddRootHurtBox();
         }
 
         private void btnAddHurtbox_Click(object sender, EventArgs e)
