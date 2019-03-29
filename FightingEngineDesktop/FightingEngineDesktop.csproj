@@ -44,14 +44,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Classes\Collisions\CharacterCollider.cs" />
-    <Compile Include="Classes\Collisions\HurtBox.cs" />
-    <Compile Include="Classes\Collisions\HitBox.cs" />
-    <Compile Include="Classes\Collisions\SimpleRect.cs" />
+    <Compile Include="Classes\Collision\CharacterCollider.cs" />
+    <Compile Include="Classes\Collision\CollisionRootNode.cs" />
+    <Compile Include="Classes\Collision\HurtBoxRootNode.cs" />
+    <Compile Include="Classes\Collision\HitBoxRootNode.cs" />
+    <Compile Include="Classes\Collision\SimpleRect.cs" />
     <Compile Include="Classes\Animation\Animator.cs" />
     <Compile Include="Classes\Animation\AnimationData.cs" />
     <Compile Include="Classes\Actors\Character.cs" />
     <Compile Include="Classes\Actors\AActor.cs" />
+    <Compile Include="Classes\Collision\SimpleRectNode.cs" />
     <Compile Include="Classes\Managers\SimpleShapeRenderer.cs" />
     <Compile Include="Classes\Managers\Input.cs" />
     <Compile Include="Classes\Managers\CharacterLoader.cs" />

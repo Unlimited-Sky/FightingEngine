@@ -15,6 +15,8 @@ namespace FightingEditor
         public List<int> keyFrameLengths;
         public FightingEditorForm editorForm;
 
+        
+
         public float renderScale = 3.0f;
        
         protected override void Initialize()
