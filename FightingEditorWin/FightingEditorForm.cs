@@ -23,6 +23,10 @@ namespace FightingEditor
         private void Form1_Load(object sender, EventArgs e)
         {
             renderPreview.editorForm = this;
+
+            cmbHitType.DataSource = Enum.GetValues(typeof(HITTYPE));
+            cmbHitResult.DataSource = Enum.GetValues(typeof(HITRESULT));
+            cmbJuggleProperties.DataSource = Enum.GetValues(typeof(JUGGLETYPE));
         }
 
         //
@@ -255,14 +259,13 @@ namespace FightingEditor
 
         private void btnAddRootHitbox_Click(object sender, EventArgs e)
         {
-            //TODO: Grab the data from the enums here
-            HITTYPE hitType = HITTYPE.NONE;
-            HITRESULT hitResult = HITRESULT.NONE;
-            JUGGLETYPE juggleType = JUGGLETYPE.NONE;
+            HITTYPE hitType = (HITTYPE)cmbHitType.SelectedIndex;
+            HITRESULT hitResult = (HITRESULT)cmbHitResult.SelectedIndex;
+            JUGGLETYPE juggleProperties = (JUGGLETYPE)cmbJuggleProperties.SelectedIndex;
             
             HitBoxData data = new HitBoxData(
                 hitType, (int)numericHitStop.Value, (int)numericHitStun.Value, (int)numericBlockStun.Value, (int)numericDamage.Value,
-                    hitResult, juggleType,
+                    hitResult, juggleProperties,
                 chkSpecialCancel.Checked, chkJumpCancel.Checked, chkUniqueActionCancel.Checked, chkDashCancel.Checked,
                     txtCancelRoute.Text);
 

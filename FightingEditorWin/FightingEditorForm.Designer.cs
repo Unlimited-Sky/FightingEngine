@@ -54,7 +54,6 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeImages = new System.Windows.Forms.TreeView();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.btnRemoveImage = new System.Windows.Forms.Button();
@@ -82,7 +81,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.treeCollisions = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSelectCollider = new System.Windows.Forms.Button();
@@ -135,13 +133,15 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
-            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.treeImages = new FightingEditor.EditorTreeView();
+            this.treeCollisions = new FightingEditor.EditorTreeView();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -490,17 +490,6 @@
             this.tableLayoutPanel11.Size = new System.Drawing.Size(510, 122);
             this.tableLayoutPanel11.TabIndex = 12;
             // 
-            // treeImages
-            // 
-            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeImages.FullRowSelect = true;
-            this.treeImages.HideSelection = false;
-            this.treeImages.Location = new System.Drawing.Point(3, 3);
-            this.treeImages.Name = "treeImages";
-            this.treeImages.Size = new System.Drawing.Size(163, 116);
-            this.treeImages.TabIndex = 11;
-            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
-            // 
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.btnAddImage);
@@ -818,15 +807,6 @@
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Collision Boxes";
-            // 
-            // treeCollisions
-            // 
-            this.treeCollisions.FullRowSelect = true;
-            this.treeCollisions.HideSelection = false;
-            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
-            this.treeCollisions.Name = "treeCollisions";
-            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
-            this.treeCollisions.TabIndex = 1;
             // 
             // panel1
             // 
@@ -1188,13 +1168,6 @@
             this.cmbHitType.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbHitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHitType.FormattingEnabled = true;
-            this.cmbHitType.Items.AddRange(new object[] {
-            "High",
-            "Mid",
-            "Low",
-            "Throw",
-            "Projectile",
-            "Unblockable"});
             this.cmbHitType.Location = new System.Drawing.Point(103, 4);
             this.cmbHitType.Name = "cmbHitType";
             this.cmbHitType.Size = new System.Drawing.Size(116, 21);
@@ -1257,14 +1230,6 @@
             this.cmbHitResult.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbHitResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHitResult.FormattingEnabled = true;
-            this.cmbHitResult.Items.AddRange(new object[] {
-            "Normal",
-            "Knockdown",
-            "LaunchLow",
-            "LaunchMid",
-            "LaunchHigh",
-            "WallBounce",
-            "GroundBounce"});
             this.cmbHitResult.Location = new System.Drawing.Point(100, 4);
             this.cmbHitResult.Name = "cmbHitResult";
             this.cmbHitResult.Size = new System.Drawing.Size(121, 21);
@@ -1285,10 +1250,6 @@
             this.cmbJuggleProperties.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbJuggleProperties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJuggleProperties.FormattingEnabled = true;
-            this.cmbJuggleProperties.Items.AddRange(new object[] {
-            "NoJuggle",
-            "Resets",
-            "CanJuggle"});
             this.cmbJuggleProperties.Location = new System.Drawing.Point(100, 33);
             this.cmbJuggleProperties.Name = "cmbJuggleProperties";
             this.cmbJuggleProperties.Size = new System.Drawing.Size(121, 21);
@@ -1450,16 +1411,6 @@
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
             // 
-            // renderPreview
-            // 
-            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPreview.Location = new System.Drawing.Point(3, 3);
-            this.renderPreview.MouseHoverUpdatesOnly = false;
-            this.renderPreview.Name = "renderPreview";
-            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
-            this.renderPreview.TabIndex = 4;
-            this.renderPreview.Text = "renderPreview1";
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1508,6 +1459,38 @@
             this.menuStrip1.Size = new System.Drawing.Size(1584, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // treeImages
+            // 
+            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeImages.FullRowSelect = true;
+            this.treeImages.HideSelection = false;
+            this.treeImages.Location = new System.Drawing.Point(3, 3);
+            this.treeImages.Name = "treeImages";
+            this.treeImages.Size = new System.Drawing.Size(163, 116);
+            this.treeImages.TabIndex = 11;
+            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
+            // 
+            // treeCollisions
+            // 
+            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeCollisions.FullRowSelect = true;
+            this.treeCollisions.HideSelection = false;
+            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
+            this.treeCollisions.Name = "treeCollisions";
+            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
+            this.treeCollisions.TabIndex = 1;
+            // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
             // 
             // FightingEditorForm
             // 
@@ -1584,7 +1567,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TreeView treeCollisions;
+        private EditorTreeView treeCollisions;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel HitPanel;
         private System.Windows.Forms.Label label2;
@@ -1669,7 +1652,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.TreeView treeImages;
+        private EditorTreeView treeImages;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label16;
