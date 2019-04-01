@@ -3,7 +3,7 @@ using FightingEngine;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
-using FightingEngine.Actor;
+using FightingEngine.Gameplay;
 using FightingEngine.Collision;
 using Microsoft.Xna.Framework;
 

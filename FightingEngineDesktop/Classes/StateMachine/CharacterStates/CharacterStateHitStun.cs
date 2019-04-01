@@ -1,4 +1,4 @@
-﻿using FightingEngine.Actor;
+﻿using FightingEngine.Gameplay;
 using System;
 using System.Collections.Generic;
 using System.Linq;

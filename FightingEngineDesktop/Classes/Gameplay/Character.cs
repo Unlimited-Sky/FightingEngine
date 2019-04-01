@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace FightingEngine.Actor
+namespace FightingEngine.Gameplay
 {
     public class Character : AActor
     {

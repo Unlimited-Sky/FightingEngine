@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace FightingEngine.Actor
+namespace FightingEngine.Gameplay
 {
     public abstract class AActor
     {

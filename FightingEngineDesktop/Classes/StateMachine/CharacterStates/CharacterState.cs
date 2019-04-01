@@ -1,4 +1,4 @@
-﻿using FightingEngine.Actor;
+﻿using FightingEngine.Gameplay;
 using FightingEngine.StateMachine;
 
 namespace FightingEngine.StateMachine

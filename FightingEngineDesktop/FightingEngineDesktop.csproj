@@ -51,9 +51,11 @@
     <Compile Include="Classes\Collision\SimpleRect.cs" />
     <Compile Include="Classes\Animation\Animator.cs" />
     <Compile Include="Classes\Animation\AnimationData.cs" />
-    <Compile Include="Classes\Actors\Character.cs" />
-    <Compile Include="Classes\Actors\AActor.cs" />
+    <Compile Include="Classes\Gameplay\Character.cs" />
+    <Compile Include="Classes\Gameplay\AActor.cs" />
     <Compile Include="Classes\Collision\SimpleRectNode.cs" />
+    <Compile Include="Classes\Gameplay\HurtBoxData.cs" />
+    <Compile Include="Classes\Gameplay\HitBoxData.cs" />
     <Compile Include="Classes\Managers\SimpleShapeRenderer.cs" />
     <Compile Include="Classes\Managers\Input.cs" />
     <Compile Include="Classes\Managers\CharacterLoader.cs" />

@@ -258,6 +258,8 @@ namespace FightingEditor
             //damage, cancel routes etc
             renderPreview.AddRootHitBox(animScrubber.Value);
 
+            
+
             updateCollisionsTree();
         }
 

@@ -1260,11 +1260,11 @@
             this.cmbHitResult.Items.AddRange(new object[] {
             "Normal",
             "Knockdown",
-            "Launch Low",
-            "Launch Mid",
-            "Launch High",
-            "Wall Bounce",
-            "Ground Bounce"});
+            "LaunchLow",
+            "LaunchMid",
+            "LaunchHigh",
+            "WallBounce",
+            "GroundBounce"});
             this.cmbHitResult.Location = new System.Drawing.Point(100, 4);
             this.cmbHitResult.Name = "cmbHitResult";
             this.cmbHitResult.Size = new System.Drawing.Size(121, 21);
@@ -1286,9 +1286,9 @@
             this.cmbJuggleProperties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJuggleProperties.FormattingEnabled = true;
             this.cmbJuggleProperties.Items.AddRange(new object[] {
-            "No Juggle",
+            "NoJuggle",
             "Resets",
-            "Can Juggle"});
+            "CanJuggle"});
             this.cmbJuggleProperties.Location = new System.Drawing.Point(100, 33);
             this.cmbJuggleProperties.Name = "cmbJuggleProperties";
             this.cmbJuggleProperties.Size = new System.Drawing.Size(121, 21);
