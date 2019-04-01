@@ -79,6 +79,5 @@ namespace FightingEngine.Animation
         {
             return _keyFrameLengths[index];
         }
-
     }
 }

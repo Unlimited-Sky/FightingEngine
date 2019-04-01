@@ -14,6 +14,12 @@ namespace FightingEditor
 {
     public partial class FightingEditorForm : Form
     {
+        private readonly string HIT_ROOT = "HitRoot";
+        private readonly string HIT_BOX = "HitBox";
+
+        private readonly string HURT_ROOT = "HurtRoot";
+        private readonly string HURT_BOX = "HurtBox";
+
         public FightingEditorForm()
         {
             InitializeComponent();
@@ -277,6 +283,15 @@ namespace FightingEditor
         private void btnAddHitbox_Click(object sender, EventArgs e)
         {
             //TODO
+            if (treeCollisions.SelectedNode != null && treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
+            {
+                string text = treeCollisions.SelectedNode.Text.Replace(HIT_ROOT, "");
+                int rootIndex = Convert.ToInt32(text);
+                renderPreview.AddHitBox(animScrubber.Value, rootIndex,
+                    (int)numericTop.Value, (int)numericLeft.Value, (int)numericBottom.Value, (int)numericRight.Value);
+
+                updateCollisionsTree();
+            }
         }
 
         private void btnDeleteHitbox_Click(object sender, EventArgs e)
@@ -296,6 +311,15 @@ namespace FightingEditor
         private void btnAddHurtbox_Click(object sender, EventArgs e)
         {
             //TODO
+            if (treeCollisions.SelectedNode != null && treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
+            {
+                string text = treeCollisions.SelectedNode.Text.Replace(HURT_ROOT, "");
+                int rootIndex = Convert.ToInt32(text);
+                renderPreview.AddHurtBox(animScrubber.Value, rootIndex,
+                    (int)numericTop.Value, (int)numericLeft.Value, (int)numericBottom.Value, (int)numericRight.Value);
+
+                updateCollisionsTree();
+            }
         }
 
         private void btnDeleteHurtbox_Click(object sender, EventArgs e)
@@ -330,7 +354,7 @@ namespace FightingEditor
 
         private void updateCollisionsTree()
         {
-            //TODO FINISH THIS
+            //TODO: add individual hit/hurt box loading code
             int currentKeyFrameIndex = renderPreview.animator.GetAnimKeyFrameIndex();
 
             treeCollisions.Nodes.Clear();
@@ -365,10 +389,10 @@ namespace FightingEditor
         private void addHitBoxes(HitBoxRootNode hitBox, string count)
         {
             int counter = 0;
-            TreeNode root = new TreeNode("HitRoot" + count);
+            TreeNode root = new TreeNode(HIT_ROOT + count);
             foreach (SimpleRectNode node in hitBox.Children)
             {
-                root.Nodes.Add(new TreeNode("HitBox" + counter));
+                root.Nodes.Add(new TreeNode(HIT_BOX + counter));
             }
 
             treeCollisions.Nodes.Add(root);
@@ -377,10 +401,10 @@ namespace FightingEditor
         private void addHurtBoxes(HurtBoxRootNode hurtBox, string count)
         {
             int counter = 0;
-            TreeNode root = new TreeNode("HurtRoot" + count);
+            TreeNode root = new TreeNode(HURT_ROOT + count);
             foreach(SimpleRectNode node in hurtBox.Children)
             {
-                root.Nodes.Add(new TreeNode("HurtBox" + counter));
+                root.Nodes.Add(new TreeNode(HURT_BOX + counter));
             }
 
             treeCollisions.Nodes.Add(root);

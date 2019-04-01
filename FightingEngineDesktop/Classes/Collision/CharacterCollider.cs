@@ -11,6 +11,8 @@ namespace FightingEngine.Collision
     {
         public CharacterCollider()
         {
+            TopLeft = new Point(-25, 50);
+            BottomRight = new Point(25, 0);
         }
 
         public CharacterCollider(Point topLeft, Point bottomRight) : base(topLeft, bottomRight)

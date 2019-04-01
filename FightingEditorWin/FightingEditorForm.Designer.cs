@@ -970,6 +970,16 @@
             // 
             this.numericLeft.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numericLeft.Location = new System.Drawing.Point(132, 151);
+            this.numericLeft.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericLeft.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
             this.numericLeft.Name = "numericLeft";
             this.numericLeft.Size = new System.Drawing.Size(120, 20);
             this.numericLeft.TabIndex = 10;
@@ -979,6 +989,16 @@
             // 
             this.numericRight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numericRight.Location = new System.Drawing.Point(132, 197);
+            this.numericRight.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericRight.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
             this.numericRight.Name = "numericRight";
             this.numericRight.Size = new System.Drawing.Size(120, 20);
             this.numericRight.TabIndex = 11;
@@ -988,6 +1008,16 @@
             // 
             this.numericTop.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numericTop.Location = new System.Drawing.Point(262, 151);
+            this.numericTop.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericTop.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numericTop.Name = "numericTop";
             this.numericTop.Size = new System.Drawing.Size(120, 20);
             this.numericTop.TabIndex = 12;
@@ -997,6 +1027,16 @@
             // 
             this.numericBottom.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numericBottom.Location = new System.Drawing.Point(262, 197);
+            this.numericBottom.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericBottom.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
             this.numericBottom.Name = "numericBottom";
             this.numericBottom.Size = new System.Drawing.Size(120, 20);
             this.numericBottom.TabIndex = 13;

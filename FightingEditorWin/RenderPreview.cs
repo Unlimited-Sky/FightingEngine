@@ -25,7 +25,10 @@ namespace FightingEditor
         public SimpleShapeRenderer ssr;
 
         public float renderScale = 3.0f;
-       
+        public int AxisLength = 50;
+
+        public Point CharacterPosition;
+
         protected override void Initialize()
         {
             base.Initialize();
@@ -41,6 +44,8 @@ namespace FightingEditor
 
             hitBoxKeyFrameData = new Dictionary<int, List<HitBoxRootNode>>();
             hurtBoxKeyFrameData = new Dictionary<int, List<HurtBoxRootNode>>();
+
+            CharacterPosition = new Point(250, 250);
         }
 
         protected override void Update(GameTime gameTime)
@@ -58,7 +63,6 @@ namespace FightingEditor
 
         protected override void Draw()
         {
-
             Vector2 center = new Vector2(Editor.graphics.Viewport.Width / 2, Editor.graphics.Viewport.Height / 2);
 
             base.Draw();
@@ -68,7 +72,7 @@ namespace FightingEditor
             if (animator != null && animator.AnimData != null)
             {
                 int keyFrameIndex = animator.GetAnimKeyFrameIndex();
-                animator.Draw(Editor.spriteBatch, center);
+                animator.Draw(Editor.spriteBatch, CharacterPosition.ToVector2());
                 
                 //Draw frame counter
                 Editor.spriteBatch.DrawString(Editor.Font, animator.CurrentFrame.ToString(), new Vector2(
@@ -76,12 +80,10 @@ namespace FightingEditor
                 (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
                 Color.White);
 
-
                 if (hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
                 {
                     foreach (HitBoxRootNode root in hitBoxKeyFrameData[keyFrameIndex])
                         ssr.DrawCollisions(root);
-
                 }
 
                 if (hurtBoxKeyFrameData.ContainsKey(keyFrameIndex))
@@ -90,7 +92,14 @@ namespace FightingEditor
                         ssr.DrawCollisions(root);
                 }
             }
+
+            ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y),
+                new Point(CharacterPosition.X + AxisLength, CharacterPosition.Y), Color.Yellow);
+            ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y - AxisLength),
+                new Point(CharacterPosition.X, CharacterPosition.Y), Color.Yellow);
+
             Editor.spriteBatch.End();
+
         }
 
         private void InitAnimator()
@@ -150,9 +159,9 @@ namespace FightingEditor
 
         }
 
-        public void AddHitBox()
+        public void AddHitBox(int keyFrame, int rootIndex, int top, int left, int bottom, int right)
         {
-            //TODO
+            hitBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
         }
 
         public void DeleteHitBox()
@@ -172,10 +181,9 @@ namespace FightingEditor
             }
         }
 
-
-        public void AddHurtBox()
+        public void AddHurtBox(int keyFrame, int rootIndex, int top, int left, int bottom, int right)
         {
-            //TODO
+            hurtBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
         }
 
         public void DeleteHurtBox()

@@ -14,5 +14,11 @@ namespace FightingEngine.Collision
         {
             Parent = parent;
         }
+
+        public SimpleRectNode(CollisionRootNode parent, int top, int left, int bottom, int right) : 
+            base(top, left, bottom, right)
+        {
+            Parent = parent;
+        }
     }
 }

@@ -20,5 +20,9 @@ namespace FightingEngine.Collision
             Children = children;
         }
 
+        public void AddChild(int top, int left, int bottom, int right)
+        {
+            Children.Add(new SimpleRectNode(this, top, left, bottom, right));
+        }
     }
 }

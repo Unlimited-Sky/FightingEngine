@@ -79,7 +79,8 @@ namespace FightingEngine.Animation
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            spriteBatch.Draw(AnimData.GetTextureFromAnimationFrame(CurrentFrame), position, Color.White);
+            Texture2D texture = AnimData.GetTextureFromAnimationFrame(CurrentFrame);
+            spriteBatch.Draw(texture, position, Color.White);
         }
 
         public int GetAnimKeyFrameIndex()
