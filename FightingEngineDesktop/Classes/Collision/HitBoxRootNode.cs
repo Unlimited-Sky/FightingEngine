@@ -10,12 +10,12 @@ namespace FightingEngine.Collision
 {
     public class HitBoxRootNode : CollisionRootNode
     {
-        public HitBoxData hitBoxData;
+        public HitBoxData HitBoxData;
 
-        public HitBoxRootNode()
+        public HitBoxRootNode(HitBoxData hitBoxData)
         {
+            HitBoxData = hitBoxData;
         }
-
     }
 
 }

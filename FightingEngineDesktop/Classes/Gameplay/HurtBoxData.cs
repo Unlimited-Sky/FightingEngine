@@ -10,5 +10,11 @@ namespace FightingEngine.Gameplay
     {
         public bool ProjectileImmunity;
         public bool LowImmunity;
+
+        public HurtBoxData(bool projectileImmunity, bool lowImmunity)
+        {
+            ProjectileImmunity = projectileImmunity;
+            LowImmunity = lowImmunity;
+        }
     }
 }

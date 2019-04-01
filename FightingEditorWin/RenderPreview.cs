@@ -1,6 +1,7 @@
 ﻿using FightingEngine;
 using FightingEngine.Animation;
 using FightingEngine.Collision;
+using FightingEngine.Gameplay;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Forms.Controls;
@@ -136,15 +137,15 @@ namespace FightingEditor
             InitAnimator();
         }
 
-        public void AddRootHitBox(int keyFrame)
+        public void AddRootHitBox(int keyFrame, HitBoxData data)
         {
             if (hitBoxKeyFrameData.ContainsKey(keyFrame))
             {
-                hitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode());
+                hitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode(data));
             }
             else
             {
-                hitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode() });
+                hitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode(data) });
             }
 
         }
@@ -159,15 +160,15 @@ namespace FightingEditor
             //TODO
         }
 
-        public void AddRootHurtBox(int keyFrame)
+        public void AddRootHurtBox(int keyFrame, HurtBoxData data)
         {
             if (hurtBoxKeyFrameData.ContainsKey(keyFrame))
             {
-                hurtBoxKeyFrameData[keyFrame].Add(new HurtBoxRootNode());
+                hurtBoxKeyFrameData[keyFrame].Add(new HurtBoxRootNode(data));
             }
             else
             {
-                hurtBoxKeyFrameData.Add(keyFrame, new List<HurtBoxRootNode> { new HurtBoxRootNode() });
+                hurtBoxKeyFrameData.Add(keyFrame, new List<HurtBoxRootNode> { new HurtBoxRootNode(data) });
             }
         }
 

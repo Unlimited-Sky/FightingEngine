@@ -1,4 +1,5 @@
 ﻿using FightingEngine.Collision;
+using FightingEngine.Gameplay;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -254,11 +255,18 @@ namespace FightingEditor
 
         private void btnAddRootHitbox_Click(object sender, EventArgs e)
         {
-            //TODO pull the relevant hitbox data
-            //damage, cancel routes etc
-            renderPreview.AddRootHitBox(animScrubber.Value);
-
+            //TODO: Grab the data from the enums here
+            HITTYPE hitType = HITTYPE.NONE;
+            HITRESULT hitResult = HITRESULT.NONE;
+            JUGGLETYPE juggleType = JUGGLETYPE.NONE;
             
+            HitBoxData data = new HitBoxData(
+                hitType, (int)numericHitStop.Value, (int)numericHitStun.Value, (int)numericBlockStun.Value, (int)numericDamage.Value,
+                    hitResult, juggleType,
+                chkSpecialCancel.Checked, chkJumpCancel.Checked, chkUniqueActionCancel.Checked, chkDashCancel.Checked,
+                    txtCancelRoute.Text);
+
+            renderPreview.AddRootHitBox(animScrubber.Value, data);
 
             updateCollisionsTree();
         }
@@ -275,9 +283,9 @@ namespace FightingEditor
 
         private void btnAddRootHurtbox_Click(object sender, EventArgs e)
         {
-            //todo pull the relevant hurtbox data
-            //bools etc
-            renderPreview.AddRootHurtBox(animScrubber.Value);
+            HurtBoxData data = new HurtBoxData(chkProjectileImmune.Checked, chkLowImmune.Checked);
+
+            renderPreview.AddRootHurtBox(animScrubber.Value, data);
 
             updateCollisionsTree();
         }
@@ -382,6 +390,7 @@ namespace FightingEditor
             updateKeyFrameData();
         }
 
+        //TODO:
         //DATA I NEED TO LOAD/SAVE BEFORE EXPORT:
         //ALL ANIM DATA
         //cmbAnimType
@@ -389,23 +398,5 @@ namespace FightingEditor
         //KEYFRAME DATA
         //btnIsAirborne
         //txtKeyframeTags
-
-        //HIT PROPERTIES
-        //cmbHitType
-        //numericHitStop
-        //numericHitStun
-        //numericBlockStun
-        //numericDamage
-        //cmbHitResult
-        //cmbJuggleProperties
-        //chkSpecialCancel
-        //chkJumpCancel
-        //chkUniqueActionCancel
-        //chkDashCancel
-        //txtCancelRoute
-
-        //HURT PROPERTIES
-        //chkProjectileImmune
-        //chkLowImmune
     }
 }
