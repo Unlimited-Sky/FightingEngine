@@ -27,6 +27,9 @@ namespace FightingEditor
         public float renderScale = 3.0f;
         public int AxisLength = 50;
 
+        public bool ShowOrigin = true;
+        public bool ShowFrame = true;
+
         public Point CharacterPosition;
 
         protected override void Initialize()
@@ -73,12 +76,16 @@ namespace FightingEditor
             {
                 int keyFrameIndex = animator.GetAnimKeyFrameIndex();
                 animator.Draw(Editor.spriteBatch, CharacterPosition.ToVector2());
-                
+
                 //Draw frame counter
-                Editor.spriteBatch.DrawString(Editor.Font, animator.CurrentFrame.ToString(), new Vector2(
-                (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(animator.CurrentFrame.ToString()).X / 2),
-                (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
-                Color.White);
+                if (ShowFrame)
+                {
+                    Editor.spriteBatch.DrawString(Editor.Font, animator.CurrentFrame.ToString(), new Vector2(
+(Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(animator.CurrentFrame.ToString()).X / 2),
+(Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
+Color.White);
+                }
+
 
                 if (hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
                 {
@@ -93,10 +100,14 @@ namespace FightingEditor
                 }
             }
 
-            ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y),
-                new Point(CharacterPosition.X + AxisLength, CharacterPosition.Y), Color.Yellow);
-            ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y - AxisLength),
-                new Point(CharacterPosition.X, CharacterPosition.Y), Color.Yellow);
+
+            if (ShowOrigin)
+            {
+                ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y),
+                    new Point(CharacterPosition.X + AxisLength, CharacterPosition.Y), Color.Yellow);
+                ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y - AxisLength),
+                    new Point(CharacterPosition.X, CharacterPosition.Y), Color.Yellow);
+            }
 
             Editor.spriteBatch.End();
 

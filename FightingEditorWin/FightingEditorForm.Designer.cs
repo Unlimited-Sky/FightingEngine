@@ -142,6 +142,10 @@
             this.treeImages = new FightingEditor.EditorTreeView();
             this.treeCollisions = new FightingEditor.EditorTreeView();
             this.renderPreview = new FightingEditor.RenderPreview();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOriginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showCurrentFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -1493,7 +1497,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1584, 24);
@@ -1503,7 +1508,7 @@
             // treeImages
             // 
             this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
             this.treeImages.FullRowSelect = true;
             this.treeImages.HideSelection = false;
             this.treeImages.Location = new System.Drawing.Point(3, 3);
@@ -1514,13 +1519,15 @@
             // 
             // treeCollisions
             // 
-            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
             this.treeCollisions.FullRowSelect = true;
             this.treeCollisions.HideSelection = false;
+            this.treeCollisions.Indent = 19;
             this.treeCollisions.Location = new System.Drawing.Point(3, 16);
             this.treeCollisions.Name = "treeCollisions";
             this.treeCollisions.Size = new System.Drawing.Size(387, 365);
             this.treeCollisions.TabIndex = 1;
+            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
             // 
             // renderPreview
             // 
@@ -1531,6 +1538,41 @@
             this.renderPreview.Size = new System.Drawing.Size(1182, 621);
             this.renderPreview.TabIndex = 4;
             this.renderPreview.Text = "renderPreview1";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setBackgroundColorToolStripMenuItem,
+            this.showOriginToolStripMenuItem,
+            this.showCurrentFrameToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // setBackgroundColorToolStripMenuItem
+            // 
+            this.setBackgroundColorToolStripMenuItem.Name = "setBackgroundColorToolStripMenuItem";
+            this.setBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.setBackgroundColorToolStripMenuItem.Text = "Set Background Color";
+            this.setBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.setBackgroundColorToolStripMenuItem_Click);
+            // 
+            // showOriginToolStripMenuItem
+            // 
+            this.showOriginToolStripMenuItem.Checked = true;
+            this.showOriginToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showOriginToolStripMenuItem.Name = "showOriginToolStripMenuItem";
+            this.showOriginToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.showOriginToolStripMenuItem.Text = "Show Origin";
+            this.showOriginToolStripMenuItem.Click += new System.EventHandler(this.showOriginToolStripMenuItem_Click);
+            // 
+            // showCurrentFrameToolStripMenuItem
+            // 
+            this.showCurrentFrameToolStripMenuItem.Checked = true;
+            this.showCurrentFrameToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showCurrentFrameToolStripMenuItem.Name = "showCurrentFrameToolStripMenuItem";
+            this.showCurrentFrameToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.showCurrentFrameToolStripMenuItem.Text = "Show Current Frame";
+            this.showCurrentFrameToolStripMenuItem.Click += new System.EventHandler(this.showCurrentFrameToolStripMenuItem_Click);
             // 
             // FightingEditorForm
             // 
@@ -1718,6 +1760,10 @@
         private System.Windows.Forms.CheckBox btnIsAirborne;
         private System.Windows.Forms.Label label30;
         private RenderPreview renderPreview;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setBackgroundColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showOriginToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showCurrentFrameToolStripMenuItem;
     }
 }
 

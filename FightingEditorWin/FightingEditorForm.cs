@@ -59,6 +59,35 @@ namespace FightingEditor
             Close();
         }
 
+        //View Menu
+        private void showOriginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (showOriginToolStripMenuItem.Checked)
+            {
+                renderPreview.ShowOrigin = false;
+                showOriginToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                renderPreview.ShowOrigin = true;
+                showOriginToolStripMenuItem.Checked = true;
+            }
+        }
+
+        private void showCurrentFrameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (showCurrentFrameToolStripMenuItem.Checked)
+            {
+                renderPreview.ShowFrame = false;
+                showCurrentFrameToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                renderPreview.ShowFrame = true;
+                showCurrentFrameToolStripMenuItem.Checked = true;
+            }
+        }
+
         //
         //Animation Controls
         //
@@ -282,7 +311,6 @@ namespace FightingEditor
 
         private void btnAddHitbox_Click(object sender, EventArgs e)
         {
-            //TODO
             if (treeCollisions.SelectedNode != null && treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
             {
                 string text = treeCollisions.SelectedNode.Text.Replace(HIT_ROOT, "");
@@ -310,7 +338,6 @@ namespace FightingEditor
 
         private void btnAddHurtbox_Click(object sender, EventArgs e)
         {
-            //TODO
             if (treeCollisions.SelectedNode != null && treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
             {
                 string text = treeCollisions.SelectedNode.Text.Replace(HURT_ROOT, "");
@@ -354,7 +381,6 @@ namespace FightingEditor
 
         private void updateCollisionsTree()
         {
-            //TODO: add individual hit/hurt box loading code
             int currentKeyFrameIndex = renderPreview.animator.GetAnimKeyFrameIndex();
 
             treeCollisions.Nodes.Clear();
@@ -384,6 +410,8 @@ namespace FightingEditor
                     counter += 1;
                 }
             }
+
+            treeCollisions.ExpandAll();
         }
 
         private void addHitBoxes(HitBoxRootNode hitBox, string count)
@@ -392,7 +420,10 @@ namespace FightingEditor
             TreeNode root = new TreeNode(HIT_ROOT + count);
             foreach (SimpleRectNode node in hitBox.Children)
             {
-                root.Nodes.Add(new TreeNode(HIT_BOX + counter));
+                TreeNode child = new TreeNode(HIT_BOX + counter);
+                
+                root.Nodes.Add(child);
+                counter += 1;
             }
 
             treeCollisions.Nodes.Add(root);
@@ -404,7 +435,9 @@ namespace FightingEditor
             TreeNode root = new TreeNode(HURT_ROOT + count);
             foreach(SimpleRectNode node in hurtBox.Children)
             {
-                root.Nodes.Add(new TreeNode(HURT_BOX + counter));
+                TreeNode child = new TreeNode(HURT_BOX + counter);
+                root.Nodes.Add(child);
+                counter += 1;
             }
 
             treeCollisions.Nodes.Add(root);
@@ -415,6 +448,21 @@ namespace FightingEditor
         public void UpdateFormFields()
         {
             updateKeyFrameData();
+        }
+
+        private void treeCollisions_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void setBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rootChildrenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         //TODO:
