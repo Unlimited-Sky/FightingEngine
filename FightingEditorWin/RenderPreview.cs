@@ -33,6 +33,7 @@ namespace FightingEditor
         private SELECTEDMODE selectedMode = SELECTEDMODE.NONE;
         private int selectedRootIndex = 0;
         private int selectedIndex = 0;
+        private int selectedKeyFrame = 0;
 
         public Point CharacterPosition;
 
@@ -120,7 +121,29 @@ namespace FightingEditor
             //TODO THIS FUNCTION
             if (selectedMode == SELECTEDMODE.NONE)
                 return;
-            
+            else if (selectedMode == SELECTEDMODE.HIT_ROOT)
+            {
+                foreach (SimpleRectNode node in hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
+                    drawSelectedCollisionBox(node);
+            }
+            else if (selectedMode == SELECTEDMODE.HURT_ROOT)
+            {
+                foreach (SimpleRectNode node in hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
+                    drawSelectedCollisionBox(node);
+            }
+            else if (selectedMode == SELECTEDMODE.HIT_BOX)
+            {
+                drawSelectedCollisionBox(hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
+            }
+            else if (selectedMode == SELECTEDMODE.HURT_BOX)
+            {
+                drawSelectedCollisionBox(hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
+            }
+        }
+
+        private void drawSelectedCollisionBox(SimpleRectNode node)
+        {
+            ssr.DrawRect(node.TopLeft, node.BottomRight, Color.Yellow, false, 2);
         }
 
         private void DrawOrigin()
@@ -225,25 +248,29 @@ namespace FightingEditor
         public void SelectRootHitbox(int keyFrame, int index)
         {
             selectedMode = SELECTEDMODE.HIT_ROOT;
+            selectedKeyFrame = keyFrame;
             selectedRootIndex = index;
         }
 
         public void SelectRootHurtbox(int keyFrame, int index)
         {
             selectedMode = SELECTEDMODE.HURT_ROOT;
+            selectedKeyFrame = keyFrame;
             selectedRootIndex = index;
         }
 
         public void SelectHitbox(int keyFrame, int rootIndex, int index)
         {
             selectedMode = SELECTEDMODE.HIT_BOX;
+            selectedKeyFrame = keyFrame;
             selectedRootIndex = rootIndex;
             selectedIndex = index;
         }
 
-        public void SelectHurtbox(int keyframe, int rootIndex, int index)
+        public void SelectHurtbox(int keyFrame, int rootIndex, int index)
         {
             selectedMode = SELECTEDMODE.HURT_BOX;
+            selectedKeyFrame = keyFrame;
             selectedRootIndex = rootIndex;
             selectedIndex = index;
         }

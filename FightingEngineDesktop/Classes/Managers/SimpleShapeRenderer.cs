@@ -45,7 +45,7 @@ namespace FightingEngine
 
         public void DrawRect(Point topLeft, Point bottomRight, Color color, bool filled = true, int width = 1)
         {
-            DrawRect(topLeft.Y, topLeft.X, bottomRight.Y, bottomRight.X, color, filled);
+            DrawRect(topLeft.Y, topLeft.X, bottomRight.Y, bottomRight.X, color, filled, width);
         }
 
         public void DrawCollisions(HitBoxRootNode hitBoxRootNode)
