@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.AnimPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
@@ -51,10 +51,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.lblStartupFrames = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ImagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeImages = new FightingEditor.EditorTreeView();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.btnRemoveImage = new System.Windows.Forms.Button();
@@ -82,7 +81,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.treeCollisions = new FightingEditor.EditorTreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSelectCollider = new System.Windows.Forms.Button();
@@ -130,12 +128,11 @@
             this.chkUniqueActionCancel = new System.Windows.Forms.CheckBox();
             this.label27 = new System.Windows.Forms.Label();
             this.txtCancelRoute = new System.Windows.Forms.TextBox();
-            this.HurtboxPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.HurtPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
-            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,14 +147,17 @@
             this.setBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showOriginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCurrentFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeImages = new FightingEditor.EditorTreeView();
+            this.treeCollisions = new FightingEditor.EditorTreeView();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.AnimPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.animScrubber)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
+            this.ImagePanel.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -185,7 +185,7 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            this.HurtboxPanel.SuspendLayout();
+            this.HurtPanel.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -212,7 +212,7 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.AnimPanel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel9, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 630);
@@ -223,19 +223,19 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 204);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // AnimPanel
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnFirst);
-            this.flowLayoutPanel1.Controls.Add(this.btnPrevious);
-            this.flowLayoutPanel1.Controls.Add(this.btnNext);
-            this.flowLayoutPanel1.Controls.Add(this.btnLast);
-            this.flowLayoutPanel1.Controls.Add(this.btnPlayPause);
-            this.flowLayoutPanel1.Controls.Add(this.animScrubber);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1176, 45);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.AnimPanel.Controls.Add(this.btnFirst);
+            this.AnimPanel.Controls.Add(this.btnPrevious);
+            this.AnimPanel.Controls.Add(this.btnNext);
+            this.AnimPanel.Controls.Add(this.btnLast);
+            this.AnimPanel.Controls.Add(this.btnPlayPause);
+            this.AnimPanel.Controls.Add(this.animScrubber);
+            this.AnimPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AnimPanel.Location = new System.Drawing.Point(3, 3);
+            this.AnimPanel.Name = "AnimPanel";
+            this.AnimPanel.Size = new System.Drawing.Size(1176, 45);
+            this.AnimPanel.TabIndex = 0;
             // 
             // btnFirst
             // 
@@ -290,6 +290,7 @@
             // animScrubber
             // 
             this.animScrubber.Location = new System.Drawing.Point(417, 3);
+            this.animScrubber.Maximum = 1;
             this.animScrubber.Name = "animScrubber";
             this.animScrubber.Size = new System.Drawing.Size(755, 45);
             this.animScrubber.TabIndex = 5;
@@ -304,7 +305,7 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.68707F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.47279F));
             this.tableLayoutPanel9.Controls.Add(this.flowLayoutPanel3, 3, 0);
-            this.tableLayoutPanel9.Controls.Add(this.flowLayoutPanel4, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.ImagePanel, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.flowLayoutPanel6, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.flowLayoutPanel7, 2, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -461,16 +462,16 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Start Up";
             // 
-            // flowLayoutPanel4
+            // ImagePanel
             // 
-            this.flowLayoutPanel4.Controls.Add(this.label15);
-            this.flowLayoutPanel4.Controls.Add(this.tableLayoutPanel11);
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(513, 141);
-            this.flowLayoutPanel4.TabIndex = 4;
+            this.ImagePanel.Controls.Add(this.label15);
+            this.ImagePanel.Controls.Add(this.tableLayoutPanel11);
+            this.ImagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ImagePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ImagePanel.Location = new System.Drawing.Point(3, 3);
+            this.ImagePanel.Name = "ImagePanel";
+            this.ImagePanel.Size = new System.Drawing.Size(513, 141);
+            this.ImagePanel.TabIndex = 4;
             // 
             // label15
             // 
@@ -497,18 +498,6 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(510, 122);
             this.tableLayoutPanel11.TabIndex = 12;
-            // 
-            // treeImages
-            // 
-            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeImages.FullRowSelect = true;
-            this.treeImages.HideSelection = false;
-            this.treeImages.Location = new System.Drawing.Point(3, 3);
-            this.treeImages.Name = "treeImages";
-            this.treeImages.Size = new System.Drawing.Size(163, 116);
-            this.treeImages.TabIndex = 11;
-            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
             // 
             // flowLayoutPanel5
             // 
@@ -828,18 +817,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Collision Boxes";
             // 
-            // treeCollisions
-            // 
-            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeCollisions.FullRowSelect = true;
-            this.treeCollisions.HideSelection = false;
-            this.treeCollisions.Indent = 19;
-            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
-            this.treeCollisions.Name = "treeCollisions";
-            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
-            this.treeCollisions.TabIndex = 1;
-            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel8);
@@ -1080,7 +1057,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel3.Controls.Add(this.HitPanel, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.HurtboxPanel, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.HurtPanel, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(1191, 630);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -1205,6 +1182,7 @@
             this.numericHitStop.Name = "numericHitStop";
             this.numericHitStop.Size = new System.Drawing.Size(116, 20);
             this.numericHitStop.TabIndex = 9;
+            this.numericHitStop.ValueChanged += new System.EventHandler(this.numericHitStop_ValueChanged);
             // 
             // numericHitStun
             // 
@@ -1213,6 +1191,7 @@
             this.numericHitStun.Name = "numericHitStun";
             this.numericHitStun.Size = new System.Drawing.Size(116, 20);
             this.numericHitStun.TabIndex = 10;
+            this.numericHitStun.ValueChanged += new System.EventHandler(this.numericHitStun_ValueChanged);
             // 
             // numericBlockStun
             // 
@@ -1221,6 +1200,7 @@
             this.numericBlockStun.Name = "numericBlockStun";
             this.numericBlockStun.Size = new System.Drawing.Size(116, 20);
             this.numericBlockStun.TabIndex = 11;
+            this.numericBlockStun.ValueChanged += new System.EventHandler(this.numericBlockStun_ValueChanged);
             // 
             // numericDamage
             // 
@@ -1234,6 +1214,7 @@
             this.numericDamage.Name = "numericDamage";
             this.numericDamage.Size = new System.Drawing.Size(116, 20);
             this.numericDamage.TabIndex = 12;
+            this.numericDamage.ValueChanged += new System.EventHandler(this.numericDamage_ValueChanged);
             // 
             // cmbHitType
             // 
@@ -1244,6 +1225,7 @@
             this.cmbHitType.Name = "cmbHitType";
             this.cmbHitType.Size = new System.Drawing.Size(116, 21);
             this.cmbHitType.TabIndex = 2;
+            this.cmbHitType.SelectedIndexChanged += new System.EventHandler(this.cmbHitType_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1306,6 +1288,7 @@
             this.cmbHitResult.Name = "cmbHitResult";
             this.cmbHitResult.Size = new System.Drawing.Size(121, 21);
             this.cmbHitResult.TabIndex = 1;
+            this.cmbHitResult.SelectedIndexChanged += new System.EventHandler(this.cmbHitResult_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -1326,6 +1309,7 @@
             this.cmbJuggleProperties.Name = "cmbJuggleProperties";
             this.cmbJuggleProperties.Size = new System.Drawing.Size(121, 21);
             this.cmbJuggleProperties.TabIndex = 3;
+            this.cmbJuggleProperties.SelectedIndexChanged += new System.EventHandler(this.cmbJuggleProperties_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -1370,6 +1354,7 @@
             this.chkSpecialCancel.TabIndex = 4;
             this.chkSpecialCancel.Text = "Special Cancel";
             this.chkSpecialCancel.UseVisualStyleBackColor = true;
+            this.chkSpecialCancel.CheckedChanged += new System.EventHandler(this.chkSpecialCancel_CheckedChanged);
             // 
             // chkJumpCancel
             // 
@@ -1381,6 +1366,7 @@
             this.chkJumpCancel.TabIndex = 5;
             this.chkJumpCancel.Text = "Jump Cancel";
             this.chkJumpCancel.UseVisualStyleBackColor = true;
+            this.chkJumpCancel.CheckedChanged += new System.EventHandler(this.chkJumpCancel_CheckedChanged);
             // 
             // chkDashCancel
             // 
@@ -1392,6 +1378,7 @@
             this.chkDashCancel.TabIndex = 6;
             this.chkDashCancel.Text = "Dash Cancel";
             this.chkDashCancel.UseVisualStyleBackColor = true;
+            this.chkDashCancel.CheckedChanged += new System.EventHandler(this.chkDashCancel_CheckedChanged);
             // 
             // chkUniqueActionCancel
             // 
@@ -1403,6 +1390,7 @@
             this.chkUniqueActionCancel.TabIndex = 7;
             this.chkUniqueActionCancel.Text = "Unq Actn Cancel";
             this.chkUniqueActionCancel.UseVisualStyleBackColor = true;
+            this.chkUniqueActionCancel.CheckedChanged += new System.EventHandler(this.chkUniqueActionCancel_CheckedChanged);
             // 
             // label27
             // 
@@ -1422,17 +1410,18 @@
             this.txtCancelRoute.Name = "txtCancelRoute";
             this.txtCancelRoute.Size = new System.Drawing.Size(109, 69);
             this.txtCancelRoute.TabIndex = 9;
+            this.txtCancelRoute.TextChanged += new System.EventHandler(this.txtCancelRoute_TextChanged);
             // 
-            // HurtboxPanel
+            // HurtPanel
             // 
-            this.HurtboxPanel.Controls.Add(this.label3);
-            this.HurtboxPanel.Controls.Add(this.tableLayoutPanel5);
-            this.HurtboxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HurtboxPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.HurtboxPanel.Location = new System.Drawing.Point(256, 3);
-            this.HurtboxPanel.Name = "HurtboxPanel";
-            this.HurtboxPanel.Size = new System.Drawing.Size(131, 198);
-            this.HurtboxPanel.TabIndex = 1;
+            this.HurtPanel.Controls.Add(this.label3);
+            this.HurtPanel.Controls.Add(this.tableLayoutPanel5);
+            this.HurtPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HurtPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.HurtPanel.Location = new System.Drawing.Point(256, 3);
+            this.HurtPanel.Name = "HurtPanel";
+            this.HurtPanel.Size = new System.Drawing.Size(131, 198);
+            this.HurtPanel.TabIndex = 1;
             // 
             // label3
             // 
@@ -1471,6 +1460,7 @@
             this.chkProjectileImmune.TabIndex = 1;
             this.chkProjectileImmune.Text = "Projectile Immunity";
             this.chkProjectileImmune.UseVisualStyleBackColor = true;
+            this.chkProjectileImmune.CheckedChanged += new System.EventHandler(this.chkProjectileImmune_CheckedChanged);
             // 
             // chkLowImmune
             // 
@@ -1482,16 +1472,7 @@
             this.chkLowImmune.TabIndex = 2;
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
-            // 
-            // renderPreview
-            // 
-            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPreview.Location = new System.Drawing.Point(3, 3);
-            this.renderPreview.MouseHoverUpdatesOnly = false;
-            this.renderPreview.Name = "renderPreview";
-            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
-            this.renderPreview.TabIndex = 4;
-            this.renderPreview.Text = "renderPreview1";
+            this.chkLowImmune.CheckedChanged += new System.EventHandler(this.chkLowImmune_CheckedChanged);
             // 
             // toolStripMenuItem1
             // 
@@ -1610,6 +1591,40 @@
             this.showCurrentFrameToolStripMenuItem.Text = "Show Current Frame";
             this.showCurrentFrameToolStripMenuItem.Click += new System.EventHandler(this.showCurrentFrameToolStripMenuItem_Click);
             // 
+            // treeImages
+            // 
+            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeImages.FullRowSelect = true;
+            this.treeImages.HideSelection = false;
+            this.treeImages.Location = new System.Drawing.Point(3, 3);
+            this.treeImages.Name = "treeImages";
+            this.treeImages.Size = new System.Drawing.Size(163, 116);
+            this.treeImages.TabIndex = 11;
+            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
+            // 
+            // treeCollisions
+            // 
+            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeCollisions.FullRowSelect = true;
+            this.treeCollisions.HideSelection = false;
+            this.treeCollisions.Indent = 19;
+            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
+            this.treeCollisions.Name = "treeCollisions";
+            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
+            this.treeCollisions.TabIndex = 1;
+            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
+            // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
+            // 
             // FightingEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1623,16 +1638,16 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.AnimPanel.ResumeLayout(false);
+            this.AnimPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.animScrubber)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
+            this.ImagePanel.ResumeLayout(false);
+            this.ImagePanel.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.flowLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
@@ -1670,8 +1685,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            this.HurtboxPanel.ResumeLayout(false);
-            this.HurtboxPanel.PerformLayout();
+            this.HurtPanel.ResumeLayout(false);
+            this.HurtPanel.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -1689,7 +1704,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel HitPanel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FlowLayoutPanel HurtboxPanel;
+        private System.Windows.Forms.FlowLayoutPanel HurtPanel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkProjectileImmune;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -1736,7 +1751,7 @@
         private System.Windows.Forms.NumericUpDown numericTop;
         private System.Windows.Forms.NumericUpDown numericBottom;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel AnimPanel;
         private System.Windows.Forms.Button btnFirst;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnNext;
@@ -1757,7 +1772,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblStartupFrames;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel ImagePanel;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.Button btnRemoveImage;

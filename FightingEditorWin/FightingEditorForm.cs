@@ -30,14 +30,35 @@ namespace FightingEditor
         {
             renderPreview.editorForm = this;
 
+            unbindComboEvents();
+
             cmbHitType.DataSource = Enum.GetValues(typeof(HITTYPE));
             cmbHitResult.DataSource = Enum.GetValues(typeof(HITRESULT));
             cmbJuggleProperties.DataSource = Enum.GetValues(typeof(JUGGLETYPE));
+
+            rebindComboEvents();
+
+            disableImageControls();
+            disableAnimControls();
+            disableHitboxControls();
+            disableHurtboxControls();
         }
 
-        //
-        //File Menu
-        //
+        private void unbindComboEvents()
+        {
+            cmbHitType.SelectedIndexChanged -= cmbHitType_SelectedIndexChanged;
+            cmbHitResult.SelectedIndexChanged -= cmbHitResult_SelectedIndexChanged;
+            cmbJuggleProperties.SelectedIndexChanged -= cmbJuggleProperties_SelectedIndexChanged;
+        }
+
+        private void rebindComboEvents()
+        {
+            cmbHitType.SelectedIndexChanged += cmbHitType_SelectedIndexChanged;
+            cmbHitResult.SelectedIndexChanged += cmbHitResult_SelectedIndexChanged;
+            cmbJuggleProperties.SelectedIndexChanged += cmbJuggleProperties_SelectedIndexChanged;
+        }
+
+        #region File Menu
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
@@ -58,8 +79,9 @@ namespace FightingEditor
             //TODO: Add save dialog
             Close();
         }
+        #endregion
 
-        //Edit Menu
+        #region Edit Menu
         private void setBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
@@ -74,8 +96,9 @@ namespace FightingEditor
         {
             //TODO
         }
+        #endregion
 
-        //View Menu
+        #region View Menu
         private void showOriginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (showOriginToolStripMenuItem.Checked)
@@ -103,10 +126,9 @@ namespace FightingEditor
                 showCurrentFrameToolStripMenuItem.Checked = true;
             }
         }
+        #endregion
 
-        //
-        //Animation Controls
-        //
+        #region Animation Controls
         private void btnFirst_Click(object sender, EventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(0);
@@ -153,9 +175,18 @@ namespace FightingEditor
             updateFrameData();
         }
 
-        //
-        //Image Controls
-        //
+        private void disableAnimControls()
+        {
+            AnimPanel.Enabled = false;
+        }
+
+        private void enableAnimControls()
+        {
+            AnimPanel.Enabled = true;
+        }
+        #endregion
+
+        #region Image Controls
         private void treeImages_AfterSelect(object sender, TreeViewEventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(treeImages.SelectedNode.Index);
@@ -243,13 +274,33 @@ namespace FightingEditor
             //TODO
         }
 
-        //
-        //ROOT MOTION
-        //
+        private void disableImageControls()
+        {
+            treeImages.Enabled = false;
+            btnRemoveImage.Enabled = false;
+            btnMoveUp.Enabled = false;
+            btnMoveDown.Enabled = false;
+            numericKeyFrameLength.Enabled = false;
+            cmbAnimType.Enabled = false;
+            //TODO
+        }
+
+        private void enableImageControls()
+        {
+            treeImages.Enabled = true;
+            btnRemoveImage.Enabled = true;
+            btnMoveUp.Enabled = true;
+            btnMoveDown.Enabled = true;
+            numericKeyFrameLength.Enabled = true;
+            cmbAnimType.Enabled = true;
+        }
+        #endregion
 
         //
-        //Collision Boxes
+        //ROOT MOTION - TODO 
         //
+
+        #region Collision Boxes
         private void updateFrameData()
         {
             lblTotalPrevFrames.Text = renderPreview.animator.CurrentFrame.ToString();
@@ -310,20 +361,25 @@ namespace FightingEditor
 
         private void btnAddRootHitbox_Click(object sender, EventArgs e)
         {
-            HITTYPE hitType = (HITTYPE)cmbHitType.SelectedIndex;
-            HITRESULT hitResult = (HITRESULT)cmbHitResult.SelectedIndex;
-            JUGGLETYPE juggleProperties = (JUGGLETYPE)cmbJuggleProperties.SelectedIndex;
-            
-            HitBoxData data = new HitBoxData(
-                hitType, (int)numericHitStop.Value, (int)numericHitStun.Value, (int)numericBlockStun.Value, (int)numericDamage.Value,
-                    hitResult, juggleProperties,
-                chkSpecialCancel.Checked, chkJumpCancel.Checked, chkUniqueActionCancel.Checked, chkDashCancel.Checked,
-                    txtCancelRoute.Text);
-
-            renderPreview.AddRootHitBox(animScrubber.Value, data);
+            renderPreview.AddRootHitBox(animScrubber.Value, collectHitBoxData());
 
             updateCollisionsTree();
         }
+
+        private HitBoxData collectHitBoxData()
+        {
+            HITTYPE hitType = (HITTYPE) cmbHitType.SelectedIndex;
+            HITRESULT hitResult = (HITRESULT)cmbHitResult.SelectedIndex;
+            JUGGLETYPE juggleProperties = (JUGGLETYPE)cmbJuggleProperties.SelectedIndex;
+
+            HitBoxData data = new HitBoxData(
+                hitType, (int)numericHitStop.Value, (int)numericHitStun.Value, (int)numericBlockStun.Value, (int)numericDamage.Value,
+                hitResult, juggleProperties,
+                chkSpecialCancel.Checked, chkJumpCancel.Checked, chkUniqueActionCancel.Checked, chkDashCancel.Checked,
+                txtCancelRoute.Text);
+
+            return data;
+    }
 
         private void btnAddHitbox_Click(object sender, EventArgs e)
         {
@@ -357,11 +413,15 @@ namespace FightingEditor
 
         private void btnAddRootHurtbox_Click(object sender, EventArgs e)
         {
-            HurtBoxData data = new HurtBoxData(chkProjectileImmune.Checked, chkLowImmune.Checked);
-
-            renderPreview.AddRootHurtBox(animScrubber.Value, data);
+            renderPreview.AddRootHurtBox(animScrubber.Value, collectHurtBoxData());
 
             updateCollisionsTree();
+        }
+
+        private HurtBoxData collectHurtBoxData()
+        {
+            HurtBoxData data = new HurtBoxData(chkProjectileImmune.Checked, chkLowImmune.Checked);
+            return data;
         }
 
         private void btnAddHurtbox_Click(object sender, EventArgs e)
@@ -401,22 +461,28 @@ namespace FightingEditor
 
         private void numericLeft_ValueChanged(object sender, EventArgs e)
         {
-            //TODO
+            resizeBox();
         }
 
         private void numericTop_ValueChanged(object sender, EventArgs e)
         {
-            //TODO
+            resizeBox();
         }
 
         private void numericRight_ValueChanged(object sender, EventArgs e)
         {
-            //TODO
+            resizeBox();
         }
 
         private void numericBottom_ValueChanged(object sender, EventArgs e)
         {
-            //TODO
+            resizeBox();
+        }
+
+        private void resizeBox()
+        {
+            renderPreview.ResizeBox((int)numericTop.Value, (int)numericLeft.Value,
+                (int)numericBottom.Value, (int)numericRight.Value);
         }
 
         private void updateCollisionsTree()
@@ -483,32 +549,32 @@ namespace FightingEditor
             treeCollisions.Nodes.Add(root);
         }
 
-
-        //Called from tick in the render preview
-        public void UpdateFormFields()
-        {
-            updateKeyFrameData();
-        }
-
         private void treeCollisions_AfterSelect(object sender, TreeViewEventArgs e)
         {
             int keyFrame = animScrubber.Value;
 
+            disableHitboxControls();
+            disableHurtboxControls();
+
             if (treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
             {
                 renderPreview.SelectRootHitbox(keyFrame, getCollisionIndex(HIT_ROOT));
+                enableHitboxControls();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
             {
                 renderPreview.SelectRootHurtbox(keyFrame, getCollisionIndex(HURT_ROOT));
+                enableHurtboxControls();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HIT_BOX))
             {
                 renderPreview.SelectHitbox(keyFrame, getParentCollisionIndex(HIT_ROOT), getCollisionIndex(HIT_BOX));
+                enableHitboxControls();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HURT_BOX))
             {
                 renderPreview.SelectHurtbox(keyFrame, getParentCollisionIndex(HURT_ROOT), getCollisionIndex(HURT_BOX));
+                enableHurtboxControls();
             }
             else
             {
@@ -532,13 +598,105 @@ namespace FightingEditor
                 return -1;
         }
 
-        //TODO:
-        //DATA I NEED TO LOAD/SAVE BEFORE EXPORT:
-        //ALL ANIM DATA
-        //cmbAnimType
+        private void cmbHitType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
 
-        //KEYFRAME DATA
-        //btnIsAirborne
-        //txtKeyframeTags
+        private void numericHitStop_ValueChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void numericHitStun_ValueChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void numericBlockStun_ValueChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void numericDamage_ValueChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void cmbHitResult_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void cmbJuggleProperties_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void chkSpecialCancel_CheckedChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void chkJumpCancel_CheckedChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void chkUniqueActionCancel_CheckedChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void chkDashCancel_CheckedChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void txtCancelRoute_TextChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+        }
+
+        private void chkProjectileImmune_CheckedChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHurtBoxRoot(collectHurtBoxData());
+        }
+
+        private void chkLowImmune_CheckedChanged(object sender, EventArgs e)
+        {
+            renderPreview.ReInitHurtBoxRoot(collectHurtBoxData());
+        }
+
+
+        private void disableHitboxControls()
+        {
+            HitPanel.Enabled = false;
+        }
+
+        private void disableHurtboxControls()
+        {
+            HurtPanel.Enabled = false;
+        }
+
+        private void enableHitboxControls()
+        {
+            HitPanel.Enabled = true;
+        }
+
+        private void enableHurtboxControls()
+        {
+            HitPanel.Enabled = true;
+        }
+
+        #endregion
+
+        //Called from tick in the render preview
+        public void UpdateFormFields()
+        {
+            updateKeyFrameData();
+        }
+
+
     }
 }

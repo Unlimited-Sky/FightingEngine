@@ -279,6 +279,32 @@ namespace FightingEditor
         {
             selectedMode = SELECTEDMODE.NONE;
         }
+
+        public void ResizeBox(int top, int left, int bottom, int right)
+        {
+            if (selectedMode == SELECTEDMODE.HIT_BOX)
+            {
+                SimpleRectNode node = hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
+                node.TopLeft = new Point(left, top);
+                node.BottomRight = new Point(right, bottom);
+            }
+            else if (selectedMode == SELECTEDMODE.HURT_BOX)
+            {
+                SimpleRectNode node = hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
+                node.TopLeft = new Point(left, top);
+                node.BottomRight = new Point(right, bottom);
+            }
+        }
+
+        public void ReInitHitBoxRoot(HitBoxData newData)
+        {
+            hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData = newData;
+        }
+
+        public void ReInitHurtBoxRoot(HurtBoxData newData)
+        {
+            hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HurtBoxData = newData;
+        }
     }
 
     public enum SELECTEDMODE
