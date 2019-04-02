@@ -16,7 +16,6 @@ namespace FightingEngine
         public SpriteBatch spriteBatch;
         public InputManager inputManager;
 
-
         StateMachine<AGameState> GameStateMachine;
         
         public FightingEngine()

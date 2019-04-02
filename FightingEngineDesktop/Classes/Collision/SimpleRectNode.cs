@@ -10,10 +10,10 @@ namespace FightingEngine.Collision
     {
         public CollisionRootNode Parent { get; private set; }
 
-        public SimpleRectNode(CollisionRootNode parent)
-        {
-            Parent = parent;
-        }
+        //public SimpleRectNode(CollisionRootNode parent)
+        //{
+        //    Parent = parent;
+        //}
 
         public SimpleRectNode(CollisionRootNode parent, int top, int left, int bottom, int right) : 
             base(top, left, bottom, right)

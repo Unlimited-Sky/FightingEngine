@@ -36,15 +36,20 @@ namespace FightingEngine.Collision
         }
 
         //Returns true if a and b are touching (edges inclusive)
-        static bool CheckCollision(SimpleRect a, SimpleRect b)
+        public static bool CheckCollision(SimpleRect a, SimpleRect b)
         {
             return !(b.Left() >= a.Right() || b.Right() <= a.Left() || b.Top() <= a.Bottom() || b.Bottom() >= a.Top());
         }
 
         //Returns true if a and b are touching (edges must overlap)
-        static bool CheckIntersect(SimpleRect a, SimpleRect b)
+        public static bool CheckIntersect(SimpleRect a, SimpleRect b)
         {
             return !(b.Left() > a.Right() || b.Right() < a.Left() || b.Top() < a.Bottom() || b.Bottom() > a.Top());
+        }
+
+        public SimpleRect WithOffset(Point offset)
+        {
+            return new SimpleRect(TopLeft + offset, BottomRight + offset);
         }
     }
 }

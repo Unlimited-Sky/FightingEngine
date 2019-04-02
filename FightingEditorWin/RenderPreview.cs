@@ -24,7 +24,7 @@ namespace FightingEditor
 
         public SimpleShapeRenderer ssr;
 
-        private float renderScale = 3.0f;
+        private int renderScale = 2;
         private int AxisLength = 50;
 
         public bool ShowOrigin = true;
@@ -42,16 +42,17 @@ namespace FightingEditor
             base.Initialize();
 
             animator = new Animator();
-
             textures = new List<Texture2D>();
             keyFrameLengths = new List<int>();
 
             ssr = new SimpleShapeRenderer(Editor.spriteBatch, Editor.graphics);
 
+            Editor.Cam.GetZoom = renderScale;
+
             hitBoxKeyFrameData = new Dictionary<int, List<HitBoxRootNode>>();
             hurtBoxKeyFrameData = new Dictionary<int, List<HurtBoxRootNode>>();
 
-            CharacterPosition = new Point(250, 250);
+            CharacterPosition = new Point(Editor.graphics.Viewport.Width / 2, Editor.graphics.Viewport.Height / 2);
         }
 
         protected override void Update(GameTime gameTime)
@@ -73,7 +74,8 @@ namespace FightingEditor
 
             base.Draw();
 
-            Editor.spriteBatch.Begin();
+            //Editor.spriteBatch.Begin();
+            Editor.BeginCamera2D();
 
             if (animator != null && animator.AnimData != null)
             {
@@ -87,7 +89,8 @@ namespace FightingEditor
 
             DrawOrigin();
 
-            Editor.spriteBatch.End();
+            Editor.EndCamera2D();
+            //Editor.spriteBatch.End();
         }
 
         private void DrawFrameCounter()
@@ -106,13 +109,13 @@ namespace FightingEditor
             if (hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
             {
                 foreach (HitBoxRootNode root in hitBoxKeyFrameData[keyFrameIndex])
-                    ssr.DrawCollisions(root);
+                    ssr.DrawCollisions(root, CharacterPosition);
             }
 
             if (hurtBoxKeyFrameData.ContainsKey(keyFrameIndex))
             {
                 foreach (HurtBoxRootNode root in hurtBoxKeyFrameData[keyFrameIndex])
-                    ssr.DrawCollisions(root);
+                    ssr.DrawCollisions(root, CharacterPosition);
             }
         }
         
@@ -143,7 +146,8 @@ namespace FightingEditor
 
         private void drawSelectedCollisionBox(SimpleRectNode node)
         {
-            ssr.DrawRect(node.TopLeft, node.BottomRight, Color.Yellow, false, 2);
+            SimpleRect rect = node.WithOffset(CharacterPosition);
+            ssr.DrawRect(rect.TopLeft, rect.BottomRight, Color.Yellow, false, 2);
         }
 
         private void DrawOrigin()

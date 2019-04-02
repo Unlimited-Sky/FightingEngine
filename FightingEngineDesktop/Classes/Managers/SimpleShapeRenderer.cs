@@ -48,16 +48,16 @@ namespace FightingEngine
             DrawRect(topLeft.Y, topLeft.X, bottomRight.Y, bottomRight.X, color, filled, width);
         }
 
-        public void DrawCollisions(HitBoxRootNode hitBoxRootNode)
+        public void DrawCollisions(HitBoxRootNode hitBoxRootNode, Point origin)
         {
             foreach(SimpleRect rect in hitBoxRootNode.Children)
-                drawCollisionBox(rect, _hitBoxColor);
+                drawCollisionBox(rect.WithOffset(origin), _hitBoxColor);
         }
 
-        public void DrawCollisions(HurtBoxRootNode hurtBoxRootNode)
+        public void DrawCollisions(HurtBoxRootNode hurtBoxRootNode, Point origin)
         {
             foreach (SimpleRect rect in hurtBoxRootNode.Children)
-                drawCollisionBox(rect, _hurtBoxColor);
+                drawCollisionBox(rect.WithOffset(origin), _hurtBoxColor);
         }
 
         public void DrawCollision(CharacterCollider collider)

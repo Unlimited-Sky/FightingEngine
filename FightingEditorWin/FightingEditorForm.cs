@@ -560,6 +560,8 @@ namespace FightingEditor
             disableBoxControls();
 
             treeCollisions.ExpandAll();
+
+            renderPreview.DeselectCollisions();
         }
 
         private void addHitBoxes(HitBoxRootNode hitBox, string count)
