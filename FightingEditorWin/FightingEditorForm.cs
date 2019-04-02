@@ -59,6 +59,22 @@ namespace FightingEditor
             Close();
         }
 
+        //Edit Menu
+        private void setBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
+
+        private void rootOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
+
+        private void rootAndChildrenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
+
         //View Menu
         private void showOriginToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -311,11 +327,15 @@ namespace FightingEditor
 
         private void btnAddHitbox_Click(object sender, EventArgs e)
         {
-            if (treeCollisions.SelectedNode != null && treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
+            if (treeCollisions.SelectedNode != null)
             {
-                string text = treeCollisions.SelectedNode.Text.Replace(HIT_ROOT, "");
-                int rootIndex = Convert.ToInt32(text);
-                renderPreview.AddHitBox(animScrubber.Value, rootIndex,
+                int index = -1;
+                if (treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
+                    index = getCollisionIndex(HIT_ROOT);
+                else if (treeCollisions.SelectedNode.Text.Contains(HIT_BOX))
+                    index = getParentCollisionIndex(HIT_ROOT);
+
+                renderPreview.AddHitBox(animScrubber.Value, index,
                     (int)numericTop.Value, (int)numericLeft.Value, (int)numericBottom.Value, (int)numericRight.Value);
 
                 updateCollisionsTree();
@@ -325,6 +345,14 @@ namespace FightingEditor
         private void btnDeleteHitbox_Click(object sender, EventArgs e)
         {
             //TODO
+            if (treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
+            {
+
+            }
+            else if (treeCollisions.SelectedNode.Text.Contains(HIT_BOX))
+            {
+
+            }
         }
 
         private void btnAddRootHurtbox_Click(object sender, EventArgs e)
@@ -338,11 +366,15 @@ namespace FightingEditor
 
         private void btnAddHurtbox_Click(object sender, EventArgs e)
         {
-            if (treeCollisions.SelectedNode != null && treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
+            if (treeCollisions.SelectedNode != null)
             {
-                string text = treeCollisions.SelectedNode.Text.Replace(HURT_ROOT, "");
-                int rootIndex = Convert.ToInt32(text);
-                renderPreview.AddHurtBox(animScrubber.Value, rootIndex,
+                int index = -1;
+                if (treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
+                    index = getCollisionIndex(HURT_ROOT);
+                else if (treeCollisions.SelectedNode.Text.Contains(HURT_BOX))
+                    index = getParentCollisionIndex(HURT_ROOT);
+
+                renderPreview.AddHurtBox(animScrubber.Value, index,
                     (int)numericTop.Value, (int)numericLeft.Value, (int)numericBottom.Value, (int)numericRight.Value);
 
                 updateCollisionsTree();
@@ -352,6 +384,14 @@ namespace FightingEditor
         private void btnDeleteHurtbox_Click(object sender, EventArgs e)
         {
             //TODO
+            if (treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
+            {
+                
+            }       
+            else if (treeCollisions.SelectedNode.Text.Contains(HURT_BOX))
+            {
+               
+            }
         }
 
         private void btnSelectCollider_Click(object sender, EventArgs e)
@@ -452,17 +492,44 @@ namespace FightingEditor
 
         private void treeCollisions_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            int keyFrame = animScrubber.Value;
 
+            if (treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
+            {
+                renderPreview.SelectRootHitbox(keyFrame, getCollisionIndex(HIT_ROOT));
+            }
+            else if (treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
+            {
+                renderPreview.SelectRootHurtbox(keyFrame, getCollisionIndex(HURT_ROOT));
+            }
+            else if (treeCollisions.SelectedNode.Text.Contains(HIT_BOX))
+            {
+                renderPreview.SelectHitbox(keyFrame, getParentCollisionIndex(HIT_ROOT), getCollisionIndex(HIT_BOX));
+            }
+            else if (treeCollisions.SelectedNode.Text.Contains(HURT_BOX))
+            {
+                renderPreview.SelectHurtbox(keyFrame, getParentCollisionIndex(HURT_ROOT), getCollisionIndex(HURT_BOX));
+            }
+            else
+            {
+                renderPreview.DeselectCollisions();
+            }
         }
 
-        private void setBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        private int getCollisionIndex(string collisionType)
         {
-
+            if (treeCollisions.SelectedNode.Text.Contains(collisionType))
+                return Convert.ToInt32(treeCollisions.SelectedNode.Text.Replace(collisionType, ""));
+            else
+                return -1;
         }
 
-        private void rootChildrenToolStripMenuItem_Click(object sender, EventArgs e)
+        private int getParentCollisionIndex(string parentCollisionType)
         {
-
+            if (treeCollisions.SelectedNode.Parent.Text.Contains(parentCollisionType))
+                return Convert.ToInt32(treeCollisions.SelectedNode.Parent.Text.Replace(parentCollisionType, ""));
+            else
+                return -1;
         }
 
         //TODO:

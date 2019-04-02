@@ -24,11 +24,15 @@ namespace FightingEditor
 
         public SimpleShapeRenderer ssr;
 
-        public float renderScale = 3.0f;
-        public int AxisLength = 50;
+        private float renderScale = 3.0f;
+        private int AxisLength = 50;
 
         public bool ShowOrigin = true;
         public bool ShowFrame = true;
+
+        private SELECTEDMODE selectedMode = SELECTEDMODE.NONE;
+        private int selectedRootIndex = 0;
+        private int selectedIndex = 0;
 
         public Point CharacterPosition;
 
@@ -42,8 +46,6 @@ namespace FightingEditor
             keyFrameLengths = new List<int>();
 
             ssr = new SimpleShapeRenderer(Editor.spriteBatch, Editor.graphics);
-
-            //TODO lock to 60fps
 
             hitBoxKeyFrameData = new Dictionary<int, List<HitBoxRootNode>>();
             hurtBoxKeyFrameData = new Dictionary<int, List<HurtBoxRootNode>>();
@@ -77,30 +79,52 @@ namespace FightingEditor
                 int keyFrameIndex = animator.GetAnimKeyFrameIndex();
                 animator.Draw(Editor.spriteBatch, CharacterPosition.ToVector2());
 
-                //Draw frame counter
-                if (ShowFrame)
-                {
-                    Editor.spriteBatch.DrawString(Editor.Font, animator.CurrentFrame.ToString(), new Vector2(
-(Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(animator.CurrentFrame.ToString()).X / 2),
-(Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
-Color.White);
-                }
-
-
-                if (hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
-                {
-                    foreach (HitBoxRootNode root in hitBoxKeyFrameData[keyFrameIndex])
-                        ssr.DrawCollisions(root);
-                }
-
-                if (hurtBoxKeyFrameData.ContainsKey(keyFrameIndex))
-                {
-                    foreach (HurtBoxRootNode root in hurtBoxKeyFrameData[keyFrameIndex])
-                        ssr.DrawCollisions(root);
-                }
+                DrawFrameCounter();
+                DrawCollisionBoxes(keyFrameIndex);
+                DrawSelectedCollisionBoxes();
             }
 
+            DrawOrigin();
 
+            Editor.spriteBatch.End();
+        }
+
+        private void DrawFrameCounter()
+        {
+            if (ShowFrame)
+            {
+                Editor.spriteBatch.DrawString(Editor.Font, animator.CurrentFrame.ToString(), new Vector2(
+                    (Editor.graphics.Viewport.Width / 2) - (Editor.Font.MeasureString(animator.CurrentFrame.ToString()).X / 2),
+                    (Editor.graphics.Viewport.Height / 2) - (Editor.FontHeight / 2)),
+                    Color.White);
+            }
+        }
+
+        private void DrawCollisionBoxes(int keyFrameIndex)
+        {
+            if (hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
+            {
+                foreach (HitBoxRootNode root in hitBoxKeyFrameData[keyFrameIndex])
+                    ssr.DrawCollisions(root);
+            }
+
+            if (hurtBoxKeyFrameData.ContainsKey(keyFrameIndex))
+            {
+                foreach (HurtBoxRootNode root in hurtBoxKeyFrameData[keyFrameIndex])
+                    ssr.DrawCollisions(root);
+            }
+        }
+        
+        private void DrawSelectedCollisionBoxes()
+        {
+            //TODO THIS FUNCTION
+            if (selectedMode == SELECTEDMODE.NONE)
+                return;
+            
+        }
+
+        private void DrawOrigin()
+        {
             if (ShowOrigin)
             {
                 ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y),
@@ -108,9 +132,6 @@ Color.White);
                 ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y - AxisLength),
                     new Point(CharacterPosition.X, CharacterPosition.Y), Color.Yellow);
             }
-
-            Editor.spriteBatch.End();
-
         }
 
         private void InitAnimator()
@@ -167,7 +188,6 @@ Color.White);
             {
                 hitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode(data) });
             }
-
         }
 
         public void AddHitBox(int keyFrame, int rootIndex, int top, int left, int bottom, int right)
@@ -201,5 +221,46 @@ Color.White);
         {
             //TODO
         }
+
+        public void SelectRootHitbox(int keyFrame, int index)
+        {
+            selectedMode = SELECTEDMODE.HIT_ROOT;
+            selectedRootIndex = index;
+        }
+
+        public void SelectRootHurtbox(int keyFrame, int index)
+        {
+            selectedMode = SELECTEDMODE.HURT_ROOT;
+            selectedRootIndex = index;
+        }
+
+        public void SelectHitbox(int keyFrame, int rootIndex, int index)
+        {
+            selectedMode = SELECTEDMODE.HIT_BOX;
+            selectedRootIndex = rootIndex;
+            selectedIndex = index;
+        }
+
+        public void SelectHurtbox(int keyframe, int rootIndex, int index)
+        {
+            selectedMode = SELECTEDMODE.HURT_BOX;
+            selectedRootIndex = rootIndex;
+            selectedIndex = index;
+        }
+
+        public void DeselectCollisions()
+        {
+            selectedMode = SELECTEDMODE.NONE;
+        }
+    }
+
+    public enum SELECTEDMODE
+    {
+        NONE,
+        CHAR_COLLIDER,
+        HIT_ROOT,
+        HURT_ROOT,
+        HIT_BOX,
+        HURT_BOX
     }
 }
