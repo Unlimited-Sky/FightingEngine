@@ -119,7 +119,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbHitResult = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.cmbJuggleProperties = new System.Windows.Forms.ComboBox();
+            this.cmbJuggleType = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.chkSpecialCancel = new System.Windows.Forms.CheckBox();
@@ -1256,7 +1256,7 @@
             this.tableLayoutPanel6.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.cmbHitResult, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.label10, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.cmbJuggleProperties, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.cmbJuggleType, 1, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -1294,22 +1294,22 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(27, 37);
+            this.label10.Location = new System.Drawing.Point(27, 30);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.Size = new System.Drawing.Size(38, 26);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Juggle\r\n";
+            this.label10.Text = "Juggle\r\n Type";
             // 
-            // cmbJuggleProperties
+            // cmbJuggleType
             // 
-            this.cmbJuggleProperties.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbJuggleProperties.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbJuggleProperties.FormattingEnabled = true;
-            this.cmbJuggleProperties.Location = new System.Drawing.Point(100, 33);
-            this.cmbJuggleProperties.Name = "cmbJuggleProperties";
-            this.cmbJuggleProperties.Size = new System.Drawing.Size(121, 21);
-            this.cmbJuggleProperties.TabIndex = 3;
-            this.cmbJuggleProperties.SelectedIndexChanged += new System.EventHandler(this.cmbJuggleProperties_SelectedIndexChanged);
+            this.cmbJuggleType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbJuggleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbJuggleType.FormattingEnabled = true;
+            this.cmbJuggleType.Location = new System.Drawing.Point(100, 33);
+            this.cmbJuggleType.Name = "cmbJuggleType";
+            this.cmbJuggleType.Size = new System.Drawing.Size(121, 21);
+            this.cmbJuggleType.TabIndex = 3;
+            this.cmbJuggleType.SelectedIndexChanged += new System.EventHandler(this.cmbJuggleProperties_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -1727,7 +1727,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbHitResult;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cmbJuggleProperties;
+        private System.Windows.Forms.ComboBox cmbJuggleType;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.CheckBox chkSpecialCancel;

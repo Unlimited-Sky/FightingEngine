@@ -178,6 +178,8 @@ namespace FightingEditor
         {
             keyFrameLengths.RemoveAt(index);
             textures.RemoveAt(index);
+            hurtBoxKeyFrameData.Remove(index);
+            hitBoxKeyFrameData.Remove(index);
             InitAnimator();
         }
 
@@ -282,18 +284,9 @@ namespace FightingEditor
 
         public void ResizeBox(int top, int left, int bottom, int right)
         {
-            if (selectedMode == SELECTEDMODE.HIT_BOX)
-            {
-                SimpleRectNode node = hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
-                node.TopLeft = new Point(left, top);
-                node.BottomRight = new Point(right, bottom);
-            }
-            else if (selectedMode == SELECTEDMODE.HURT_BOX)
-            {
-                SimpleRectNode node = hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
-                node.TopLeft = new Point(left, top);
-                node.BottomRight = new Point(right, bottom);
-            }
+            SimpleRectNode node = GetSelectedCollisionBoxNode();
+            node.TopLeft = new Point(left, top);
+            node.BottomRight = new Point(right, bottom);
         }
 
         public void ReInitHitBoxRoot(HitBoxData newData)
@@ -305,6 +298,27 @@ namespace FightingEditor
         {
             hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HurtBoxData = newData;
         }
+
+        public SimpleRectNode GetSelectedCollisionBoxNode()
+        {
+            if (selectedMode == SELECTEDMODE.HIT_BOX)
+                return hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
+            else if (selectedMode == SELECTEDMODE.HURT_BOX)
+                return hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
+            else
+                throw new NotImplementedException();
+        }
+
+        public HitBoxData GetHitboxRootData()
+        {
+            return hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData;
+        }
+
+        public HurtBoxData GetHurtboxRootData()
+        {
+            return hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HurtBoxData;
+        }
+
     }
 
     public enum SELECTEDMODE
