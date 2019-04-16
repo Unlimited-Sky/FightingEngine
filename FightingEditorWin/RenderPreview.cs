@@ -74,7 +74,6 @@ namespace FightingEditor
 
             base.Draw();
 
-            //Editor.spriteBatch.Begin();
             Editor.BeginCamera2D();
 
             if (animator != null && animator.AnimData != null)
@@ -90,7 +89,6 @@ namespace FightingEditor
             DrawOrigin();
 
             Editor.EndCamera2D();
-            //Editor.spriteBatch.End();
         }
 
         private void DrawFrameCounter()
@@ -156,7 +154,7 @@ namespace FightingEditor
             {
                 ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y),
                     new Point(CharacterPosition.X + AxisLength, CharacterPosition.Y), Color.Yellow);
-                ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y - AxisLength),
+                ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y + AxisLength),
                     new Point(CharacterPosition.X, CharacterPosition.Y), Color.Yellow);
             }
         }

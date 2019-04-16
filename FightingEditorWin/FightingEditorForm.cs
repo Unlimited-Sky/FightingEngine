@@ -483,7 +483,9 @@ namespace FightingEditor
 
         private void numericTop_ValueChanged(object sender, EventArgs e)
         {
-            //todo add size checks like left/right
+            if (numericTop.Value >= numericBottom.Value)
+                numericTop.Value = numericBottom.Value;
+
             resizeBox();
         }
 
@@ -497,7 +499,9 @@ namespace FightingEditor
 
         private void numericBottom_ValueChanged(object sender, EventArgs e)
         {
-            //TODO add size checks like left/right
+            if (numericBottom.Value <= numericTop.Value)
+                numericBottom.Value = numericTop.Value;
+
             resizeBox();
         }
 
