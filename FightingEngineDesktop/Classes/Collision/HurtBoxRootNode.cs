@@ -16,5 +16,13 @@ namespace FightingEngine.Collision
         {
             HurtBoxData = hurtBoxData;
         }
+
+        public HurtBoxRootNode(HurtBoxRootNode copy)
+        {
+            HurtBoxData = copy.HurtBoxData;
+
+            foreach (SimpleRectNode node in copy.Children)
+                Children.Add(node);
+        }
     }
 }

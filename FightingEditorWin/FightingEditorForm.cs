@@ -46,6 +46,7 @@ namespace FightingEditor
             DisableHitboxEditControls();
             DisableHurtboxEditControls();
             DisableBoxControls();
+            DisableCollisionCopyControls();
         }
 
         private void UnbindComboEvents()
@@ -486,8 +487,7 @@ namespace FightingEditor
                 EnableBoxEvents();
                 EnableBoxControls();
 
-                copyRootChildrenToolStripMenuItem.Enabled = false;
-                copyRootToolStripMenuItem.Enabled = false;
+                DisableCollisionCopyControls();
             }
         }
 
@@ -580,6 +580,7 @@ namespace FightingEditor
             DisableHitboxEditControls();
             DisableHurtboxEditControls();
             DisableBoxControls();
+            DisableCollisionCopyControls();
 
             treeCollisions.ExpandAll();
 
@@ -626,6 +627,7 @@ namespace FightingEditor
                 DisableHurtboxEditControls();
                 DisableBoxControls();
                 RefreshHitboxRootData();
+                EnableCollisionCopyControls();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
             {
@@ -634,6 +636,7 @@ namespace FightingEditor
                 DisableHitboxEditControls();
                 DisableBoxControls();
                 RefreshHurtboxRootData();
+                EnableCollisionCopyControls();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HIT_BOX))
             {
@@ -641,7 +644,9 @@ namespace FightingEditor
                 EnableHitboxEditControls();
                 DisableHurtboxEditControls();
                 EnableBoxControls();
+                RefreshHitboxRootData();
                 RefreshBoxes();
+                EnableCollisionCopyControls();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HURT_BOX))
             {
@@ -649,11 +654,14 @@ namespace FightingEditor
                 EnableHurtboxEditControls();
                 DisableHitboxEditControls();
                 EnableBoxControls();
+                RefreshHurtboxRootData();
                 RefreshBoxes();
+                EnableCollisionCopyControls();
             }
             else
             {
                 renderPreview.DeselectCollisions();
+                DisableCollisionCopyControls();
             }
         }
 
@@ -811,6 +819,8 @@ namespace FightingEditor
         {
             DisableHurtboxRootEvents();
             HurtBoxData data = renderPreview.GetHurtboxRootData();
+            chkProjectileImmune.Checked = data.ProjectileImmunity;
+            chkLowImmune.Checked = data.LowImmunity;
             EnableHurtboxRootEvents();
         }
 
@@ -855,7 +865,7 @@ namespace FightingEditor
             btnAddRootHitbox.Enabled = true;
             btnAddHitbox.Enabled = true;
             btnDeleteHitbox.Enabled = true;
-            pasteToolStripMenuItem.Enabled = true;
+            EnablePasteCollisionBoxControls();
         }
 
         private void EnableHitboxEditControls()
@@ -868,7 +878,25 @@ namespace FightingEditor
             btnAddRootHurtbox.Enabled = true;
             btnAddHurtbox.Enabled = true;
             btnDeleteHurtbox.Enabled = true;
-            pasteToolStripMenuItem.Enabled = true;
+            EnablePasteCollisionBoxControls();
+        }
+
+        private void EnableCollisionCopyControls()
+        {
+            copyRootChildrenToolStripMenuItem.Enabled = true;
+            copyRootToolStripMenuItem.Enabled = true;
+        }
+
+        private void DisableCollisionCopyControls()
+        {
+            copyRootChildrenToolStripMenuItem.Enabled = false;
+            copyRootToolStripMenuItem.Enabled = false;
+        }
+
+        private void EnablePasteCollisionBoxControls()
+        {
+            if (copyNode != null)
+                pasteToolStripMenuItem.Enabled = true;
         }
 
         private void EnableHurtboxEditControls()
@@ -906,19 +934,43 @@ namespace FightingEditor
 
         private void CopyRootToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO
-            CollisionRootNode rootNode = renderPreview.GetSelectedCollisionRootNode();
+            CopyRootNode();
+            copyNode.Children.Clear();
         }
 
         private void CopyRootChildrenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO
-            CollisionRootNode rootNode = renderPreview.GetSelectedCollisionRootNode();
+            CopyRootNode();
+        }
+
+        private void CopyRootNode()
+        {
+            switch (renderPreview.GetSelectedCollisionRootNode())
+            {
+                case HitBoxRootNode hitNode:
+                    copyNode = new HitBoxRootNode(hitNode);
+                    pasteToolStripMenuItem.Enabled = true;
+                    break;
+                case HurtBoxRootNode hurtNode:
+                    copyNode = new HurtBoxRootNode(hurtNode);
+                    pasteToolStripMenuItem.Enabled = true;
+                    break;
+            }
         }
 
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            switch (copyNode)
+            {
+                case HitBoxRootNode hitNode:
+                    renderPreview.CopyHitRootNode(animScrubber.Value, hitNode);
+                    break;
+                case HurtBoxRootNode hurtNode:
+                    renderPreview.CopyHurtRootNode(animScrubber.Value, hurtNode);
+                    break;
+            }
 
+            UpdateCollisionsTree();
         }
     }
 }

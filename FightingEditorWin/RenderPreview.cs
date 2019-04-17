@@ -240,15 +240,17 @@ namespace FightingEditor
             InitAnimator();
         }
 
-        public void AddRootHitBox(int keyFrame, HitBoxData data)
+        public int AddRootHitBox(int keyFrame, HitBoxData data)
         {
             if (collisionFrameData.HitBoxKeyFrameData.ContainsKey(keyFrame))
             {
                 collisionFrameData.HitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode(data));
+                return collisionFrameData.HitBoxKeyFrameData[keyFrame].Count - 1;
             }
             else
             {
                 collisionFrameData.HitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode(data) });
+                return collisionFrameData.HitBoxKeyFrameData[keyFrame].Count - 1;
             }
         }
 
@@ -262,21 +264,40 @@ namespace FightingEditor
             //TODO
         }
 
-        public void AddRootHurtBox(int keyFrame, HurtBoxData data)
+        public int AddRootHurtBox(int keyFrame, HurtBoxData data)
         {
             if (collisionFrameData.HurtBoxKeyFrameData.ContainsKey(keyFrame))
             {
                 collisionFrameData.HurtBoxKeyFrameData[keyFrame].Add(new HurtBoxRootNode(data));
+                return collisionFrameData.HurtBoxKeyFrameData[keyFrame].Count - 1;
             }
             else
             {
                 collisionFrameData.HurtBoxKeyFrameData.Add(keyFrame, new List<HurtBoxRootNode> { new HurtBoxRootNode(data) });
+                return collisionFrameData.HurtBoxKeyFrameData[keyFrame].Count - 1;
+
             }
         }
 
         public void AddHurtBox(int keyFrame, int rootIndex, int top, int left, int bottom, int right)
         {
             collisionFrameData.HurtBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
+        }
+
+        public void CopyHitRootNode(int keyFrame, HitBoxRootNode node)
+        {
+            int index = AddRootHitBox(keyFrame, node.HitBoxData);
+
+            foreach (SimpleRectNode rect in node.Children)
+                AddHitBox(keyFrame, index, rect.Top(), rect.Left(), rect.Bottom(), rect.Right());
+        }
+
+        public void CopyHurtRootNode(int keyFrame, HurtBoxRootNode node)
+        {
+            int index = AddRootHurtBox(keyFrame, node.HurtBoxData);
+
+            foreach (SimpleRectNode rect in node.Children)
+                AddHurtBox(keyFrame, index, rect.Top(), rect.Left(), rect.Bottom(), rect.Right());
         }
 
         public void DeleteHurtBox()

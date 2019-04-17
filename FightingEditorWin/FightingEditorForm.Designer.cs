@@ -54,7 +54,6 @@
             this.ImagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeImages = new FightingEditor.EditorTreeView();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.btnRemoveImage = new System.Windows.Forms.Button();
@@ -82,7 +81,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.treeCollisions = new FightingEditor.EditorTreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSelectCollider = new System.Windows.Forms.Button();
@@ -132,7 +130,6 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
-            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,8 +138,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyRootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyRootChildrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyRootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,6 +169,9 @@
             this.txtCharName = new System.Windows.Forms.TextBox();
             this.numericHP = new System.Windows.Forms.NumericUpDown();
             this.tabAnimationEditor = new System.Windows.Forms.TabPage();
+            this.treeImages = new FightingEditor.EditorTreeView();
+            this.treeCollisions = new FightingEditor.EditorTreeView();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.AnimPanel.SuspendLayout();
@@ -536,18 +536,6 @@
             this.tableLayoutPanel11.Size = new System.Drawing.Size(510, 122);
             this.tableLayoutPanel11.TabIndex = 12;
             // 
-            // treeImages
-            // 
-            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeImages.FullRowSelect = true;
-            this.treeImages.HideSelection = false;
-            this.treeImages.Location = new System.Drawing.Point(3, 3);
-            this.treeImages.Name = "treeImages";
-            this.treeImages.Size = new System.Drawing.Size(163, 116);
-            this.treeImages.TabIndex = 11;
-            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeImages_AfterSelect);
-            // 
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.btnAddImage);
@@ -869,18 +857,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Collision Boxes";
             // 
-            // treeCollisions
-            // 
-            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeCollisions.FullRowSelect = true;
-            this.treeCollisions.HideSelection = false;
-            this.treeCollisions.Indent = 19;
-            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
-            this.treeCollisions.Name = "treeCollisions";
-            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
-            this.treeCollisions.TabIndex = 1;
-            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeCollisions_AfterSelect);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.tableLayoutPanel8);
@@ -1147,9 +1123,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Hit Properties";
+            this.label2.Text = "Hitbox Root Properties";
             // 
             // tabControl1
             // 
@@ -1456,9 +1432,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.Size = new System.Drawing.Size(120, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Hurtbox Properties";
+            this.label3.Text = "Hurtbox Root Properties";
             // 
             // tableLayoutPanel5
             // 
@@ -1502,16 +1478,6 @@
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
             this.chkLowImmune.CheckedChanged += new System.EventHandler(this.ChkLowImmune_CheckedChanged);
-            // 
-            // renderPreview
-            // 
-            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPreview.Location = new System.Drawing.Point(3, 3);
-            this.renderPreview.MouseHoverUpdatesOnly = false;
-            this.renderPreview.Name = "renderPreview";
-            this.renderPreview.Size = new System.Drawing.Size(1195, 624);
-            this.renderPreview.TabIndex = 4;
-            this.renderPreview.Text = "renderPreview1";
             // 
             // toolStripMenuItem1
             // 
@@ -1575,40 +1541,40 @@
             // duplicateToolStripMenuItem
             // 
             this.duplicateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyRootToolStripMenuItem,
             this.copyRootChildrenToolStripMenuItem,
+            this.copyRootToolStripMenuItem,
             this.toolStripSeparator1,
             this.pasteToolStripMenuItem});
             this.duplicateToolStripMenuItem.Name = "duplicateToolStripMenuItem";
-            this.duplicateToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.duplicateToolStripMenuItem.Text = "Copy...";
-            // 
-            // copyRootToolStripMenuItem
-            // 
-            this.copyRootToolStripMenuItem.Enabled = false;
-            this.copyRootToolStripMenuItem.Name = "copyRootToolStripMenuItem";
-            this.copyRootToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.copyRootToolStripMenuItem.Text = "Copy Root";
-            this.copyRootToolStripMenuItem.Click += new System.EventHandler(this.CopyRootToolStripMenuItem_Click);
+            this.duplicateToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.duplicateToolStripMenuItem.Text = "Copy + Paste";
             // 
             // copyRootChildrenToolStripMenuItem
             // 
             this.copyRootChildrenToolStripMenuItem.Enabled = false;
             this.copyRootChildrenToolStripMenuItem.Name = "copyRootChildrenToolStripMenuItem";
-            this.copyRootChildrenToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-            this.copyRootChildrenToolStripMenuItem.Text = "Copy Root and Children";
+            this.copyRootChildrenToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.copyRootChildrenToolStripMenuItem.Text = "Copy Root + Children";
             this.copyRootChildrenToolStripMenuItem.Click += new System.EventHandler(this.CopyRootChildrenToolStripMenuItem_Click);
+            // 
+            // copyRootToolStripMenuItem
+            // 
+            this.copyRootToolStripMenuItem.Enabled = false;
+            this.copyRootToolStripMenuItem.Name = "copyRootToolStripMenuItem";
+            this.copyRootToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.copyRootToolStripMenuItem.Text = "Copy Root";
+            this.copyRootToolStripMenuItem.Click += new System.EventHandler(this.CopyRootToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(198, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(186, 6);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Enabled = false;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
@@ -1871,6 +1837,40 @@
             this.tabAnimationEditor.Size = new System.Drawing.Size(1608, 847);
             this.tabAnimationEditor.TabIndex = 0;
             this.tabAnimationEditor.Text = "Animation Editor";
+            // 
+            // treeImages
+            // 
+            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeImages.FullRowSelect = true;
+            this.treeImages.HideSelection = false;
+            this.treeImages.Location = new System.Drawing.Point(3, 3);
+            this.treeImages.Name = "treeImages";
+            this.treeImages.Size = new System.Drawing.Size(163, 116);
+            this.treeImages.TabIndex = 11;
+            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeImages_AfterSelect);
+            // 
+            // treeCollisions
+            // 
+            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeCollisions.FullRowSelect = true;
+            this.treeCollisions.HideSelection = false;
+            this.treeCollisions.Indent = 19;
+            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
+            this.treeCollisions.Name = "treeCollisions";
+            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
+            this.treeCollisions.TabIndex = 1;
+            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeCollisions_AfterSelect);
+            // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1195, 624);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
             // 
             // FightingEditorForm
             // 
