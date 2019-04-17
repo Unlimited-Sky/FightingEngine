@@ -144,7 +144,9 @@ namespace FightingEditor
             }
             else if (selectedMode == SELECTEDMODE.CHAR_COLLIDER)
             {
-                //TODO
+                CharacterCollider collider = collisionFrameData.characterColliderFrameData[selectedKeyFrame];
+                SimpleRect rect = collider.WithOffset(OriginPoint);
+                ssr.DrawRect(rect, Color.Yellow, false, 2);
             }
         }
 
@@ -293,6 +295,12 @@ namespace FightingEditor
             selectedKeyFrame = keyFrame;
             selectedRootIndex = rootIndex;
             selectedIndex = index;
+        }
+
+        public void SelectCollider(int keyFrame)
+        {
+            selectedMode = SELECTEDMODE.CHAR_COLLIDER;
+            selectedKeyFrame = keyFrame;
         }
 
         public void DeselectCollisions()

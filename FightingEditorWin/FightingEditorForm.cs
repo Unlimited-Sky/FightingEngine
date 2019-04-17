@@ -470,7 +470,7 @@ namespace FightingEditor
 
         private void btnSelectCollider_Click(object sender, EventArgs e)
         {
-            //TODO
+            renderPreview.SelectCollider(animScrubber.Value);
         }
 
         private void numericLeft_ValueChanged(object sender, EventArgs e)
