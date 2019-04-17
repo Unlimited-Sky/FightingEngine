@@ -1346,18 +1346,17 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.chkWhiffCancel, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.label27, 0, 2);
-            this.tableLayoutPanel7.Controls.Add(this.txtCancelRoute, 1, 2);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.17391F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.82609F));
+            this.tableLayoutPanel7.Controls.Add(this.chkWhiffCancel, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label27, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.txtCancelRoute, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 3;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.0068F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.99319F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(230, 147);
             this.tableLayoutPanel7.TabIndex = 0;
@@ -1366,7 +1365,7 @@
             // 
             this.chkWhiffCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkWhiffCancel.AutoSize = true;
-            this.chkWhiffCancel.Location = new System.Drawing.Point(121, 45);
+            this.chkWhiffCancel.Location = new System.Drawing.Point(89, 4);
             this.chkWhiffCancel.Name = "chkWhiffCancel";
             this.chkWhiffCancel.Size = new System.Drawing.Size(102, 17);
             this.chkWhiffCancel.TabIndex = 6;
@@ -1378,19 +1377,19 @@
             // 
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(35, 103);
+            this.label27.Location = new System.Drawing.Point(5, 73);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(77, 13);
+            this.label27.Size = new System.Drawing.Size(43, 26);
             this.label27.TabIndex = 8;
             this.label27.Text = "Cancel Routes";
             // 
             // txtCancelRoute
             // 
             this.txtCancelRoute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCancelRoute.Location = new System.Drawing.Point(118, 75);
+            this.txtCancelRoute.Location = new System.Drawing.Point(54, 28);
             this.txtCancelRoute.Multiline = true;
             this.txtCancelRoute.Name = "txtCancelRoute";
-            this.txtCancelRoute.Size = new System.Drawing.Size(109, 69);
+            this.txtCancelRoute.Size = new System.Drawing.Size(173, 116);
             this.txtCancelRoute.TabIndex = 9;
             this.txtCancelRoute.TextChanged += new System.EventHandler(this.txtCancelRoute_TextChanged);
             // 
