@@ -1580,13 +1580,13 @@
             // 
             // tabCharacterEditor
             // 
+            this.tabCharacterEditor.BackColor = System.Drawing.SystemColors.Control;
             this.tabCharacterEditor.Location = new System.Drawing.Point(4, 22);
             this.tabCharacterEditor.Name = "tabCharacterEditor";
             this.tabCharacterEditor.Padding = new System.Windows.Forms.Padding(3);
             this.tabCharacterEditor.Size = new System.Drawing.Size(1608, 847);
             this.tabCharacterEditor.TabIndex = 1;
             this.tabCharacterEditor.Text = "Character Editor";
-            this.tabCharacterEditor.UseVisualStyleBackColor = true;
             // 
             // tabAnimationEditor
             // 
