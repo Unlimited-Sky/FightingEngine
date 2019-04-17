@@ -104,13 +104,13 @@ namespace FightingEditor
 
         private void DrawCollisionBoxes(int keyFrameIndex)
         {
-            if (collisionFrameData.CharacterColliderFrameData.ContainsKey(selectedKeyFrame))
+            if (collisionFrameData.characterColliderFrameData.ContainsKey(selectedKeyFrame))
             {
-                Point origin = collisionFrameData.CharacterColliderFrameData[selectedKeyFrame].GetOrigin() + OriginPoint;
+                Point origin = collisionFrameData.characterColliderFrameData[selectedKeyFrame].GetOrigin() + OriginPoint;
 
-                if (collisionFrameData.HitBoxKeyFrameData.ContainsKey(keyFrameIndex))
+                if (collisionFrameData.hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
                 {
-                    foreach (HitBoxRootNode root in collisionFrameData.HitBoxKeyFrameData[keyFrameIndex])
+                    foreach (HitBoxRootNode root in collisionFrameData.hitBoxKeyFrameData[keyFrameIndex])
                         ssr.DrawCollisions(root, origin);
                 }
 
@@ -128,25 +128,25 @@ namespace FightingEditor
                 return;
             else if (selectedMode == SELECTEDMODE.HIT_ROOT)
             {
-                foreach (SimpleRectNode node in collisionFrameData.HitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
-                    DrawSelectedCollisionBox(node);
+                foreach (SimpleRectNode node in collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
+                    drawSelectedCollisionBox(node);
             }
             else if (selectedMode == SELECTEDMODE.HURT_ROOT)
             {
                 foreach (SimpleRectNode node in collisionFrameData.HurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
-                    DrawSelectedCollisionBox(node);
+                    drawSelectedCollisionBox(node);
             }
             else if (selectedMode == SELECTEDMODE.HIT_BOX)
             {
-                DrawSelectedCollisionBox(collisionFrameData.HitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
+                drawSelectedCollisionBox(collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
             }
             else if (selectedMode == SELECTEDMODE.HURT_BOX)
             {
-                DrawSelectedCollisionBox(collisionFrameData.HurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
+                drawSelectedCollisionBox(collisionFrameData.HurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
             }
             else if (selectedMode == SELECTEDMODE.CHAR_COLLIDER)
             {
-                CharacterCollider collider = collisionFrameData.CharacterColliderFrameData[selectedKeyFrame];
+                CharacterCollider collider = collisionFrameData.characterColliderFrameData[selectedKeyFrame];
                 SimpleRect rect = collider.WithOffset(OriginPoint);
                 ssr.DrawCharacterCollider(collider, OriginPoint, Color.Yellow);
             }
@@ -154,15 +154,15 @@ namespace FightingEditor
 
         private void DrawCharacterCollider(int keyFrame)
         {
-            if (collisionFrameData.CharacterColliderFrameData.ContainsKey(keyFrame))
-                ssr.DrawCharacterCollider(collisionFrameData.CharacterColliderFrameData[keyFrame], OriginPoint, null);
+            if (collisionFrameData.characterColliderFrameData.ContainsKey(keyFrame))
+                ssr.DrawCharacterCollider(collisionFrameData.characterColliderFrameData[keyFrame], OriginPoint, null);
         }
 
-        private void DrawSelectedCollisionBox(SimpleRectNode node)
+        private void drawSelectedCollisionBox(SimpleRectNode node)
         {
-            if (collisionFrameData.CharacterColliderFrameData.ContainsKey(selectedKeyFrame))
+            if (collisionFrameData.characterColliderFrameData.ContainsKey(selectedKeyFrame))
             {
-                SimpleRect rect = node.WithOffset(collisionFrameData.CharacterColliderFrameData[selectedKeyFrame].GetOrigin() + OriginPoint);
+                SimpleRect rect = node.WithOffset(collisionFrameData.characterColliderFrameData[selectedKeyFrame].GetOrigin() + OriginPoint);
                 ssr.DrawRect(rect.TopLeft, rect.BottomRight, Color.Yellow, false, 2);
             }
         }
@@ -197,14 +197,14 @@ namespace FightingEditor
             //TODO: add some logic for root motion code
             if (textures.Count == 1)
             {
-                collisionFrameData.CharacterColliderFrameData.Add(
+                collisionFrameData.characterColliderFrameData.Add(
                     textures.Count - 1, new CharacterCollider(new Point(), new Point(tex.Width, tex.Height)));
             }
             else
             {
-                CharacterCollider previous = collisionFrameData.CharacterColliderFrameData[textures.Count - 2];
+                CharacterCollider previous = collisionFrameData.characterColliderFrameData[textures.Count - 2];
                 CharacterCollider toAdd = new CharacterCollider(previous);
-                collisionFrameData.CharacterColliderFrameData.Add(
+                collisionFrameData.characterColliderFrameData.Add(
                     textures.Count - 1, toAdd);
             }
 
@@ -216,7 +216,7 @@ namespace FightingEditor
             keyFrameLengths.RemoveAt(index);
             textures.RemoveAt(index);
             collisionFrameData.HurtBoxKeyFrameData.Remove(index);
-            collisionFrameData.HitBoxKeyFrameData.Remove(index);
+            collisionFrameData.hitBoxKeyFrameData.Remove(index);
             InitAnimator();
         }
 
@@ -242,19 +242,19 @@ namespace FightingEditor
 
         public void AddRootHitBox(int keyFrame, HitBoxData data)
         {
-            if (collisionFrameData.HitBoxKeyFrameData.ContainsKey(keyFrame))
+            if (collisionFrameData.hitBoxKeyFrameData.ContainsKey(keyFrame))
             {
-                collisionFrameData.HitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode(data));
+                collisionFrameData.hitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode(data));
             }
             else
             {
-                collisionFrameData.HitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode(data) });
+                collisionFrameData.hitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode(data) });
             }
         }
 
         public void AddHitBox(int keyFrame, int rootIndex, int top, int left, int bottom, int right)
         {
-            collisionFrameData.HitBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
+            collisionFrameData.hitBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
         }
 
         public void DeleteHitBox()
@@ -334,7 +334,7 @@ namespace FightingEditor
 
         public void ReInitHitBoxRoot(HitBoxData newData)
         {
-            collisionFrameData.HitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData = newData;
+            collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData = newData;
         }
 
         public void ReInitHurtBoxRoot(HurtBoxData newData)
@@ -345,18 +345,18 @@ namespace FightingEditor
         public SimpleRect GetSelectedCollisionBox()
         {
             if (selectedMode == SELECTEDMODE.HIT_BOX)
-                return collisionFrameData.HitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
+                return collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
             else if (selectedMode == SELECTEDMODE.HURT_BOX)
                 return collisionFrameData.HurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
             else if (selectedMode == SELECTEDMODE.CHAR_COLLIDER)
-                return collisionFrameData.CharacterColliderFrameData[selectedKeyFrame];
+                return collisionFrameData.characterColliderFrameData[selectedKeyFrame];
             else
                 throw new NotImplementedException();
         }
 
         public HitBoxData GetHitboxRootData()
         {
-            return collisionFrameData.HitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData;
+            return collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData;
         }
 
         public HurtBoxData GetHurtboxRootData()

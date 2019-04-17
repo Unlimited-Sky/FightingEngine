@@ -242,7 +242,7 @@
             this.btnFirst.TabIndex = 0;
             this.btnFirst.Text = "First";
             this.btnFirst.UseVisualStyleBackColor = true;
-            this.btnFirst.Click += new System.EventHandler(this.BtnFirst_Click);
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // btnPrevious
             // 
@@ -252,7 +252,7 @@
             this.btnPrevious.TabIndex = 1;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
-            this.btnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnNext
             // 
@@ -262,7 +262,7 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnLast
             // 
@@ -272,7 +272,7 @@
             this.btnLast.TabIndex = 3;
             this.btnLast.Text = "Last";
             this.btnLast.UseVisualStyleBackColor = true;
-            this.btnLast.Click += new System.EventHandler(this.BtnLast_Click);
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
             // btnPlayPause
             // 
@@ -282,7 +282,7 @@
             this.btnPlayPause.TabIndex = 4;
             this.btnPlayPause.Text = "Play / Pause";
             this.btnPlayPause.UseVisualStyleBackColor = true;
-            this.btnPlayPause.Click += new System.EventHandler(this.BtnPlayPause_Click);
+            this.btnPlayPause.Click += new System.EventHandler(this.btnPlayPause_Click);
             // 
             // animScrubber
             // 
@@ -292,7 +292,7 @@
             this.animScrubber.Size = new System.Drawing.Size(755, 45);
             this.animScrubber.TabIndex = 5;
             this.animScrubber.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.animScrubber.Scroll += new System.EventHandler(this.AnimScrubber_Scroll);
+            this.animScrubber.Scroll += new System.EventHandler(this.animScrubber_Scroll);
             // 
             // tableLayoutPanel9
             // 
@@ -506,7 +506,7 @@
             this.treeImages.Name = "treeImages";
             this.treeImages.Size = new System.Drawing.Size(163, 116);
             this.treeImages.TabIndex = 11;
-            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeImages_AfterSelect);
+            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
             // 
             // flowLayoutPanel5
             // 
@@ -529,7 +529,7 @@
             this.btnAddImage.TabIndex = 6;
             this.btnAddImage.Text = "Add Image";
             this.btnAddImage.UseVisualStyleBackColor = true;
-            this.btnAddImage.Click += new System.EventHandler(this.BtnAddImage_Click);
+            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
             // 
             // btnRemoveImage
             // 
@@ -539,7 +539,7 @@
             this.btnRemoveImage.TabIndex = 7;
             this.btnRemoveImage.Text = "Remove Image";
             this.btnRemoveImage.UseVisualStyleBackColor = true;
-            this.btnRemoveImage.Click += new System.EventHandler(this.BtnRemoveImage_Click);
+            this.btnRemoveImage.Click += new System.EventHandler(this.btnRemoveImage_Click);
             // 
             // btnMoveUp
             // 
@@ -549,7 +549,7 @@
             this.btnMoveUp.TabIndex = 8;
             this.btnMoveUp.Text = "Move Up";
             this.btnMoveUp.UseVisualStyleBackColor = true;
-            this.btnMoveUp.Click += new System.EventHandler(this.BtnMoveUp_Click);
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
@@ -559,7 +559,7 @@
             this.btnMoveDown.TabIndex = 9;
             this.btnMoveDown.Text = "Move Down";
             this.btnMoveDown.UseVisualStyleBackColor = true;
-            this.btnMoveDown.Click += new System.EventHandler(this.BtnMoveDown_Click);
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // tableLayoutPanel12
             // 
@@ -684,7 +684,7 @@
             0,
             0,
             0});
-            this.numericKeyFrameLength.ValueChanged += new System.EventHandler(this.NumericKeyFrameLength_ValueChanged);
+            this.numericKeyFrameLength.ValueChanged += new System.EventHandler(this.numericKeyFrameLength_ValueChanged);
             // 
             // cmbAnimType
             // 
@@ -755,7 +755,7 @@
             this.chkColliderDisabled.TabIndex = 11;
             this.chkColliderDisabled.Text = "Collider Disabled";
             this.chkColliderDisabled.UseVisualStyleBackColor = true;
-            this.chkColliderDisabled.CheckedChanged += new System.EventHandler(this.ChkColliderDisabled_CheckedChanged);
+            this.chkColliderDisabled.CheckedChanged += new System.EventHandler(this.chkColliderDisabled_CheckedChanged);
             // 
             // txtKeyframeTags
             // 
@@ -836,7 +836,7 @@
             this.treeCollisions.Name = "treeCollisions";
             this.treeCollisions.Size = new System.Drawing.Size(387, 365);
             this.treeCollisions.TabIndex = 1;
-            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeCollisions_AfterSelect);
+            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
             // 
             // panel1
             // 
@@ -888,7 +888,7 @@
             this.btnSelectCollider.TabIndex = 14;
             this.btnSelectCollider.Text = "Select Collider";
             this.btnSelectCollider.UseVisualStyleBackColor = true;
-            this.btnSelectCollider.Click += new System.EventHandler(this.BtnSelectCollider_Click);
+            this.btnSelectCollider.Click += new System.EventHandler(this.btnSelectCollider_Click);
             // 
             // btnAddRootHitbox
             // 
@@ -899,7 +899,7 @@
             this.btnAddRootHitbox.TabIndex = 0;
             this.btnAddRootHitbox.Text = "Add Root Hitbox";
             this.btnAddRootHitbox.UseVisualStyleBackColor = true;
-            this.btnAddRootHitbox.Click += new System.EventHandler(this.BtnAddRootHitbox_Click);
+            this.btnAddRootHitbox.Click += new System.EventHandler(this.btnAddRootHitbox_Click);
             // 
             // btnAddHitbox
             // 
@@ -910,7 +910,7 @@
             this.btnAddHitbox.TabIndex = 1;
             this.btnAddHitbox.Text = "Add Hitbox";
             this.btnAddHitbox.UseVisualStyleBackColor = true;
-            this.btnAddHitbox.Click += new System.EventHandler(this.BtnAddHitbox_Click);
+            this.btnAddHitbox.Click += new System.EventHandler(this.btnAddHitbox_Click);
             // 
             // btnDeleteHitbox
             // 
@@ -921,7 +921,7 @@
             this.btnDeleteHitbox.TabIndex = 2;
             this.btnDeleteHitbox.Text = "Delete Hitbox";
             this.btnDeleteHitbox.UseVisualStyleBackColor = true;
-            this.btnDeleteHitbox.Click += new System.EventHandler(this.BtnDeleteHitbox_Click);
+            this.btnDeleteHitbox.Click += new System.EventHandler(this.btnDeleteHitbox_Click);
             // 
             // btnAddRootHurtbox
             // 
@@ -932,7 +932,7 @@
             this.btnAddRootHurtbox.TabIndex = 3;
             this.btnAddRootHurtbox.Text = "Add Root Hurtbox";
             this.btnAddRootHurtbox.UseVisualStyleBackColor = true;
-            this.btnAddRootHurtbox.Click += new System.EventHandler(this.BtnAddRootHurtbox_Click);
+            this.btnAddRootHurtbox.Click += new System.EventHandler(this.btnAddRootHurtbox_Click);
             // 
             // btnAddHurtbox
             // 
@@ -943,7 +943,7 @@
             this.btnAddHurtbox.TabIndex = 4;
             this.btnAddHurtbox.Text = "Add Hurtbox";
             this.btnAddHurtbox.UseVisualStyleBackColor = true;
-            this.btnAddHurtbox.Click += new System.EventHandler(this.BtnAddHurtbox_Click);
+            this.btnAddHurtbox.Click += new System.EventHandler(this.btnAddHurtbox_Click);
             // 
             // btnDeleteHurtbox
             // 
@@ -954,7 +954,7 @@
             this.btnDeleteHurtbox.TabIndex = 5;
             this.btnDeleteHurtbox.Text = "Delete Hurtbox";
             this.btnDeleteHurtbox.UseVisualStyleBackColor = true;
-            this.btnDeleteHurtbox.Click += new System.EventHandler(this.BtnDeleteHurtbox_Click);
+            this.btnDeleteHurtbox.Click += new System.EventHandler(this.btnDeleteHurtbox_Click);
             // 
             // label11
             // 
@@ -1013,7 +1013,7 @@
             this.numericLeft.Name = "numericLeft";
             this.numericLeft.Size = new System.Drawing.Size(120, 20);
             this.numericLeft.TabIndex = 10;
-            this.numericLeft.ValueChanged += new System.EventHandler(this.NumericLeft_ValueChanged);
+            this.numericLeft.ValueChanged += new System.EventHandler(this.numericLeft_ValueChanged);
             // 
             // numericRight
             // 
@@ -1032,7 +1032,7 @@
             this.numericRight.Name = "numericRight";
             this.numericRight.Size = new System.Drawing.Size(120, 20);
             this.numericRight.TabIndex = 11;
-            this.numericRight.ValueChanged += new System.EventHandler(this.NumericRight_ValueChanged);
+            this.numericRight.ValueChanged += new System.EventHandler(this.numericRight_ValueChanged);
             // 
             // numericTop
             // 
@@ -1051,7 +1051,7 @@
             this.numericTop.Name = "numericTop";
             this.numericTop.Size = new System.Drawing.Size(120, 20);
             this.numericTop.TabIndex = 12;
-            this.numericTop.ValueChanged += new System.EventHandler(this.NumericTop_ValueChanged);
+            this.numericTop.ValueChanged += new System.EventHandler(this.numericTop_ValueChanged);
             // 
             // numericBottom
             // 
@@ -1070,7 +1070,7 @@
             this.numericBottom.Name = "numericBottom";
             this.numericBottom.Size = new System.Drawing.Size(120, 20);
             this.numericBottom.TabIndex = 13;
-            this.numericBottom.ValueChanged += new System.EventHandler(this.NumericBottom_ValueChanged);
+            this.numericBottom.ValueChanged += new System.EventHandler(this.numericBottom_ValueChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -1203,7 +1203,7 @@
             this.numericHitStop.Name = "numericHitStop";
             this.numericHitStop.Size = new System.Drawing.Size(116, 20);
             this.numericHitStop.TabIndex = 9;
-            this.numericHitStop.ValueChanged += new System.EventHandler(this.NumericHitStop_ValueChanged);
+            this.numericHitStop.ValueChanged += new System.EventHandler(this.numericHitStop_ValueChanged);
             // 
             // numericHitStun
             // 
@@ -1212,7 +1212,7 @@
             this.numericHitStun.Name = "numericHitStun";
             this.numericHitStun.Size = new System.Drawing.Size(116, 20);
             this.numericHitStun.TabIndex = 10;
-            this.numericHitStun.ValueChanged += new System.EventHandler(this.NumericHitStun_ValueChanged);
+            this.numericHitStun.ValueChanged += new System.EventHandler(this.numericHitStun_ValueChanged);
             // 
             // numericBlockStun
             // 
@@ -1221,7 +1221,7 @@
             this.numericBlockStun.Name = "numericBlockStun";
             this.numericBlockStun.Size = new System.Drawing.Size(116, 20);
             this.numericBlockStun.TabIndex = 11;
-            this.numericBlockStun.ValueChanged += new System.EventHandler(this.NumericBlockStun_ValueChanged);
+            this.numericBlockStun.ValueChanged += new System.EventHandler(this.numericBlockStun_ValueChanged);
             // 
             // numericDamage
             // 
@@ -1235,7 +1235,7 @@
             this.numericDamage.Name = "numericDamage";
             this.numericDamage.Size = new System.Drawing.Size(116, 20);
             this.numericDamage.TabIndex = 12;
-            this.numericDamage.ValueChanged += new System.EventHandler(this.NumericDamage_ValueChanged);
+            this.numericDamage.ValueChanged += new System.EventHandler(this.numericDamage_ValueChanged);
             // 
             // cmbHitType
             // 
@@ -1246,7 +1246,7 @@
             this.cmbHitType.Name = "cmbHitType";
             this.cmbHitType.Size = new System.Drawing.Size(116, 21);
             this.cmbHitType.TabIndex = 2;
-            this.cmbHitType.SelectedIndexChanged += new System.EventHandler(this.CmbHitType_SelectedIndexChanged);
+            this.cmbHitType.SelectedIndexChanged += new System.EventHandler(this.cmbHitType_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1309,7 +1309,7 @@
             this.cmbHitResult.Name = "cmbHitResult";
             this.cmbHitResult.Size = new System.Drawing.Size(121, 21);
             this.cmbHitResult.TabIndex = 1;
-            this.cmbHitResult.SelectedIndexChanged += new System.EventHandler(this.CmbHitResult_SelectedIndexChanged);
+            this.cmbHitResult.SelectedIndexChanged += new System.EventHandler(this.cmbHitResult_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -1330,7 +1330,7 @@
             this.cmbJuggleType.Name = "cmbJuggleType";
             this.cmbJuggleType.Size = new System.Drawing.Size(121, 21);
             this.cmbJuggleType.TabIndex = 3;
-            this.cmbJuggleType.SelectedIndexChanged += new System.EventHandler(this.CmbJuggleProperties_SelectedIndexChanged);
+            this.cmbJuggleType.SelectedIndexChanged += new System.EventHandler(this.cmbJuggleProperties_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -1346,17 +1346,18 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.30435F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.69565F));
-            this.tableLayoutPanel7.Controls.Add(this.chkWhiffCancel, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.label27, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.txtCancelRoute, 1, 1);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.chkWhiffCancel, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label27, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.txtCancelRoute, 1, 2);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
+            this.tableLayoutPanel7.RowCount = 3;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(230, 147);
             this.tableLayoutPanel7.TabIndex = 0;
@@ -1365,33 +1366,33 @@
             // 
             this.chkWhiffCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkWhiffCancel.AutoSize = true;
-            this.chkWhiffCancel.Location = new System.Drawing.Point(87, 16);
+            this.chkWhiffCancel.Location = new System.Drawing.Point(121, 45);
             this.chkWhiffCancel.Name = "chkWhiffCancel";
-            this.chkWhiffCancel.Size = new System.Drawing.Size(104, 17);
-            this.chkWhiffCancel.TabIndex = 5;
-            this.chkWhiffCancel.Text = "Cancel On Whiff";
+            this.chkWhiffCancel.Size = new System.Drawing.Size(102, 17);
+            this.chkWhiffCancel.TabIndex = 6;
+            this.chkWhiffCancel.Text = "Cancel on Whiff";
             this.chkWhiffCancel.UseVisualStyleBackColor = true;
-            this.chkWhiffCancel.CheckedChanged += new System.EventHandler(this.ChkWhiffCancel_CheckedChanged);
+            this.chkWhiffCancel.CheckedChanged += new System.EventHandler(this.chkDashCancel_CheckedChanged);
             // 
             // label27
             // 
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 85);
+            this.label27.Location = new System.Drawing.Point(35, 103);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(43, 26);
+            this.label27.Size = new System.Drawing.Size(77, 13);
             this.label27.TabIndex = 8;
             this.label27.Text = "Cancel Routes";
             // 
             // txtCancelRoute
             // 
             this.txtCancelRoute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCancelRoute.Location = new System.Drawing.Point(52, 52);
+            this.txtCancelRoute.Location = new System.Drawing.Point(118, 75);
             this.txtCancelRoute.Multiline = true;
             this.txtCancelRoute.Name = "txtCancelRoute";
-            this.txtCancelRoute.Size = new System.Drawing.Size(175, 92);
+            this.txtCancelRoute.Size = new System.Drawing.Size(109, 69);
             this.txtCancelRoute.TabIndex = 9;
-            this.txtCancelRoute.TextChanged += new System.EventHandler(this.TxtCancelRoute_TextChanged);
+            this.txtCancelRoute.TextChanged += new System.EventHandler(this.txtCancelRoute_TextChanged);
             // 
             // HurtPanel
             // 
@@ -1441,7 +1442,7 @@
             this.chkProjectileImmune.TabIndex = 1;
             this.chkProjectileImmune.Text = "Projectile Immunity";
             this.chkProjectileImmune.UseVisualStyleBackColor = true;
-            this.chkProjectileImmune.CheckedChanged += new System.EventHandler(this.ChkProjectileImmune_CheckedChanged);
+            this.chkProjectileImmune.CheckedChanged += new System.EventHandler(this.chkProjectileImmune_CheckedChanged);
             // 
             // chkLowImmune
             // 
@@ -1453,7 +1454,7 @@
             this.chkLowImmune.TabIndex = 2;
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
-            this.chkLowImmune.CheckedChanged += new System.EventHandler(this.ChkLowImmune_CheckedChanged);
+            this.chkLowImmune.CheckedChanged += new System.EventHandler(this.chkLowImmune_CheckedChanged);
             // 
             // renderPreview
             // 
@@ -1481,28 +1482,28 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.saveToolStripMenuItem.Text = "Save / Export";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -1538,14 +1539,14 @@
             this.rootOnlyToolStripMenuItem.Name = "rootOnlyToolStripMenuItem";
             this.rootOnlyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.rootOnlyToolStripMenuItem.Text = "Root Only";
-            this.rootOnlyToolStripMenuItem.Click += new System.EventHandler(this.RootOnlyToolStripMenuItem_Click);
+            this.rootOnlyToolStripMenuItem.Click += new System.EventHandler(this.rootOnlyToolStripMenuItem_Click);
             // 
             // rootAndChildrenToolStripMenuItem
             // 
             this.rootAndChildrenToolStripMenuItem.Name = "rootAndChildrenToolStripMenuItem";
             this.rootAndChildrenToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.rootAndChildrenToolStripMenuItem.Text = "Root and Children";
-            this.rootAndChildrenToolStripMenuItem.Click += new System.EventHandler(this.RootAndChildrenToolStripMenuItem_Click);
+            this.rootAndChildrenToolStripMenuItem.Click += new System.EventHandler(this.rootAndChildrenToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -1562,7 +1563,7 @@
             this.setBackgroundColorToolStripMenuItem.Name = "setBackgroundColorToolStripMenuItem";
             this.setBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.setBackgroundColorToolStripMenuItem.Text = "Set Background Color";
-            this.setBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.SetBackgroundColorToolStripMenuItem_Click);
+            this.setBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.setBackgroundColorToolStripMenuItem_Click);
             // 
             // showOriginToolStripMenuItem
             // 
@@ -1571,7 +1572,7 @@
             this.showOriginToolStripMenuItem.Name = "showOriginToolStripMenuItem";
             this.showOriginToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.showOriginToolStripMenuItem.Text = "Show Origin";
-            this.showOriginToolStripMenuItem.Click += new System.EventHandler(this.ShowOriginToolStripMenuItem_Click);
+            this.showOriginToolStripMenuItem.Click += new System.EventHandler(this.showOriginToolStripMenuItem_Click);
             // 
             // showCurrentFrameToolStripMenuItem
             // 
@@ -1580,7 +1581,7 @@
             this.showCurrentFrameToolStripMenuItem.Name = "showCurrentFrameToolStripMenuItem";
             this.showCurrentFrameToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.showCurrentFrameToolStripMenuItem.Text = "Show Current Frame";
-            this.showCurrentFrameToolStripMenuItem.Click += new System.EventHandler(this.ShowCurrentFrameToolStripMenuItem_Click);
+            this.showCurrentFrameToolStripMenuItem.Click += new System.EventHandler(this.showCurrentFrameToolStripMenuItem_Click);
             // 
             // FightingEditorForm
             // 
