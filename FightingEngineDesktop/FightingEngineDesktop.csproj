@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\Collision\CharacterCollider.cs" />
+    <Compile Include="Classes\Collision\CollisionFrameData.cs" />
     <Compile Include="Classes\Collision\CollisionRootNode.cs" />
     <Compile Include="Classes\Collision\HurtBoxRootNode.cs" />
     <Compile Include="Classes\Collision\HitBoxRootNode.cs" />

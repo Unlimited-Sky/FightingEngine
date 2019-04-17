@@ -17,7 +17,8 @@ namespace FightingEngine
 
         readonly Color _hitBoxColor = new Color(255, 0, 0);
         readonly Color _hurtBoxColor = new Color(0, 255, 0);
-        readonly Color _characterColliderColor = new Color(0, 0, 255);
+        readonly Color _characterColliderColor = new Color(50, 50, 255);
+        readonly int _characterColliderLength = 3;
         readonly float _alphaFill = 0.25f;
         readonly float _alphaOutline = 0.75f;
 
@@ -58,6 +59,16 @@ namespace FightingEngine
         {
             foreach (SimpleRect rect in hurtBoxRootNode.Children)
                 drawCollisionBox(rect.WithOffset(origin), _hurtBoxColor);
+        }
+
+        public void DrawCharacterCollider(CharacterCollider characterCollider, Point origin)
+        {
+            drawCollisionBox(characterCollider.WithOffset(origin), _characterColliderColor);
+
+            Point colliderOrigin = characterCollider.GetOrigin() + origin;
+            Point colliderOriginTop = colliderOrigin - new Point(0, _characterColliderLength);
+            Point colliderOriginBottom = colliderOrigin + new Point(0, _characterColliderLength);
+            DrawLine(colliderOriginBottom, colliderOriginTop, _characterColliderColor);
         }
 
         public void DrawCollision(CharacterCollider collider)

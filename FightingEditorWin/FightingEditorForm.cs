@@ -535,9 +535,9 @@ namespace FightingEditor
 
             int counter = 0;
 
-            if (renderPreview.hitBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
+            if (renderPreview.collisionFrameData.hitBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
             {
-                List<HitBoxRootNode> hitBoxRoots = renderPreview.hitBoxKeyFrameData[currentKeyFrameIndex];
+                List<HitBoxRootNode> hitBoxRoots = renderPreview.collisionFrameData.hitBoxKeyFrameData[currentKeyFrameIndex];
 
                 foreach (HitBoxRootNode hitBox in hitBoxRoots)
                 {
@@ -546,11 +546,11 @@ namespace FightingEditor
                 }
             }
 
-            if (renderPreview.hurtBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
+            if (renderPreview.collisionFrameData.hurtBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
             {
                 counter = 0;
 
-                List<HurtBoxRootNode> hurtBoxRoots = renderPreview.hurtBoxKeyFrameData[currentKeyFrameIndex];
+                List<HurtBoxRootNode> hurtBoxRoots = renderPreview.collisionFrameData.hurtBoxKeyFrameData[currentKeyFrameIndex];
 
                 foreach (HurtBoxRootNode hurtBox in hurtBoxRoots)
                 {

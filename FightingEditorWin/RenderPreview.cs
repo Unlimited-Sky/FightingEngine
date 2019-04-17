@@ -18,9 +18,7 @@ namespace FightingEditor
         public List<int> keyFrameLengths;
         public FightingEditorForm editorForm;
 
-        public Dictionary<int, List<HurtBoxRootNode>> hurtBoxKeyFrameData;
-        public Dictionary<int, List<HitBoxRootNode>> hitBoxKeyFrameData;
-        public CharacterCollider characterCollider;
+        public CollisionFrameData collisionFrameData;
 
         public SimpleShapeRenderer ssr;
 
@@ -35,7 +33,7 @@ namespace FightingEditor
         private int selectedIndex = 0;
         private int selectedKeyFrame = 0;
 
-        public Point CharacterPosition;
+        public Point OriginPoint;
 
         protected override void Initialize()
         {
@@ -49,10 +47,9 @@ namespace FightingEditor
 
             Editor.Cam.GetZoom = renderScale;
 
-            hitBoxKeyFrameData = new Dictionary<int, List<HitBoxRootNode>>();
-            hurtBoxKeyFrameData = new Dictionary<int, List<HurtBoxRootNode>>();
+            collisionFrameData = new CollisionFrameData();
 
-            CharacterPosition = new Point(Editor.graphics.Viewport.Width / 2, Editor.graphics.Viewport.Height / 2);
+            OriginPoint = new Point(Editor.graphics.Viewport.Width / 2, Editor.graphics.Viewport.Height / 2);
         }
 
         protected override void Update(GameTime gameTime)
@@ -79,9 +76,10 @@ namespace FightingEditor
             if (animator != null && animator.AnimData != null)
             {
                 int keyFrameIndex = animator.GetAnimKeyFrameIndex();
-                animator.Draw(Editor.spriteBatch, CharacterPosition.ToVector2());
+                animator.Draw(Editor.spriteBatch, OriginPoint.ToVector2());
 
                 DrawFrameCounter();
+                DrawCharacterCollider();
                 DrawCollisionBoxes(keyFrameIndex);
                 DrawSelectedCollisionBoxes();
             }
@@ -104,58 +102,75 @@ namespace FightingEditor
 
         private void DrawCollisionBoxes(int keyFrameIndex)
         {
-            if (hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
+            if (collisionFrameData.characterColliderFrameData.ContainsKey(selectedKeyFrame))
             {
-                foreach (HitBoxRootNode root in hitBoxKeyFrameData[keyFrameIndex])
-                    ssr.DrawCollisions(root, CharacterPosition);
-            }
+                Point origin = collisionFrameData.characterColliderFrameData[selectedKeyFrame].GetOrigin() + OriginPoint;
 
-            if (hurtBoxKeyFrameData.ContainsKey(keyFrameIndex))
-            {
-                foreach (HurtBoxRootNode root in hurtBoxKeyFrameData[keyFrameIndex])
-                    ssr.DrawCollisions(root, CharacterPosition);
+                if (collisionFrameData.hitBoxKeyFrameData.ContainsKey(keyFrameIndex))
+                {
+                    foreach (HitBoxRootNode root in collisionFrameData.hitBoxKeyFrameData[keyFrameIndex])
+                        ssr.DrawCollisions(root, origin);
+                }
+
+                if (collisionFrameData.hurtBoxKeyFrameData.ContainsKey(keyFrameIndex))
+                {
+                    foreach (HurtBoxRootNode root in collisionFrameData.hurtBoxKeyFrameData[keyFrameIndex])
+                        ssr.DrawCollisions(root, origin);
+                }
             }
         }
         
         private void DrawSelectedCollisionBoxes()
         {
-            //TODO THIS FUNCTION
             if (selectedMode == SELECTEDMODE.NONE)
                 return;
             else if (selectedMode == SELECTEDMODE.HIT_ROOT)
             {
-                foreach (SimpleRectNode node in hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
+                foreach (SimpleRectNode node in collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
                     drawSelectedCollisionBox(node);
             }
             else if (selectedMode == SELECTEDMODE.HURT_ROOT)
             {
-                foreach (SimpleRectNode node in hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
+                foreach (SimpleRectNode node in collisionFrameData.hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children)
                     drawSelectedCollisionBox(node);
             }
             else if (selectedMode == SELECTEDMODE.HIT_BOX)
             {
-                drawSelectedCollisionBox(hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
+                drawSelectedCollisionBox(collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
             }
             else if (selectedMode == SELECTEDMODE.HURT_BOX)
             {
-                drawSelectedCollisionBox(hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
+                drawSelectedCollisionBox(collisionFrameData.hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex]);
             }
+            else if (selectedMode == SELECTEDMODE.CHAR_COLLIDER)
+            {
+                //TODO
+            }
+        }
+
+        private void DrawCharacterCollider()
+        {
+            if (collisionFrameData.characterColliderFrameData.ContainsKey(selectedKeyFrame))
+                ssr.DrawCharacterCollider(collisionFrameData.characterColliderFrameData[selectedKeyFrame], OriginPoint);
         }
 
         private void drawSelectedCollisionBox(SimpleRectNode node)
         {
-            SimpleRect rect = node.WithOffset(CharacterPosition);
-            ssr.DrawRect(rect.TopLeft, rect.BottomRight, Color.Yellow, false, 2);
+            if (collisionFrameData.characterColliderFrameData.ContainsKey(selectedKeyFrame))
+            {
+                SimpleRect rect = node.WithOffset(collisionFrameData.characterColliderFrameData[selectedKeyFrame].GetOrigin() + OriginPoint);
+                ssr.DrawRect(rect.TopLeft, rect.BottomRight, Color.Yellow, false, 2);
+            }
         }
 
         private void DrawOrigin()
         {
             if (ShowOrigin)
             {
-                ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y),
-                    new Point(CharacterPosition.X + AxisLength, CharacterPosition.Y), Color.Yellow);
-                ssr.DrawLine(new Point(CharacterPosition.X, CharacterPosition.Y + AxisLength),
-                    new Point(CharacterPosition.X, CharacterPosition.Y), Color.Yellow);
+                ssr.DrawLine(new Point(OriginPoint.X, OriginPoint.Y),
+                    new Point(OriginPoint.X + AxisLength, OriginPoint.Y), Color.Yellow);
+                ssr.DrawLine(new Point(OriginPoint.X, OriginPoint.Y + AxisLength),
+                    new Point(OriginPoint.X, OriginPoint.Y), Color.Yellow);
             }
         }
 
@@ -173,6 +188,7 @@ namespace FightingEditor
             FileStream stream = new FileStream(filePath, FileMode.Open);
             textures.Add(Texture2D.FromStream(Editor.graphics, stream));
             keyFrameLengths.Add(3);
+            collisionFrameData.characterColliderFrameData.Add(textures.Count - 1, new CharacterCollider());
             InitAnimator();
         }
 
@@ -180,8 +196,8 @@ namespace FightingEditor
         {
             keyFrameLengths.RemoveAt(index);
             textures.RemoveAt(index);
-            hurtBoxKeyFrameData.Remove(index);
-            hitBoxKeyFrameData.Remove(index);
+            collisionFrameData.hurtBoxKeyFrameData.Remove(index);
+            collisionFrameData.hitBoxKeyFrameData.Remove(index);
             InitAnimator();
         }
 
@@ -207,19 +223,19 @@ namespace FightingEditor
 
         public void AddRootHitBox(int keyFrame, HitBoxData data)
         {
-            if (hitBoxKeyFrameData.ContainsKey(keyFrame))
+            if (collisionFrameData.hitBoxKeyFrameData.ContainsKey(keyFrame))
             {
-                hitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode(data));
+                collisionFrameData.hitBoxKeyFrameData[keyFrame].Add(new HitBoxRootNode(data));
             }
             else
             {
-                hitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode(data) });
+                collisionFrameData.hitBoxKeyFrameData.Add(keyFrame, new List<HitBoxRootNode> { new HitBoxRootNode(data) });
             }
         }
 
         public void AddHitBox(int keyFrame, int rootIndex, int top, int left, int bottom, int right)
         {
-            hitBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
+            collisionFrameData.hitBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
         }
 
         public void DeleteHitBox()
@@ -229,19 +245,19 @@ namespace FightingEditor
 
         public void AddRootHurtBox(int keyFrame, HurtBoxData data)
         {
-            if (hurtBoxKeyFrameData.ContainsKey(keyFrame))
+            if (collisionFrameData.hurtBoxKeyFrameData.ContainsKey(keyFrame))
             {
-                hurtBoxKeyFrameData[keyFrame].Add(new HurtBoxRootNode(data));
+                collisionFrameData.hurtBoxKeyFrameData[keyFrame].Add(new HurtBoxRootNode(data));
             }
             else
             {
-                hurtBoxKeyFrameData.Add(keyFrame, new List<HurtBoxRootNode> { new HurtBoxRootNode(data) });
+                collisionFrameData.hurtBoxKeyFrameData.Add(keyFrame, new List<HurtBoxRootNode> { new HurtBoxRootNode(data) });
             }
         }
 
         public void AddHurtBox(int keyFrame, int rootIndex, int top, int left, int bottom, int right)
         {
-            hurtBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
+            collisionFrameData.hurtBoxKeyFrameData[keyFrame][rootIndex].AddChild(top, left, bottom, right);
         }
 
         public void DeleteHurtBox()
@@ -293,32 +309,32 @@ namespace FightingEditor
 
         public void ReInitHitBoxRoot(HitBoxData newData)
         {
-            hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData = newData;
+            collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData = newData;
         }
 
         public void ReInitHurtBoxRoot(HurtBoxData newData)
         {
-            hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HurtBoxData = newData;
+            collisionFrameData.hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HurtBoxData = newData;
         }
 
         public SimpleRectNode GetSelectedCollisionBoxNode()
         {
             if (selectedMode == SELECTEDMODE.HIT_BOX)
-                return hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
+                return collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
             else if (selectedMode == SELECTEDMODE.HURT_BOX)
-                return hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
+                return collisionFrameData.hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].Children[selectedIndex];
             else
                 throw new NotImplementedException();
         }
 
         public HitBoxData GetHitboxRootData()
         {
-            return hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData;
+            return collisionFrameData.hitBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HitBoxData;
         }
 
         public HurtBoxData GetHurtboxRootData()
         {
-            return hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HurtBoxData;
+            return collisionFrameData.hurtBoxKeyFrameData[selectedKeyFrame][selectedRootIndex].HurtBoxData;
         }
 
     }
