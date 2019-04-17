@@ -155,6 +155,12 @@
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.label37 = new System.Windows.Forms.Label();
             this.dataMoveList = new System.Windows.Forms.DataGridView();
+            this.AnimName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddAnimation = new System.Windows.Forms.Button();
+            this.btnRemoveAnim = new System.Windows.Forms.Button();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label33 = new System.Windows.Forms.Label();
@@ -164,12 +170,6 @@
             this.txtCharName = new System.Windows.Forms.TextBox();
             this.numericHP = new System.Windows.Forms.NumericUpDown();
             this.tabAnimationEditor = new System.Windows.Forms.TabPage();
-            this.btnAddAnimation = new System.Windows.Forms.Button();
-            this.btnRemoveAnim = new System.Windows.Forms.Button();
-            this.AnimName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.AnimPanel.SuspendLayout();
@@ -1724,6 +1724,46 @@
             this.dataMoveList.TabIndex = 1;
             this.dataMoveList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMoveList_CellContentClick);
             // 
+            // AnimName
+            // 
+            this.AnimName.HeaderText = "Animation Name";
+            this.AnimName.Name = "AnimName";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Type";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Key Frames";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Total Frames";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // btnAddAnimation
+            // 
+            this.btnAddAnimation.Location = new System.Drawing.Point(3, 351);
+            this.btnAddAnimation.Name = "btnAddAnimation";
+            this.btnAddAnimation.Size = new System.Drawing.Size(86, 23);
+            this.btnAddAnimation.TabIndex = 2;
+            this.btnAddAnimation.Text = "Add Animation";
+            this.btnAddAnimation.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveAnim
+            // 
+            this.btnRemoveAnim.Location = new System.Drawing.Point(95, 351);
+            this.btnRemoveAnim.Name = "btnRemoveAnim";
+            this.btnRemoveAnim.Size = new System.Drawing.Size(105, 23);
+            this.btnRemoveAnim.TabIndex = 3;
+            this.btnRemoveAnim.Text = "Remove Animation";
+            this.btnRemoveAnim.UseVisualStyleBackColor = true;
+            // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1812,46 +1852,6 @@
             this.tabAnimationEditor.Size = new System.Drawing.Size(1608, 847);
             this.tabAnimationEditor.TabIndex = 0;
             this.tabAnimationEditor.Text = "Animation Editor";
-            // 
-            // btnAddAnimation
-            // 
-            this.btnAddAnimation.Location = new System.Drawing.Point(3, 351);
-            this.btnAddAnimation.Name = "btnAddAnimation";
-            this.btnAddAnimation.Size = new System.Drawing.Size(86, 23);
-            this.btnAddAnimation.TabIndex = 2;
-            this.btnAddAnimation.Text = "Add Animation";
-            this.btnAddAnimation.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoveAnim
-            // 
-            this.btnRemoveAnim.Location = new System.Drawing.Point(95, 351);
-            this.btnRemoveAnim.Name = "btnRemoveAnim";
-            this.btnRemoveAnim.Size = new System.Drawing.Size(105, 23);
-            this.btnRemoveAnim.TabIndex = 3;
-            this.btnRemoveAnim.Text = "Remove Animation";
-            this.btnRemoveAnim.UseVisualStyleBackColor = true;
-            // 
-            // AnimName
-            // 
-            this.AnimName.HeaderText = "Animation Name";
-            this.AnimName.Name = "AnimName";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Type";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Key Frames";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Total Frames";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // FightingEditorForm
             // 
