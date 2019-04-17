@@ -124,7 +124,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.chkWhiffCancel = new System.Windows.Forms.CheckBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.txtCancelRoute = new System.Windows.Forms.TextBox();
+            this.chklstCancelRoutes = new System.Windows.Forms.CheckedListBox();
             this.HurtPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -146,7 +146,23 @@
             this.showCurrentFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabCharacterEditor = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label37 = new System.Windows.Forms.Label();
+            this.dataMoveList = new System.Windows.Forms.DataGridView();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtCharName = new System.Windows.Forms.TextBox();
+            this.numericHP = new System.Windows.Forms.NumericUpDown();
             this.tabAnimationEditor = new System.Windows.Forms.TabPage();
+            this.AnimName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.treeImages = new FightingEditor.EditorTreeView();
             this.treeCollisions = new FightingEditor.EditorTreeView();
             this.renderPreview = new FightingEditor.RenderPreview();
@@ -189,6 +205,14 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl2.SuspendLayout();
+            this.tabCharacterEditor.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.flowLayoutPanel9.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataMoveList)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericHP)).BeginInit();
             this.tabAnimationEditor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1343,7 +1367,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.82609F));
             this.tableLayoutPanel7.Controls.Add(this.chkWhiffCancel, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.label27, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.txtCancelRoute, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.chklstCancelRoutes, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -1376,15 +1400,14 @@
             this.label27.TabIndex = 8;
             this.label27.Text = "Cancel Routes";
             // 
-            // txtCancelRoute
+            // chklstCancelRoutes
             // 
-            this.txtCancelRoute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCancelRoute.Location = new System.Drawing.Point(53, 27);
-            this.txtCancelRoute.Multiline = true;
-            this.txtCancelRoute.Name = "txtCancelRoute";
-            this.txtCancelRoute.Size = new System.Drawing.Size(174, 117);
-            this.txtCancelRoute.TabIndex = 9;
-            this.txtCancelRoute.TextChanged += new System.EventHandler(this.txtCancelRoute_TextChanged);
+            this.chklstCancelRoutes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chklstCancelRoutes.FormattingEnabled = true;
+            this.chklstCancelRoutes.Location = new System.Drawing.Point(53, 27);
+            this.chklstCancelRoutes.Name = "chklstCancelRoutes";
+            this.chklstCancelRoutes.Size = new System.Drawing.Size(174, 117);
+            this.chklstCancelRoutes.TabIndex = 9;
             // 
             // HurtPanel
             // 
@@ -1539,8 +1562,8 @@
             this.showOriginToolStripMenuItem,
             this.showCurrentFrameToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
+            this.viewToolStripMenuItem.Text = "Animation Editor";
             // 
             // setBackgroundColorToolStripMenuItem
             // 
@@ -1581,12 +1604,162 @@
             // tabCharacterEditor
             // 
             this.tabCharacterEditor.BackColor = System.Drawing.SystemColors.Control;
+            this.tabCharacterEditor.Controls.Add(this.tableLayoutPanel14);
             this.tabCharacterEditor.Location = new System.Drawing.Point(4, 22);
             this.tabCharacterEditor.Name = "tabCharacterEditor";
             this.tabCharacterEditor.Padding = new System.Windows.Forms.Padding(3);
             this.tabCharacterEditor.Size = new System.Drawing.Size(1608, 847);
             this.tabCharacterEditor.TabIndex = 1;
             this.tabCharacterEditor.Text = "Character Editor";
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.flowLayoutPanel9, 1, 1);
+            this.tableLayoutPanel14.Controls.Add(this.flowLayoutPanel8, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.flowLayoutPanel4, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 2;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(1602, 841);
+            this.tableLayoutPanel14.TabIndex = 0;
+            // 
+            // flowLayoutPanel9
+            // 
+            this.flowLayoutPanel9.Controls.Add(this.label34);
+            this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel9.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(804, 423);
+            this.flowLayoutPanel9.Name = "flowLayoutPanel9";
+            this.flowLayoutPanel9.Size = new System.Drawing.Size(795, 415);
+            this.flowLayoutPanel9.TabIndex = 4;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(3, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(94, 13);
+            this.label34.TabIndex = 0;
+            this.label34.Text = "Animation Preview";
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.Controls.Add(this.label37);
+            this.flowLayoutPanel8.Controls.Add(this.dataMoveList);
+            this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel8.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 423);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(795, 415);
+            this.flowLayoutPanel8.TabIndex = 3;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(3, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(110, 13);
+            this.label37.TabIndex = 0;
+            this.label37.Text = "Move / Animation List";
+            // 
+            // dataMoveList
+            // 
+            this.dataMoveList.AllowUserToAddRows = false;
+            this.dataMoveList.AllowUserToDeleteRows = false;
+            this.dataMoveList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataMoveList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AnimName,
+            this.Column1});
+            this.dataMoveList.Location = new System.Drawing.Point(3, 16);
+            this.dataMoveList.Name = "dataMoveList";
+            this.dataMoveList.Size = new System.Drawing.Size(358, 150);
+            this.dataMoveList.TabIndex = 1;
+            this.dataMoveList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMoveList_CellContentClick);
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(804, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(795, 414);
+            this.flowLayoutPanel4.TabIndex = 2;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.label33);
+            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel15);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(795, 414);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(3, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(54, 13);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "Basic Info";
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 2;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Controls.Add(this.label31, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.label32, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.txtCharName, 1, 0);
+            this.tableLayoutPanel15.Controls.Add(this.numericHP, 1, 1);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 2;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(347, 100);
+            this.tableLayoutPanel15.TabIndex = 0;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(3, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(35, 13);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Name";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(3, 50);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(22, 13);
+            this.label32.TabIndex = 1;
+            this.label32.Text = "HP";
+            // 
+            // txtCharName
+            // 
+            this.txtCharName.Location = new System.Drawing.Point(176, 3);
+            this.txtCharName.Name = "txtCharName";
+            this.txtCharName.Size = new System.Drawing.Size(100, 20);
+            this.txtCharName.TabIndex = 2;
+            // 
+            // numericHP
+            // 
+            this.numericHP.Location = new System.Drawing.Point(176, 53);
+            this.numericHP.Name = "numericHP";
+            this.numericHP.Size = new System.Drawing.Size(120, 20);
+            this.numericHP.TabIndex = 3;
             // 
             // tabAnimationEditor
             // 
@@ -1598,6 +1771,16 @@
             this.tabAnimationEditor.Size = new System.Drawing.Size(1608, 847);
             this.tabAnimationEditor.TabIndex = 0;
             this.tabAnimationEditor.Text = "Animation Editor";
+            // 
+            // AnimName
+            // 
+            this.AnimName.HeaderText = "AnimName";
+            this.AnimName.Name = "AnimName";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Type";
+            this.Column1.Name = "Column1";
             // 
             // treeImages
             // 
@@ -1700,6 +1883,18 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
+            this.tabCharacterEditor.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.flowLayoutPanel9.ResumeLayout(false);
+            this.flowLayoutPanel9.PerformLayout();
+            this.flowLayoutPanel8.ResumeLayout(false);
+            this.flowLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataMoveList)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericHP)).EndInit();
             this.tabAnimationEditor.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1805,7 +2000,6 @@
         private System.Windows.Forms.NumericUpDown numericKeyFrameLength;
         private System.Windows.Forms.Button btnSelectCollider;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox txtCancelRoute;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
@@ -1829,6 +2023,23 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabCharacterEditor;
         private System.Windows.Forms.TabPage tabAnimationEditor;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txtCharName;
+        private System.Windows.Forms.NumericUpDown numericHP;
+        private System.Windows.Forms.CheckedListBox chklstCancelRoutes;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DataGridView dataMoveList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AnimName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
     }
 }
 

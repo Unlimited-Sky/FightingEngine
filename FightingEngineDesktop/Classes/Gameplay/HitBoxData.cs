@@ -21,11 +21,11 @@ namespace FightingEngine.Gameplay
 
         //Cancels
         public bool WhiffCancel;
-        public string CancelRoutes;
+        public List<string> CancelRoutes;
 
         public HitBoxData(HITTYPE hitType, int hitStop, int hitStun, int blockStun, int damage, 
             HITRESULT hitResult, JUGGLETYPE juggleType,
-            bool whiffCancel, string cancelRoutes)
+            bool whiffCancel, List<string> cancelRoutes)
         {
             HitType = hitType;
             HitStop = hitStop;

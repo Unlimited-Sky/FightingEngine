@@ -382,7 +382,7 @@ namespace FightingEditor
                 hitType, (int)numericHitStop.Value, (int)numericHitStun.Value, (int)numericBlockStun.Value, (int)numericDamage.Value,
                 hitResult, juggleProperties,
                 chkWhiffCancel.Checked,
-                txtCancelRoute.Text);
+                chklstCancelRoutes.CheckedItems.Cast<string>().ToList());
 
             return data;
         }
@@ -767,7 +767,8 @@ namespace FightingEditor
             cmbJuggleType.SelectedIndex = (int)data.JuggleType;
 
             chkWhiffCancel.Checked = data.WhiffCancel;
-            txtCancelRoute.Text = data.CancelRoutes;
+            // todo populate this list with moves
+            //chklstCancelRoutes.Items ... 
 
             enableHitboxRootEvents();
         }
@@ -783,8 +784,7 @@ namespace FightingEditor
             cmbHitResult.SelectedValueChanged -= cmbHitResult_SelectedIndexChanged;
             cmbJuggleType.SelectedValueChanged -= cmbJuggleProperties_SelectedIndexChanged;
 
-            chkWhiffCancel.CheckedChanged -= chkDashCancel_CheckedChanged;
-            txtCancelRoute.TextChanged -= txtCancelRoute_TextChanged;
+            chkWhiffCancel.CheckedChanged -= chkDashCancel_CheckedChanged;   
         }
 
         private void enableHitboxRootEvents()
@@ -799,7 +799,6 @@ namespace FightingEditor
             cmbJuggleType.SelectedValueChanged += cmbJuggleProperties_SelectedIndexChanged;
 
             chkWhiffCancel.CheckedChanged += chkDashCancel_CheckedChanged;
-            txtCancelRoute.TextChanged += txtCancelRoute_TextChanged;
         }
 
         private void refreshHurtboxRootData()
@@ -892,5 +891,9 @@ namespace FightingEditor
             updateKeyFrameData();
         }
 
+        private void dataMoveList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
