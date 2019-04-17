@@ -54,6 +54,7 @@
             this.ImagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.treeImages = new FightingEditor.EditorTreeView();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.btnRemoveImage = new System.Windows.Forms.Button();
@@ -81,6 +82,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.treeCollisions = new FightingEditor.EditorTreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSelectCollider = new System.Windows.Forms.Button();
@@ -130,6 +132,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -161,11 +164,12 @@
             this.txtCharName = new System.Windows.Forms.TextBox();
             this.numericHP = new System.Windows.Forms.NumericUpDown();
             this.tabAnimationEditor = new System.Windows.Forms.TabPage();
+            this.btnAddAnimation = new System.Windows.Forms.Button();
+            this.btnRemoveAnim = new System.Windows.Forms.Button();
             this.AnimName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.treeImages = new FightingEditor.EditorTreeView();
-            this.treeCollisions = new FightingEditor.EditorTreeView();
-            this.renderPreview = new FightingEditor.RenderPreview();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.AnimPanel.SuspendLayout();
@@ -530,6 +534,18 @@
             this.tableLayoutPanel11.Size = new System.Drawing.Size(510, 122);
             this.tableLayoutPanel11.TabIndex = 12;
             // 
+            // treeImages
+            // 
+            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeImages.FullRowSelect = true;
+            this.treeImages.HideSelection = false;
+            this.treeImages.Location = new System.Drawing.Point(3, 3);
+            this.treeImages.Name = "treeImages";
+            this.treeImages.Size = new System.Drawing.Size(163, 116);
+            this.treeImages.TabIndex = 11;
+            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
+            // 
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.btnAddImage);
@@ -850,6 +866,18 @@
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Collision Boxes";
+            // 
+            // treeCollisions
+            // 
+            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeCollisions.FullRowSelect = true;
+            this.treeCollisions.HideSelection = false;
+            this.treeCollisions.Indent = 19;
+            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
+            this.treeCollisions.Name = "treeCollisions";
+            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
+            this.treeCollisions.TabIndex = 1;
+            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
             // 
             // panel1
             // 
@@ -1473,6 +1501,16 @@
             this.chkLowImmune.UseVisualStyleBackColor = true;
             this.chkLowImmune.CheckedChanged += new System.EventHandler(this.chkLowImmune_CheckedChanged);
             // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1195, 624);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1653,8 +1691,9 @@
             // 
             this.flowLayoutPanel8.Controls.Add(this.label37);
             this.flowLayoutPanel8.Controls.Add(this.dataMoveList);
+            this.flowLayoutPanel8.Controls.Add(this.btnAddAnimation);
+            this.flowLayoutPanel8.Controls.Add(this.btnRemoveAnim);
             this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel8.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 423);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
             this.flowLayoutPanel8.Size = new System.Drawing.Size(795, 415);
@@ -1676,10 +1715,12 @@
             this.dataMoveList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataMoveList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AnimName,
-            this.Column1});
+            this.Column1,
+            this.Column2,
+            this.Column3});
             this.dataMoveList.Location = new System.Drawing.Point(3, 16);
             this.dataMoveList.Name = "dataMoveList";
-            this.dataMoveList.Size = new System.Drawing.Size(358, 150);
+            this.dataMoveList.Size = new System.Drawing.Size(792, 329);
             this.dataMoveList.TabIndex = 1;
             this.dataMoveList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMoveList_CellContentClick);
             // 
@@ -1772,9 +1813,27 @@
             this.tabAnimationEditor.TabIndex = 0;
             this.tabAnimationEditor.Text = "Animation Editor";
             // 
+            // btnAddAnimation
+            // 
+            this.btnAddAnimation.Location = new System.Drawing.Point(3, 351);
+            this.btnAddAnimation.Name = "btnAddAnimation";
+            this.btnAddAnimation.Size = new System.Drawing.Size(86, 23);
+            this.btnAddAnimation.TabIndex = 2;
+            this.btnAddAnimation.Text = "Add Animation";
+            this.btnAddAnimation.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveAnim
+            // 
+            this.btnRemoveAnim.Location = new System.Drawing.Point(95, 351);
+            this.btnRemoveAnim.Name = "btnRemoveAnim";
+            this.btnRemoveAnim.Size = new System.Drawing.Size(105, 23);
+            this.btnRemoveAnim.TabIndex = 3;
+            this.btnRemoveAnim.Text = "Remove Animation";
+            this.btnRemoveAnim.UseVisualStyleBackColor = true;
+            // 
             // AnimName
             // 
-            this.AnimName.HeaderText = "AnimName";
+            this.AnimName.HeaderText = "Animation Name";
             this.AnimName.Name = "AnimName";
             // 
             // Column1
@@ -1782,39 +1841,17 @@
             this.Column1.HeaderText = "Type";
             this.Column1.Name = "Column1";
             // 
-            // treeImages
+            // Column2
             // 
-            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeImages.FullRowSelect = true;
-            this.treeImages.HideSelection = false;
-            this.treeImages.Location = new System.Drawing.Point(3, 3);
-            this.treeImages.Name = "treeImages";
-            this.treeImages.Size = new System.Drawing.Size(163, 116);
-            this.treeImages.TabIndex = 11;
-            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
+            this.Column2.HeaderText = "Key Frames";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
-            // treeCollisions
+            // Column3
             // 
-            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeCollisions.FullRowSelect = true;
-            this.treeCollisions.HideSelection = false;
-            this.treeCollisions.Indent = 19;
-            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
-            this.treeCollisions.Name = "treeCollisions";
-            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
-            this.treeCollisions.TabIndex = 1;
-            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
-            // 
-            // renderPreview
-            // 
-            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPreview.Location = new System.Drawing.Point(3, 3);
-            this.renderPreview.MouseHoverUpdatesOnly = false;
-            this.renderPreview.Name = "renderPreview";
-            this.renderPreview.Size = new System.Drawing.Size(1195, 624);
-            this.renderPreview.TabIndex = 4;
-            this.renderPreview.Text = "renderPreview1";
+            this.Column3.HeaderText = "Total Frames";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // FightingEditorForm
             // 
@@ -2040,6 +2077,10 @@
         private System.Windows.Forms.DataGridView dataMoveList;
         private System.Windows.Forms.DataGridViewTextBoxColumn AnimName;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button btnAddAnimation;
+        private System.Windows.Forms.Button btnRemoveAnim;
     }
 }
 
