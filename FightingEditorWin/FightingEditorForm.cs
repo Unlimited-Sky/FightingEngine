@@ -891,5 +891,6 @@ namespace FightingEditor
         {
             updateKeyFrameData();
         }
+
     }
 }

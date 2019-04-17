@@ -54,7 +54,6 @@
             this.ImagePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeImages = new FightingEditor.EditorTreeView();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.btnRemoveImage = new System.Windows.Forms.Button();
@@ -82,7 +81,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.treeCollisions = new FightingEditor.EditorTreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSelectCollider = new System.Windows.Forms.Button();
@@ -132,7 +130,6 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.chkProjectileImmune = new System.Windows.Forms.CheckBox();
             this.chkLowImmune = new System.Windows.Forms.CheckBox();
-            this.renderPreview = new FightingEditor.RenderPreview();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,6 +144,12 @@
             this.setBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showOriginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCurrentFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabCharacterEditor = new System.Windows.Forms.TabPage();
+            this.tabAnimationEditor = new System.Windows.Forms.TabPage();
+            this.treeImages = new FightingEditor.EditorTreeView();
+            this.treeCollisions = new FightingEditor.EditorTreeView();
+            this.renderPreview = new FightingEditor.RenderPreview();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.AnimPanel.SuspendLayout();
@@ -185,10 +188,13 @@
             this.HurtPanel.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabAnimationEditor.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -197,12 +203,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.renderPreview, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1584, 837);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1602, 841);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -212,16 +218,17 @@
             this.tableLayoutPanel2.Controls.Add(this.AnimPanel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel9, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 630);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 633);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1182, 204);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1195, 205);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // AnimPanel
             // 
+            this.AnimPanel.BackColor = System.Drawing.SystemColors.Control;
             this.AnimPanel.Controls.Add(this.btnFirst);
             this.AnimPanel.Controls.Add(this.btnPrevious);
             this.AnimPanel.Controls.Add(this.btnNext);
@@ -231,7 +238,7 @@
             this.AnimPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AnimPanel.Location = new System.Drawing.Point(3, 3);
             this.AnimPanel.Name = "AnimPanel";
-            this.AnimPanel.Size = new System.Drawing.Size(1176, 45);
+            this.AnimPanel.Size = new System.Drawing.Size(1189, 45);
             this.AnimPanel.TabIndex = 0;
             // 
             // btnFirst
@@ -310,18 +317,19 @@
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1176, 147);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1189, 148);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // flowLayoutPanel3
             // 
+            this.flowLayoutPanel3.BackColor = System.Drawing.SystemColors.Control;
             this.flowLayoutPanel3.Controls.Add(this.label18);
             this.flowLayoutPanel3.Controls.Add(this.tableLayoutPanel10);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(949, 3);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(959, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(224, 141);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(227, 142);
             this.flowLayoutPanel3.TabIndex = 3;
             // 
             // label18
@@ -335,6 +343,7 @@
             // 
             // tableLayoutPanel10
             // 
+            this.tableLayoutPanel10.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel10.ColumnCount = 2;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -461,13 +470,14 @@
             // 
             // ImagePanel
             // 
+            this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
             this.ImagePanel.Controls.Add(this.label15);
             this.ImagePanel.Controls.Add(this.tableLayoutPanel11);
             this.ImagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ImagePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ImagePanel.Location = new System.Drawing.Point(3, 3);
             this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(513, 141);
+            this.ImagePanel.Size = new System.Drawing.Size(519, 142);
             this.ImagePanel.TabIndex = 4;
             // 
             // label15
@@ -495,18 +505,6 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 122F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(510, 122);
             this.tableLayoutPanel11.TabIndex = 12;
-            // 
-            // treeImages
-            // 
-            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeImages.FullRowSelect = true;
-            this.treeImages.HideSelection = false;
-            this.treeImages.Location = new System.Drawing.Point(3, 3);
-            this.treeImages.Name = "treeImages";
-            this.treeImages.Size = new System.Drawing.Size(163, 116);
-            this.treeImages.TabIndex = 11;
-            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
             // 
             // flowLayoutPanel5
             // 
@@ -710,13 +708,14 @@
             // 
             // flowLayoutPanel6
             // 
+            this.flowLayoutPanel6.BackColor = System.Drawing.SystemColors.Control;
             this.flowLayoutPanel6.Controls.Add(this.label26);
             this.flowLayoutPanel6.Controls.Add(this.tableLayoutPanel13);
             this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(522, 3);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(528, 3);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(213, 141);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(215, 142);
             this.flowLayoutPanel6.TabIndex = 6;
             // 
             // label26
@@ -789,12 +788,13 @@
             // 
             // flowLayoutPanel7
             // 
+            this.flowLayoutPanel7.BackColor = System.Drawing.SystemColors.Control;
             this.flowLayoutPanel7.Controls.Add(this.label28);
             this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(741, 3);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(749, 3);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            this.flowLayoutPanel7.Size = new System.Drawing.Size(202, 141);
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(204, 142);
             this.flowLayoutPanel7.TabIndex = 7;
             // 
             // label28
@@ -808,13 +808,14 @@
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.treeCollisions);
             this.flowLayoutPanel2.Controls.Add(this.panel1);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(1191, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(1204, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(390, 621);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(395, 624);
             this.flowLayoutPanel2.TabIndex = 2;
             // 
             // label1
@@ -825,18 +826,6 @@
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Collision Boxes";
-            // 
-            // treeCollisions
-            // 
-            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeCollisions.FullRowSelect = true;
-            this.treeCollisions.HideSelection = false;
-            this.treeCollisions.Indent = 19;
-            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
-            this.treeCollisions.Name = "treeCollisions";
-            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
-            this.treeCollisions.TabIndex = 1;
-            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
             // 
             // panel1
             // 
@@ -1080,22 +1069,23 @@
             this.tableLayoutPanel3.Controls.Add(this.HitPanel, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.HurtPanel, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(1191, 630);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1204, 633);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(390, 204);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(395, 205);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // HitPanel
             // 
+            this.HitPanel.BackColor = System.Drawing.SystemColors.Control;
             this.HitPanel.Controls.Add(this.label2);
             this.HitPanel.Controls.Add(this.tabControl1);
             this.HitPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HitPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.HitPanel.Location = new System.Drawing.Point(3, 3);
             this.HitPanel.Name = "HitPanel";
-            this.HitPanel.Size = new System.Drawing.Size(247, 198);
+            this.HitPanel.Size = new System.Drawing.Size(250, 199);
             this.HitPanel.TabIndex = 0;
             // 
             // label2
@@ -1131,6 +1121,7 @@
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
@@ -1271,6 +1262,7 @@
             // 
             // tableLayoutPanel6
             // 
+            this.tableLayoutPanel6.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
@@ -1345,6 +1337,7 @@
             // 
             // tableLayoutPanel7
             // 
+            this.tableLayoutPanel7.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel7.ColumnCount = 2;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.17391F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.82609F));
@@ -1365,7 +1358,7 @@
             // 
             this.chkWhiffCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkWhiffCancel.AutoSize = true;
-            this.chkWhiffCancel.Location = new System.Drawing.Point(89, 4);
+            this.chkWhiffCancel.Location = new System.Drawing.Point(89, 3);
             this.chkWhiffCancel.Name = "chkWhiffCancel";
             this.chkWhiffCancel.Size = new System.Drawing.Size(102, 17);
             this.chkWhiffCancel.TabIndex = 6;
@@ -1377,7 +1370,7 @@
             // 
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(5, 73);
+            this.label27.Location = new System.Drawing.Point(4, 72);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(43, 26);
             this.label27.TabIndex = 8;
@@ -1386,22 +1379,23 @@
             // txtCancelRoute
             // 
             this.txtCancelRoute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCancelRoute.Location = new System.Drawing.Point(54, 28);
+            this.txtCancelRoute.Location = new System.Drawing.Point(53, 27);
             this.txtCancelRoute.Multiline = true;
             this.txtCancelRoute.Name = "txtCancelRoute";
-            this.txtCancelRoute.Size = new System.Drawing.Size(173, 116);
+            this.txtCancelRoute.Size = new System.Drawing.Size(174, 117);
             this.txtCancelRoute.TabIndex = 9;
             this.txtCancelRoute.TextChanged += new System.EventHandler(this.txtCancelRoute_TextChanged);
             // 
             // HurtPanel
             // 
+            this.HurtPanel.BackColor = System.Drawing.SystemColors.Control;
             this.HurtPanel.Controls.Add(this.label3);
             this.HurtPanel.Controls.Add(this.tableLayoutPanel5);
             this.HurtPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HurtPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.HurtPanel.Location = new System.Drawing.Point(256, 3);
+            this.HurtPanel.Location = new System.Drawing.Point(259, 3);
             this.HurtPanel.Name = "HurtPanel";
-            this.HurtPanel.Size = new System.Drawing.Size(131, 198);
+            this.HurtPanel.Size = new System.Drawing.Size(133, 199);
             this.HurtPanel.TabIndex = 1;
             // 
             // label3
@@ -1415,6 +1409,7 @@
             // 
             // tableLayoutPanel5
             // 
+            this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.chkProjectileImmune, 0, 0);
@@ -1454,16 +1449,6 @@
             this.chkLowImmune.Text = "Low Immunity";
             this.chkLowImmune.UseVisualStyleBackColor = true;
             this.chkLowImmune.CheckedChanged += new System.EventHandler(this.chkLowImmune_CheckedChanged);
-            // 
-            // renderPreview
-            // 
-            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.renderPreview.Location = new System.Drawing.Point(3, 3);
-            this.renderPreview.MouseHoverUpdatesOnly = false;
-            this.renderPreview.Name = "renderPreview";
-            this.renderPreview.Size = new System.Drawing.Size(1182, 621);
-            this.renderPreview.TabIndex = 4;
-            this.renderPreview.Text = "renderPreview1";
             // 
             // toolStripMenuItem1
             // 
@@ -1512,7 +1497,7 @@
             this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1584, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1616, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1582,12 +1567,78 @@
             this.showCurrentFrameToolStripMenuItem.Text = "Show Current Frame";
             this.showCurrentFrameToolStripMenuItem.Click += new System.EventHandler(this.showCurrentFrameToolStripMenuItem_Click);
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabCharacterEditor);
+            this.tabControl2.Controls.Add(this.tabAnimationEditor);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 24);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1616, 873);
+            this.tabControl2.TabIndex = 4;
+            // 
+            // tabCharacterEditor
+            // 
+            this.tabCharacterEditor.Location = new System.Drawing.Point(4, 22);
+            this.tabCharacterEditor.Name = "tabCharacterEditor";
+            this.tabCharacterEditor.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCharacterEditor.Size = new System.Drawing.Size(1608, 847);
+            this.tabCharacterEditor.TabIndex = 1;
+            this.tabCharacterEditor.Text = "Character Editor";
+            this.tabCharacterEditor.UseVisualStyleBackColor = true;
+            // 
+            // tabAnimationEditor
+            // 
+            this.tabAnimationEditor.BackColor = System.Drawing.SystemColors.Control;
+            this.tabAnimationEditor.Controls.Add(this.tableLayoutPanel1);
+            this.tabAnimationEditor.Location = new System.Drawing.Point(4, 22);
+            this.tabAnimationEditor.Name = "tabAnimationEditor";
+            this.tabAnimationEditor.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAnimationEditor.Size = new System.Drawing.Size(1608, 847);
+            this.tabAnimationEditor.TabIndex = 0;
+            this.tabAnimationEditor.Text = "Animation Editor";
+            // 
+            // treeImages
+            // 
+            this.treeImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeImages.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeImages.FullRowSelect = true;
+            this.treeImages.HideSelection = false;
+            this.treeImages.Location = new System.Drawing.Point(3, 3);
+            this.treeImages.Name = "treeImages";
+            this.treeImages.Size = new System.Drawing.Size(163, 116);
+            this.treeImages.TabIndex = 11;
+            this.treeImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeImages_AfterSelect);
+            // 
+            // treeCollisions
+            // 
+            this.treeCollisions.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeCollisions.FullRowSelect = true;
+            this.treeCollisions.HideSelection = false;
+            this.treeCollisions.Indent = 19;
+            this.treeCollisions.Location = new System.Drawing.Point(3, 16);
+            this.treeCollisions.Name = "treeCollisions";
+            this.treeCollisions.Size = new System.Drawing.Size(387, 365);
+            this.treeCollisions.TabIndex = 1;
+            this.treeCollisions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeCollisions_AfterSelect);
+            // 
+            // renderPreview
+            // 
+            this.renderPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.renderPreview.Location = new System.Drawing.Point(3, 3);
+            this.renderPreview.MouseHoverUpdatesOnly = false;
+            this.renderPreview.Name = "renderPreview";
+            this.renderPreview.Size = new System.Drawing.Size(1195, 624);
+            this.renderPreview.TabIndex = 4;
+            this.renderPreview.Text = "renderPreview1";
+            // 
             // FightingEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1616, 897);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FightingEditorForm";
@@ -1648,6 +1699,8 @@
             this.tableLayoutPanel5.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabAnimationEditor.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1773,6 +1826,9 @@
         private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rootOnlyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rootAndChildrenToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabCharacterEditor;
+        private System.Windows.Forms.TabPage tabAnimationEditor;
     }
 }
 
