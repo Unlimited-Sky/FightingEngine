@@ -44,7 +44,7 @@ namespace FightingEngine.Gameplay
 
         public void StandardDraw()
         {
-            Animator.Draw(_game.spriteBatch, position.ToVector2());
+            Animator.Draw(_game.spriteBatch, Position.ToVector2());
         }
 
         public void PopState()

@@ -6,7 +6,7 @@ namespace FightingEngine.Gameplay
     public abstract class AActor
     {
         protected FightingEngine _game;
-        public Point position { get; private set; }
+        public Point Position { get; private set; }
 
         public AActor(FightingEngine game)
         {

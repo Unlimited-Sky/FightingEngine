@@ -30,54 +30,54 @@ namespace FightingEditor
         {
             renderPreview.editorForm = this;
 
-            unbindComboEvents();
+            UnbindComboEvents();
 
             cmbHitType.DataSource = Enum.GetValues(typeof(HITTYPE));
             cmbHitResult.DataSource = Enum.GetValues(typeof(HITRESULT));
             cmbJuggleType.DataSource = Enum.GetValues(typeof(JUGGLETYPE));
 
-            rebindComboEvents();
+            RebindComboEvents();
 
-            disableImageControls();
-            disableAnimControls();
-            disableHitboxCreationControls();
-            disableHurtboxCreationControls();
-            disableHitboxEditControls();
-            disableHurtboxEditControls();
-            disableBoxControls();
+            DisableImageControls();
+            DisableAnimControls();
+            DisableHitboxCreationControls();
+            DisableHurtboxCreationControls();
+            DisableHitboxEditControls();
+            DisableHurtboxEditControls();
+            DisableBoxControls();
         }
 
-        private void unbindComboEvents()
+        private void UnbindComboEvents()
         {
-            cmbHitType.SelectedIndexChanged -= cmbHitType_SelectedIndexChanged;
-            cmbHitResult.SelectedIndexChanged -= cmbHitResult_SelectedIndexChanged;
-            cmbJuggleType.SelectedIndexChanged -= cmbJuggleProperties_SelectedIndexChanged;
+            cmbHitType.SelectedIndexChanged -= CmbHitType_SelectedIndexChanged;
+            cmbHitResult.SelectedIndexChanged -= CmbHitResult_SelectedIndexChanged;
+            cmbJuggleType.SelectedIndexChanged -= CmbJuggleProperties_SelectedIndexChanged;
         }
 
-        private void rebindComboEvents()
+        private void RebindComboEvents()
         {
-            cmbHitType.SelectedIndexChanged += cmbHitType_SelectedIndexChanged;
-            cmbHitResult.SelectedIndexChanged += cmbHitResult_SelectedIndexChanged;
-            cmbJuggleType.SelectedIndexChanged += cmbJuggleProperties_SelectedIndexChanged;
+            cmbHitType.SelectedIndexChanged += CmbHitType_SelectedIndexChanged;
+            cmbHitResult.SelectedIndexChanged += CmbHitResult_SelectedIndexChanged;
+            cmbJuggleType.SelectedIndexChanged += CmbJuggleProperties_SelectedIndexChanged;
         }
 
         #region File Menu
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO: Add save dialog
             Close();
@@ -85,24 +85,24 @@ namespace FightingEditor
         #endregion
 
         #region Edit Menu
-        private void setBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
         }
 
-        private void rootOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RootOnlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
         }
 
-        private void rootAndChildrenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RootAndChildrenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO
         }
         #endregion
 
         #region View Menu
-        private void showOriginToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowOriginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (showOriginToolStripMenuItem.Checked)
             {
@@ -116,7 +116,7 @@ namespace FightingEditor
             }
         }
 
-        private void showCurrentFrameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowCurrentFrameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (showCurrentFrameToolStripMenuItem.Checked)
             {
@@ -132,74 +132,76 @@ namespace FightingEditor
         #endregion
 
         #region Animation Controls
-        private void btnFirst_Click(object sender, EventArgs e)
+        private void BtnFirst_Click(object sender, EventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(0);
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void btnPrevious_Click(object sender, EventArgs e)
+        private void BtnPrevious_Click(object sender, EventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(
                 renderPreview.animator.AnimData.GetPreviousKeyFrameIndexFromFrame(
                     renderPreview.animator.CurrentFrame));
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private void BtnNext_Click(object sender, EventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(
                 renderPreview.animator.AnimData.GetNextKeyFrameIndexFromFrame(
                     renderPreview.animator.CurrentFrame));
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void btnLast_Click(object sender, EventArgs e)
+        private void BtnLast_Click(object sender, EventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(
                     renderPreview.animator.AnimData.GetNumKeyFrames() - 1);
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void btnPlayPause_Click(object sender, EventArgs e)
+        private void BtnPlayPause_Click(object sender, EventArgs e)
         {
             if (renderPreview.animator.IsPlaying)
                 renderPreview.animator.Pause();
             else
                 renderPreview.animator.Resume();
 
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void animScrubber_Scroll(object sender, EventArgs e)
+        private void AnimScrubber_Scroll(object sender, EventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(animScrubber.Value);
 
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void disableAnimControls()
+        private void DisableAnimControls()
         {
             AnimPanel.Enabled = false;
         }
 
-        private void enableAnimControls()
+        private void EnableAnimControls()
         {
             AnimPanel.Enabled = true;
         }
         #endregion
 
         #region Image Controls
-        private void treeImages_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeImages_AfterSelect(object sender, TreeViewEventArgs e)
         {
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(treeImages.SelectedNode.Index);
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void btnAddImage_Click(object sender, EventArgs e)
+        private void BtnAddImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Multiselect = true;
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Multiselect = true
+            };
             DialogResult result = dialog.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -212,15 +214,15 @@ namespace FightingEditor
 
                 animScrubber.Maximum = treeImages.Nodes.Count - 1;
 
-                updateFrameData();
-                enableAnimControls();
-                enableImageControls();
-                enableHitboxCreationControls();
-                enableHurtboxCreationControls();
+                UpdateFrameData();
+                EnableAnimControls();
+                EnableImageControls();
+                EnableHitboxCreationControls();
+                EnableHurtboxCreationControls();
             }
         }
 
-        private void btnRemoveImage_Click(object sender, EventArgs e)
+        private void BtnRemoveImage_Click(object sender, EventArgs e)
         {
             if (treeImages.Nodes.Count == 1)
                 return;
@@ -228,10 +230,10 @@ namespace FightingEditor
             renderPreview.RemoveKeyFrame(treeImages.SelectedNode.Index);
             treeImages.SelectedNode.Remove();
 
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void btnMoveUp_Click(object sender, EventArgs e)
+        private void BtnMoveUp_Click(object sender, EventArgs e)
         {
             int index = treeImages.SelectedNode.Index;
 
@@ -239,14 +241,14 @@ namespace FightingEditor
                 return;
 
             renderPreview.SwapKeyFrames(index, index - 1);
-            moveDown(index - 1);
+            MoveDown(index - 1);
             treeImages.SelectedNode = treeImages.Nodes[index - 1];
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(index - 1);
 
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void btnMoveDown_Click(object sender, EventArgs e)
+        private void BtnMoveDown_Click(object sender, EventArgs e)
         {
             int index = treeImages.SelectedNode.Index;
 
@@ -254,34 +256,34 @@ namespace FightingEditor
                 return;
 
             renderPreview.SwapKeyFrames(index, index + 1);
-            moveDown(index);
+            MoveDown(index);
             treeImages.SelectedNode = treeImages.Nodes[index + 1];
 
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void moveDown(int i)
+        private void MoveDown(int i)
         {
             TreeNode tempNode = treeImages.Nodes[i];
             treeImages.Nodes.RemoveAt(i);
             treeImages.Nodes.Insert(i + 1, tempNode);
         }
 
-        private void numericKeyFrameLength_ValueChanged(object sender, EventArgs e)
+        private void NumericKeyFrameLength_ValueChanged(object sender, EventArgs e)
         {
             int selectedIndex = treeImages.SelectedNode.Index;
             int currKeyframe = renderPreview.animator.GetAnimKeyFrameIndex();
             renderPreview.AdjustKeyFrameLength(selectedIndex, (int)numericKeyFrameLength.Value);
             renderPreview.animator.SetFrameToFirstOfKeyFrameIndex(currKeyframe);
-            updateFrameData();
+            UpdateFrameData();
         }
 
-        private void chkColliderDisabled_CheckedChanged(object sender, EventArgs e)
+        private void ChkColliderDisabled_CheckedChanged(object sender, EventArgs e)
         {
             //TODO
         }
 
-        private void disableImageControls()
+        private void DisableImageControls()
         {
             treeImages.Enabled = false;
             btnRemoveImage.Enabled = false;
@@ -291,7 +293,7 @@ namespace FightingEditor
             cmbAnimType.Enabled = false;
         }
 
-        private void enableImageControls()
+        private void EnableImageControls()
         {
             treeImages.Enabled = true;
             btnRemoveImage.Enabled = true;
@@ -307,21 +309,21 @@ namespace FightingEditor
         //
 
         #region Collision Boxes
-        private void updateFrameData()
+        private void UpdateFrameData()
         {
             lblTotalPrevFrames.Text = renderPreview.animator.CurrentFrame.ToString();
 
-            lblStartupFrames.Text = getStartupFrames();
-            lblActiveFrames.Text = getActiveFrames();
-            lblOnHitFrames.Text = getOnHitFrames();
-            lblOnBlockFrames.Text = getOnBlockFrames();
+            lblStartupFrames.Text = GetStartupFrames();
+            lblActiveFrames.Text = GetActiveFrames();
+            lblOnHitFrames.Text = GetOnHitFrames();
+            lblOnBlockFrames.Text = GetOnBlockFrames();
 
-            updateKeyFrameData();
+            UpdateKeyFrameData();
 
-            updateCollisionsTree();
+            UpdateCollisionsTree();
         }
 
-        private void updateKeyFrameData()
+        private void UpdateKeyFrameData()
         {
             int animKeyFrameIndex = renderPreview.animator.GetAnimKeyFrameIndex();
 
@@ -339,40 +341,40 @@ namespace FightingEditor
 
         private void ChangeNumericKeyFrameValue(int newValue)
         {
-            numericKeyFrameLength.ValueChanged -= numericKeyFrameLength_ValueChanged;
+            numericKeyFrameLength.ValueChanged -= NumericKeyFrameLength_ValueChanged;
             numericKeyFrameLength.Value = newValue;
-            numericKeyFrameLength.ValueChanged += numericKeyFrameLength_ValueChanged;
+            numericKeyFrameLength.ValueChanged += NumericKeyFrameLength_ValueChanged;
         }
 
         //TODO
-        private string getStartupFrames()
+        private string GetStartupFrames()
         {
             return "";
         }
         //TODO
-        private string getActiveFrames()
+        private string GetActiveFrames()
         {
             return "";
         }
         //TODO
-        private string getOnHitFrames()
+        private string GetOnHitFrames()
         {
             return "";
         }
         //TODO
-        private string getOnBlockFrames()
+        private string GetOnBlockFrames()
         {
             return "";
         }
 
-        private void btnAddRootHitbox_Click(object sender, EventArgs e)
+        private void BtnAddRootHitbox_Click(object sender, EventArgs e)
         {
-            renderPreview.AddRootHitBox(animScrubber.Value, collectHitBoxData());
+            renderPreview.AddRootHitBox(animScrubber.Value, CollectHitBoxData());
 
-            updateCollisionsTree();
+            UpdateCollisionsTree();
         }
 
-        private HitBoxData collectHitBoxData()
+        private HitBoxData CollectHitBoxData()
         {
             HITTYPE hitType = (HITTYPE)cmbHitType.SelectedIndex;
             HITRESULT hitResult = (HITRESULT)cmbHitResult.SelectedIndex;
@@ -387,26 +389,26 @@ namespace FightingEditor
             return data;
         }
 
-        private void btnAddHitbox_Click(object sender, EventArgs e)
+        private void BtnAddHitbox_Click(object sender, EventArgs e)
         {
             if (treeCollisions.SelectedNode != null)
             {
                 int index = -1;
                 if (treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
-                    index = getCollisionIndex(HIT_ROOT);
+                    index = GetCollisionIndex(HIT_ROOT);
                 else if (treeCollisions.SelectedNode.Text.Contains(HIT_BOX))
-                    index = getParentCollisionIndex(HIT_ROOT);
+                    index = GetParentCollisionIndex(HIT_ROOT);
                 else
                     return;
 
                 renderPreview.AddHitBox(animScrubber.Value, index,
                     (int)numericTop.Value, (int)numericLeft.Value, (int)numericBottom.Value, (int)numericRight.Value);
 
-                updateCollisionsTree();
+                UpdateCollisionsTree();
             }
         }
 
-        private void btnDeleteHitbox_Click(object sender, EventArgs e)
+        private void BtnDeleteHitbox_Click(object sender, EventArgs e)
         {
             if (treeCollisions.SelectedNode == null)
                 return;
@@ -421,39 +423,39 @@ namespace FightingEditor
             }
         }
 
-        private void btnAddRootHurtbox_Click(object sender, EventArgs e)
+        private void BtnAddRootHurtbox_Click(object sender, EventArgs e)
         {
-            renderPreview.AddRootHurtBox(animScrubber.Value, collectHurtBoxData());
+            renderPreview.AddRootHurtBox(animScrubber.Value, CollectHurtBoxData());
 
-            updateCollisionsTree();
+            UpdateCollisionsTree();
         }
 
-        private HurtBoxData collectHurtBoxData()
+        private HurtBoxData CollectHurtBoxData()
         {
             HurtBoxData data = new HurtBoxData(chkProjectileImmune.Checked, chkLowImmune.Checked);
             return data;
         }
 
-        private void btnAddHurtbox_Click(object sender, EventArgs e)
+        private void BtnAddHurtbox_Click(object sender, EventArgs e)
         {
             if (treeCollisions.SelectedNode != null)
             {
                 int index = -1;
                 if (treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
-                    index = getCollisionIndex(HURT_ROOT);
+                    index = GetCollisionIndex(HURT_ROOT);
                 else if (treeCollisions.SelectedNode.Text.Contains(HURT_BOX))
-                    index = getParentCollisionIndex(HURT_ROOT);
+                    index = GetParentCollisionIndex(HURT_ROOT);
                 else
                     return;
 
                 renderPreview.AddHurtBox(animScrubber.Value, index,
                     (int)numericTop.Value, (int)numericLeft.Value, (int)numericBottom.Value, (int)numericRight.Value);
 
-                updateCollisionsTree();
+                UpdateCollisionsTree();
             }
         }
 
-        private void btnDeleteHurtbox_Click(object sender, EventArgs e)
+        private void BtnDeleteHurtbox_Click(object sender, EventArgs e)
         {
             if (treeCollisions.SelectedNode == null)
                 return;
@@ -468,66 +470,78 @@ namespace FightingEditor
             }
         }
 
-        private void btnSelectCollider_Click(object sender, EventArgs e)
+        private void BtnSelectCollider_Click(object sender, EventArgs e)
         {
-            renderPreview.SelectCollider(animScrubber.Value);
+            int currentKeyframe = animScrubber.Value;
+            if (renderPreview.collisionFrameData.CharacterColliderFrameData.ContainsKey(currentKeyframe))
+            {
+                renderPreview.SelectCollider(currentKeyframe);
+                CharacterCollider collider = renderPreview.collisionFrameData.CharacterColliderFrameData[currentKeyframe];
+                DisableBoxEvents();
+                numericTop.Value = collider.Top();
+                numericLeft.Value = collider.Left();
+                numericBottom.Value = collider.Bottom();
+                numericRight.Value = collider.Right();
+                EnableBoxEvents();
+                EnableBoxControls();
+            }
         }
 
-        private void numericLeft_ValueChanged(object sender, EventArgs e)
+        private void NumericLeft_ValueChanged(object sender, EventArgs e)
         {
             if (numericLeft.Value >= numericRight.Value)
                 numericLeft.Value = numericRight.Value;
 
-            resizeBox();
+            ResizeBox();
         }
 
-        private void numericTop_ValueChanged(object sender, EventArgs e)
+        private void NumericTop_ValueChanged(object sender, EventArgs e)
         {
             if (numericTop.Value >= numericBottom.Value)
                 numericTop.Value = numericBottom.Value;
 
-            resizeBox();
+            ResizeBox();
         }
 
-        private void numericRight_ValueChanged(object sender, EventArgs e)
+        private void NumericRight_ValueChanged(object sender, EventArgs e)
         {
             if (numericRight.Value <= numericLeft.Value)
                 numericRight.Value = numericLeft.Value;
 
-            resizeBox();
+            ResizeBox();
         }
 
-        private void numericBottom_ValueChanged(object sender, EventArgs e)
+        private void NumericBottom_ValueChanged(object sender, EventArgs e)
         {
             if (numericBottom.Value <= numericTop.Value)
                 numericBottom.Value = numericTop.Value;
 
-            resizeBox();
+            ResizeBox();
         }
 
-        private void resizeBox()
+        private void ResizeBox()
         {
             renderPreview.ResizeBox((int)numericTop.Value, (int)numericLeft.Value,
                 (int)numericBottom.Value, (int)numericRight.Value);
         }
 
-        private void disableBoxEvents()
+        private void DisableBoxEvents()
         {
-            numericTop.ValueChanged -= numericTop_ValueChanged;
-            numericLeft.ValueChanged -= numericLeft_ValueChanged;
-            numericBottom.ValueChanged -= numericBottom_ValueChanged;
-            numericRight.ValueChanged -= numericRight_ValueChanged;
+            numericTop.ValueChanged -= NumericTop_ValueChanged;
+            numericLeft.ValueChanged -= NumericLeft_ValueChanged;
+            numericBottom.ValueChanged -= NumericBottom_ValueChanged;
+            numericRight.ValueChanged -= NumericRight_ValueChanged;
         }
 
-        private void enableBoxEvents()
+        private void EnableBoxEvents()
         {
-            numericTop.ValueChanged += numericTop_ValueChanged;
-            numericLeft.ValueChanged += numericLeft_ValueChanged;
-            numericBottom.ValueChanged += numericBottom_ValueChanged;
-            numericRight.ValueChanged += numericRight_ValueChanged;
+            numericTop.ValueChanged += NumericTop_ValueChanged;
+            numericLeft.ValueChanged += NumericLeft_ValueChanged;
+            numericBottom.ValueChanged += NumericBottom_ValueChanged;
+            numericRight.ValueChanged += NumericRight_ValueChanged;
         }
 
-        private void updateCollisionsTree()
+        private void UpdateCollisionsTree()
         {
             int currentKeyFrameIndex = renderPreview.animator.GetAnimKeyFrameIndex();
 
@@ -535,40 +549,40 @@ namespace FightingEditor
 
             int counter = 0;
 
-            if (renderPreview.collisionFrameData.hitBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
+            if (renderPreview.collisionFrameData.HitBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
             {
-                List<HitBoxRootNode> hitBoxRoots = renderPreview.collisionFrameData.hitBoxKeyFrameData[currentKeyFrameIndex];
+                List<HitBoxRootNode> hitBoxRoots = renderPreview.collisionFrameData.HitBoxKeyFrameData[currentKeyFrameIndex];
 
                 foreach (HitBoxRootNode hitBox in hitBoxRoots)
                 {
-                    addHitBoxes(hitBox, counter.ToString());
+                    AddHitBoxes(hitBox, counter.ToString());
                     counter += 1;
                 }
             }
 
-            if (renderPreview.collisionFrameData.hurtBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
+            if (renderPreview.collisionFrameData.HurtBoxKeyFrameData.ContainsKey(currentKeyFrameIndex))
             {
                 counter = 0;
 
-                List<HurtBoxRootNode> hurtBoxRoots = renderPreview.collisionFrameData.hurtBoxKeyFrameData[currentKeyFrameIndex];
+                List<HurtBoxRootNode> hurtBoxRoots = renderPreview.collisionFrameData.HurtBoxKeyFrameData[currentKeyFrameIndex];
 
                 foreach (HurtBoxRootNode hurtBox in hurtBoxRoots)
                 {
-                    addHurtBoxes(hurtBox, counter.ToString());
+                    AddHurtBoxes(hurtBox, counter.ToString());
                     counter += 1;
                 }
             }
 
-            disableHitboxEditControls();
-            disableHurtboxEditControls();
-            disableBoxControls();
+            DisableHitboxEditControls();
+            DisableHurtboxEditControls();
+            DisableBoxControls();
 
             treeCollisions.ExpandAll();
 
             renderPreview.DeselectCollisions();
         }
 
-        private void addHitBoxes(HitBoxRootNode hitBox, string count)
+        private void AddHitBoxes(HitBoxRootNode hitBox, string count)
         {
             int counter = 0;
             TreeNode root = new TreeNode(HIT_ROOT + count);
@@ -583,7 +597,7 @@ namespace FightingEditor
             treeCollisions.Nodes.Add(root);
         }
 
-        private void addHurtBoxes(HurtBoxRootNode hurtBox, string count)
+        private void AddHurtBoxes(HurtBoxRootNode hurtBox, string count)
         {
             int counter = 0;
             TreeNode root = new TreeNode(HURT_ROOT + count);
@@ -597,41 +611,41 @@ namespace FightingEditor
             treeCollisions.Nodes.Add(root);
         }
 
-        private void treeCollisions_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeCollisions_AfterSelect(object sender, TreeViewEventArgs e)
         {
             int keyFrame = animScrubber.Value;
 
             if (treeCollisions.SelectedNode.Text.Contains(HIT_ROOT))
             {
-                renderPreview.SelectRootHitbox(keyFrame, getCollisionIndex(HIT_ROOT));
-                enableHitboxEditControls();
-                disableHurtboxEditControls();
-                disableBoxControls();
-                refreshHitboxRootData();
+                renderPreview.SelectRootHitbox(keyFrame, GetCollisionIndex(HIT_ROOT));
+                EnableHitboxEditControls();
+                DisableHurtboxEditControls();
+                DisableBoxControls();
+                RefreshHitboxRootData();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HURT_ROOT))
             {
-                renderPreview.SelectRootHurtbox(keyFrame, getCollisionIndex(HURT_ROOT));
-                enableHurtboxEditControls();
-                disableHitboxEditControls();
-                disableBoxControls();
-                refreshHurtboxRootData();
+                renderPreview.SelectRootHurtbox(keyFrame, GetCollisionIndex(HURT_ROOT));
+                EnableHurtboxEditControls();
+                DisableHitboxEditControls();
+                DisableBoxControls();
+                RefreshHurtboxRootData();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HIT_BOX))
             {
-                renderPreview.SelectHitbox(keyFrame, getParentCollisionIndex(HIT_ROOT), getCollisionIndex(HIT_BOX));
-                enableHitboxEditControls();
-                disableHurtboxEditControls();
-                enableBoxControls();
-                refreshBoxes();
+                renderPreview.SelectHitbox(keyFrame, GetParentCollisionIndex(HIT_ROOT), GetCollisionIndex(HIT_BOX));
+                EnableHitboxEditControls();
+                DisableHurtboxEditControls();
+                EnableBoxControls();
+                RefreshBoxes();
             }
             else if (treeCollisions.SelectedNode.Text.Contains(HURT_BOX))
             {
-                renderPreview.SelectHurtbox(keyFrame, getParentCollisionIndex(HURT_ROOT), getCollisionIndex(HURT_BOX));
-                enableHurtboxEditControls();
-                disableHitboxEditControls();
-                enableBoxControls();
-                refreshBoxes();
+                renderPreview.SelectHurtbox(keyFrame, GetParentCollisionIndex(HURT_ROOT), GetCollisionIndex(HURT_BOX));
+                EnableHurtboxEditControls();
+                DisableHitboxEditControls();
+                EnableBoxControls();
+                RefreshBoxes();
             }
             else
             {
@@ -639,21 +653,21 @@ namespace FightingEditor
             }
         }
 
-        private void refreshBoxes()
+        private void RefreshBoxes()
         {
-            disableBoxEvents();
+            DisableBoxEvents();
 
-            SimpleRectNode node = renderPreview.GetSelectedCollisionBoxNode();
+            SimpleRect rect = renderPreview.GetSelectedCollisionBox();
 
-            numericTop.Value = node.TopLeft.Y;
-            numericLeft.Value = node.TopLeft.X;
-            numericBottom.Value = node.BottomRight.Y;
-            numericRight.Value = node.BottomRight.X;
+            numericTop.Value = rect.TopLeft.Y;
+            numericLeft.Value = rect.TopLeft.X;
+            numericBottom.Value = rect.BottomRight.Y;
+            numericRight.Value = rect.BottomRight.X;
 
-            enableBoxEvents();
+            EnableBoxEvents();
         }
 
-        private int getCollisionIndex(string collisionType)
+        private int GetCollisionIndex(string collisionType)
         {
             if (treeCollisions.SelectedNode.Text.Contains(collisionType))
                 return Convert.ToInt32(treeCollisions.SelectedNode.Text.Replace(collisionType, ""));
@@ -661,7 +675,7 @@ namespace FightingEditor
                 return -1;
         }
 
-        private int getParentCollisionIndex(string parentCollisionType)
+        private int GetParentCollisionIndex(string parentCollisionType)
         {
             if (treeCollisions.SelectedNode.Parent.Text.Contains(parentCollisionType))
                 return Convert.ToInt32(treeCollisions.SelectedNode.Parent.Text.Replace(parentCollisionType, ""));
@@ -669,79 +683,79 @@ namespace FightingEditor
                 return -1;
         }
 
-        private void cmbHitType_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbHitType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void numericHitStop_ValueChanged(object sender, EventArgs e)
+        private void NumericHitStop_ValueChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void numericHitStun_ValueChanged(object sender, EventArgs e)
+        private void NumericHitStun_ValueChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void numericBlockStun_ValueChanged(object sender, EventArgs e)
+        private void NumericBlockStun_ValueChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void numericDamage_ValueChanged(object sender, EventArgs e)
+        private void NumericDamage_ValueChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void cmbHitResult_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbHitResult_SelectedIndexChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void cmbJuggleProperties_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbJuggleProperties_SelectedIndexChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void chkSpecialCancel_CheckedChanged(object sender, EventArgs e)
+        private void ChkSpecialCancel_CheckedChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void chkJumpCancel_CheckedChanged(object sender, EventArgs e)
+        private void ChkJumpCancel_CheckedChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void chkUniqueActionCancel_CheckedChanged(object sender, EventArgs e)
+        private void ChkUniqueActionCancel_CheckedChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void chkDashCancel_CheckedChanged(object sender, EventArgs e)
+        private void ChkDashCancel_CheckedChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void txtCancelRoute_TextChanged(object sender, EventArgs e)
+        private void TxtCancelRoute_TextChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHitBoxRoot(collectHitBoxData());
+            renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void chkProjectileImmune_CheckedChanged(object sender, EventArgs e)
+        private void ChkProjectileImmune_CheckedChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHurtBoxRoot(collectHurtBoxData());
+            renderPreview.ReInitHurtBoxRoot(CollectHurtBoxData());
         }
 
-        private void chkLowImmune_CheckedChanged(object sender, EventArgs e)
+        private void ChkLowImmune_CheckedChanged(object sender, EventArgs e)
         {
-            renderPreview.ReInitHurtBoxRoot(collectHurtBoxData());
+            renderPreview.ReInitHurtBoxRoot(CollectHurtBoxData());
         }
 
-        private void refreshHitboxRootData()
+        private void RefreshHitboxRootData()
         {
-            disableHitboxRootEvents();
+            DisableHitboxRootEvents();
 
             HitBoxData data = renderPreview.GetHitboxRootData();
 
@@ -760,113 +774,113 @@ namespace FightingEditor
             chkDashCancel.Checked = data.DashCancel;
             txtCancelRoute.Text = data.CancelRoutes;
 
-            enableHitboxRootEvents();
+            EnableHitboxRootEvents();
         }
         
-        private void disableHitboxRootEvents()
+        private void DisableHitboxRootEvents()
         {
-            cmbHitType.SelectedValueChanged -= cmbHitType_SelectedIndexChanged;
-            numericHitStop.ValueChanged -= numericHitStop_ValueChanged;
-            numericHitStun.ValueChanged -= numericHitStun_ValueChanged;
-            numericBlockStun.ValueChanged -= numericBlockStun_ValueChanged;
-            numericDamage.ValueChanged -= numericDamage_ValueChanged;
+            cmbHitType.SelectedValueChanged -= CmbHitType_SelectedIndexChanged;
+            numericHitStop.ValueChanged -= NumericHitStop_ValueChanged;
+            numericHitStun.ValueChanged -= NumericHitStun_ValueChanged;
+            numericBlockStun.ValueChanged -= NumericBlockStun_ValueChanged;
+            numericDamage.ValueChanged -= NumericDamage_ValueChanged;
 
-            cmbHitResult.SelectedValueChanged -= cmbHitResult_SelectedIndexChanged;
-            cmbJuggleType.SelectedValueChanged -= cmbJuggleProperties_SelectedIndexChanged;
+            cmbHitResult.SelectedValueChanged -= CmbHitResult_SelectedIndexChanged;
+            cmbJuggleType.SelectedValueChanged -= CmbJuggleProperties_SelectedIndexChanged;
 
-            chkSpecialCancel.CheckedChanged -= chkSpecialCancel_CheckedChanged;
-            chkJumpCancel.CheckedChanged -= chkJumpCancel_CheckedChanged;
-            chkUniqueActionCancel.CheckedChanged -= chkUniqueActionCancel_CheckedChanged;
-            chkDashCancel.CheckedChanged -= chkDashCancel_CheckedChanged;
-            txtCancelRoute.TextChanged -= txtCancelRoute_TextChanged;
+            chkSpecialCancel.CheckedChanged -= ChkSpecialCancel_CheckedChanged;
+            chkJumpCancel.CheckedChanged -= ChkJumpCancel_CheckedChanged;
+            chkUniqueActionCancel.CheckedChanged -= ChkUniqueActionCancel_CheckedChanged;
+            chkDashCancel.CheckedChanged -= ChkDashCancel_CheckedChanged;
+            txtCancelRoute.TextChanged -= TxtCancelRoute_TextChanged;
         }
 
-        private void enableHitboxRootEvents()
+        private void EnableHitboxRootEvents()
         {
-            cmbHitType.SelectedValueChanged += cmbHitType_SelectedIndexChanged;
-            numericHitStop.ValueChanged += numericHitStop_ValueChanged;
-            numericHitStun.ValueChanged += numericHitStun_ValueChanged;
-            numericBlockStun.ValueChanged += numericBlockStun_ValueChanged;
-            numericDamage.ValueChanged += numericDamage_ValueChanged;
+            cmbHitType.SelectedValueChanged += CmbHitType_SelectedIndexChanged;
+            numericHitStop.ValueChanged += NumericHitStop_ValueChanged;
+            numericHitStun.ValueChanged += NumericHitStun_ValueChanged;
+            numericBlockStun.ValueChanged += NumericBlockStun_ValueChanged;
+            numericDamage.ValueChanged += NumericDamage_ValueChanged;
 
-            cmbHitResult.SelectedValueChanged += cmbHitResult_SelectedIndexChanged;
-            cmbJuggleType.SelectedValueChanged += cmbJuggleProperties_SelectedIndexChanged;
+            cmbHitResult.SelectedValueChanged += CmbHitResult_SelectedIndexChanged;
+            cmbJuggleType.SelectedValueChanged += CmbJuggleProperties_SelectedIndexChanged;
 
-            chkSpecialCancel.CheckedChanged += chkSpecialCancel_CheckedChanged;
-            chkJumpCancel.CheckedChanged += chkJumpCancel_CheckedChanged;
-            chkUniqueActionCancel.CheckedChanged += chkUniqueActionCancel_CheckedChanged;
-            chkDashCancel.CheckedChanged += chkDashCancel_CheckedChanged;
-            txtCancelRoute.TextChanged += txtCancelRoute_TextChanged;
+            chkSpecialCancel.CheckedChanged += ChkSpecialCancel_CheckedChanged;
+            chkJumpCancel.CheckedChanged += ChkJumpCancel_CheckedChanged;
+            chkUniqueActionCancel.CheckedChanged += ChkUniqueActionCancel_CheckedChanged;
+            chkDashCancel.CheckedChanged += ChkDashCancel_CheckedChanged;
+            txtCancelRoute.TextChanged += TxtCancelRoute_TextChanged;
         }
 
-        private void refreshHurtboxRootData()
+        private void RefreshHurtboxRootData()
         {
-            disableHurtboxRootEvents();
+            DisableHurtboxRootEvents();
             HurtBoxData data = renderPreview.GetHurtboxRootData();
-            enableHurtboxRootEvents();
+            EnableHurtboxRootEvents();
         }
 
-        private void disableHurtboxRootEvents()
+        private void DisableHurtboxRootEvents()
         {
-            chkProjectileImmune.CheckedChanged -= chkProjectileImmune_CheckedChanged;
-            chkLowImmune.CheckedChanged -= chkLowImmune_CheckedChanged;
+            chkProjectileImmune.CheckedChanged -= ChkProjectileImmune_CheckedChanged;
+            chkLowImmune.CheckedChanged -= ChkLowImmune_CheckedChanged;
         }
 
-        private void enableHurtboxRootEvents()
+        private void EnableHurtboxRootEvents()
         {
-            chkProjectileImmune.CheckedChanged += chkProjectileImmune_CheckedChanged;
-            chkLowImmune.CheckedChanged += chkLowImmune_CheckedChanged;
+            chkProjectileImmune.CheckedChanged += ChkProjectileImmune_CheckedChanged;
+            chkLowImmune.CheckedChanged += ChkLowImmune_CheckedChanged;
         }
 
-        private void disableHitboxCreationControls()
+        private void DisableHitboxCreationControls()
         {
             btnAddRootHitbox.Enabled = false;
             btnAddHitbox.Enabled = false;
             btnDeleteHitbox.Enabled = false;
         }
 
-        private void disableHitboxEditControls()
+        private void DisableHitboxEditControls()
         {
             HitPanel.Enabled = false;
         }
 
-        private void disableHurtboxCreationControls()
+        private void DisableHurtboxCreationControls()
         {
             btnAddRootHurtbox.Enabled = false;
             btnAddHurtbox.Enabled = false;
             btnDeleteHurtbox.Enabled = false;
         }
         
-        private void disableHurtboxEditControls()
+        private void DisableHurtboxEditControls()
         {
             HurtPanel.Enabled = false;
         }
 
-        private void enableHitboxCreationControls()
+        private void EnableHitboxCreationControls()
         {
             btnAddRootHitbox.Enabled = true;
             btnAddHitbox.Enabled = true;
             btnDeleteHitbox.Enabled = true;
         }
 
-        private void enableHitboxEditControls()
+        private void EnableHitboxEditControls()
         {
             HitPanel.Enabled = true;
         }
 
-        private void enableHurtboxCreationControls()
+        private void EnableHurtboxCreationControls()
         {
             btnAddRootHurtbox.Enabled = true;
             btnAddHurtbox.Enabled = true;
             btnDeleteHurtbox.Enabled = true;
         }
 
-        private void enableHurtboxEditControls()
+        private void EnableHurtboxEditControls()
         {
             HurtPanel.Enabled = true;
         }
 
-        private void disableBoxControls()
+        private void DisableBoxControls()
         {
             numericTop.Enabled = false;
             numericLeft.Enabled = false;
@@ -874,7 +888,7 @@ namespace FightingEditor
             numericRight.Enabled = false;
         }
 
-        private void enableBoxControls()
+        private void EnableBoxControls()
         {
             numericTop.Enabled = true;
             numericLeft.Enabled = true;
@@ -886,7 +900,7 @@ namespace FightingEditor
         //Called from tick in the render preview
         public void UpdateFormFields()
         {
-            updateKeyFrameData();
+            UpdateKeyFrameData();
         }
     }
 }

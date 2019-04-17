@@ -15,6 +15,12 @@ namespace FightingEngine.Collision
             BottomRight = new Point(25, 25);
         }
 
+        public CharacterCollider(CharacterCollider other)
+        {
+            TopLeft = other.TopLeft;
+            BottomRight = other.BottomRight;
+        }
+
         public Point GetOrigin()
         {
             return new Point((TopLeft.X + BottomRight.X) / 2, BottomRight.Y);

@@ -36,7 +36,7 @@ namespace FightingEngine
 
         public void DrawLine(int x1, int y1, int x2, int y2, Color color, int width = 1)
         {
-            drawLineRaw(x1, y1, x2, y2, color, width);
+            DrawLineRaw(x1, y1, x2, y2, color, width);
         }
 
         public void DrawRect(SimpleRect rect, Color color, bool filled = true, int width = 1)
@@ -52,31 +52,31 @@ namespace FightingEngine
         public void DrawCollisions(HitBoxRootNode hitBoxRootNode, Point origin)
         {
             foreach(SimpleRect rect in hitBoxRootNode.Children)
-                drawCollisionBox(rect.WithOffset(origin), _hitBoxColor);
+                DrawCollisionBox(rect.WithOffset(origin), _hitBoxColor);
         }
 
         public void DrawCollisions(HurtBoxRootNode hurtBoxRootNode, Point origin)
         {
             foreach (SimpleRect rect in hurtBoxRootNode.Children)
-                drawCollisionBox(rect.WithOffset(origin), _hurtBoxColor);
+                DrawCollisionBox(rect.WithOffset(origin), _hurtBoxColor);
         }
 
-        public void DrawCharacterCollider(CharacterCollider characterCollider, Point origin)
+        public void DrawCharacterCollider(CharacterCollider characterCollider, Point origin, Color? color)
         {
-            drawCollisionBox(characterCollider.WithOffset(origin), _characterColliderColor);
+            DrawCollisionBox(characterCollider.WithOffset(origin), color ?? _characterColliderColor);
 
             Point colliderOrigin = characterCollider.GetOrigin() + origin;
             Point colliderOriginTop = colliderOrigin - new Point(0, _characterColliderLength);
             Point colliderOriginBottom = colliderOrigin + new Point(0, _characterColliderLength);
-            DrawLine(colliderOriginBottom, colliderOriginTop, _characterColliderColor);
+            DrawLine(colliderOriginBottom, colliderOriginTop, color ?? _characterColliderColor);
         }
 
         public void DrawCollision(CharacterCollider collider)
         {
-            drawCollisionBox(collider, _characterColliderColor);
+            DrawCollisionBox(collider, _characterColliderColor);
         }
 
-        private void drawCollisionBox(SimpleRect rect, Color color)
+        private void DrawCollisionBox(SimpleRect rect, Color color)
         {
             DrawRect(rect, color * _alphaFill, true);
             DrawRect(rect, color * _alphaOutline, false);
@@ -86,18 +86,18 @@ namespace FightingEngine
         {
             if (filled)
             {
-                drawFilledRect(top, left, bottom, right, color);
+                DrawFilledRect(top, left, bottom, right, color);
             }
             else
             {
-                drawLineRaw(left, top, right, top, color, width);
-                drawLineRaw(right, top, right, bottom, color, width);
-                drawLineRaw(right, bottom, left, bottom, color, width);
-                drawLineRaw(left, bottom, left, top, color, width);
+                DrawLineRaw(left, top, right, top, color, width);
+                DrawLineRaw(right, top, right, bottom, color, width);
+                DrawLineRaw(right, bottom, left, bottom, color, width);
+                DrawLineRaw(left, bottom, left, top, color, width);
             }
          }
 
-        private void drawLineRaw(int x1, int y1, int x2, int y2, Color color, int width)
+        private void DrawLineRaw(int x1, int y1, int x2, int y2, Color color, int width)
         {
             float distance = Vector2.Distance(new Vector2(x1, y1), new Vector2(x2, y2));
             float angle = (float)Math.Atan2(y2 - y1, x2 - x1);
@@ -106,7 +106,7 @@ namespace FightingEngine
                 new Vector2(distance, width), SpriteEffects.None, 0);
         }
 
-        private void drawFilledRect(int top, int left, int bottom, int right, Color color)
+        private void DrawFilledRect(int top, int left, int bottom, int right, Color color)
         {
 
             _spriteBatch.Draw(_texture, new Rectangle(left, top, right - left, bottom - top), color);
