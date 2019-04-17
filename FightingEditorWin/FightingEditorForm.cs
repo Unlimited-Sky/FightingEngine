@@ -382,8 +382,7 @@ namespace FightingEditor
 
             HitBoxData data = new HitBoxData(
                 hitType, (int)numericHitStop.Value, (int)numericHitStun.Value, (int)numericBlockStun.Value, (int)numericDamage.Value,
-                hitResult, juggleProperties,
-                chkSpecialCancel.Checked, chkJumpCancel.Checked, chkUniqueActionCancel.Checked, chkDashCancel.Checked,
+                hitResult, juggleProperties, chkWhiffCancel.Checked,
                 txtCancelRoute.Text);
 
             return data;
@@ -723,7 +722,7 @@ namespace FightingEditor
             renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
 
-        private void ChkJumpCancel_CheckedChanged(object sender, EventArgs e)
+        private void ChkWhiffCancel_CheckedChanged(object sender, EventArgs e)
         {
             renderPreview.ReInitHitBoxRoot(CollectHitBoxData());
         }
@@ -768,10 +767,7 @@ namespace FightingEditor
             cmbHitResult.SelectedIndex = (int)data.HitResult;
             cmbJuggleType.SelectedIndex = (int)data.JuggleType;
 
-            chkSpecialCancel.Checked = data.SpecialCancel;
-            chkJumpCancel.Checked = data.JumpCancel;
-            chkUniqueActionCancel.Checked = data.UniqueActionCancel;
-            chkDashCancel.Checked = data.DashCancel;
+            chkWhiffCancel.Checked = data.WhiffCancel;
             txtCancelRoute.Text = data.CancelRoutes;
 
             EnableHitboxRootEvents();
@@ -788,10 +784,7 @@ namespace FightingEditor
             cmbHitResult.SelectedValueChanged -= CmbHitResult_SelectedIndexChanged;
             cmbJuggleType.SelectedValueChanged -= CmbJuggleProperties_SelectedIndexChanged;
 
-            chkSpecialCancel.CheckedChanged -= ChkSpecialCancel_CheckedChanged;
-            chkJumpCancel.CheckedChanged -= ChkJumpCancel_CheckedChanged;
-            chkUniqueActionCancel.CheckedChanged -= ChkUniqueActionCancel_CheckedChanged;
-            chkDashCancel.CheckedChanged -= ChkDashCancel_CheckedChanged;
+            chkWhiffCancel.CheckedChanged -= ChkWhiffCancel_CheckedChanged;
             txtCancelRoute.TextChanged -= TxtCancelRoute_TextChanged;
         }
 
@@ -806,10 +799,7 @@ namespace FightingEditor
             cmbHitResult.SelectedValueChanged += CmbHitResult_SelectedIndexChanged;
             cmbJuggleType.SelectedValueChanged += CmbJuggleProperties_SelectedIndexChanged;
 
-            chkSpecialCancel.CheckedChanged += ChkSpecialCancel_CheckedChanged;
-            chkJumpCancel.CheckedChanged += ChkJumpCancel_CheckedChanged;
-            chkUniqueActionCancel.CheckedChanged += ChkUniqueActionCancel_CheckedChanged;
-            chkDashCancel.CheckedChanged += ChkDashCancel_CheckedChanged;
+            chkWhiffCancel.CheckedChanged += ChkWhiffCancel_CheckedChanged;
             txtCancelRoute.TextChanged += TxtCancelRoute_TextChanged;
         }
 

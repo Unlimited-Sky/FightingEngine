@@ -124,10 +124,7 @@
             this.cmbJuggleType = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.chkSpecialCancel = new System.Windows.Forms.CheckBox();
-            this.chkJumpCancel = new System.Windows.Forms.CheckBox();
-            this.chkDashCancel = new System.Windows.Forms.CheckBox();
-            this.chkUniqueActionCancel = new System.Windows.Forms.CheckBox();
+            this.chkWhiffCancel = new System.Windows.Forms.CheckBox();
             this.label27 = new System.Windows.Forms.Label();
             this.txtCancelRoute = new System.Windows.Forms.TextBox();
             this.HurtPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -1349,90 +1346,50 @@
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.chkSpecialCancel, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.chkJumpCancel, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.chkDashCancel, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.chkUniqueActionCancel, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.label27, 0, 2);
-            this.tableLayoutPanel7.Controls.Add(this.txtCancelRoute, 1, 2);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.30435F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.69565F));
+            this.tableLayoutPanel7.Controls.Add(this.chkWhiffCancel, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label27, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.txtCancelRoute, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 3;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(230, 147);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
-            // chkSpecialCancel
+            // chkWhiffCancel
             // 
-            this.chkSpecialCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chkSpecialCancel.AutoSize = true;
-            this.chkSpecialCancel.Location = new System.Drawing.Point(9, 9);
-            this.chkSpecialCancel.Name = "chkSpecialCancel";
-            this.chkSpecialCancel.Size = new System.Drawing.Size(97, 17);
-            this.chkSpecialCancel.TabIndex = 4;
-            this.chkSpecialCancel.Text = "Special Cancel";
-            this.chkSpecialCancel.UseVisualStyleBackColor = true;
-            this.chkSpecialCancel.CheckedChanged += new System.EventHandler(this.ChkSpecialCancel_CheckedChanged);
-            // 
-            // chkJumpCancel
-            // 
-            this.chkJumpCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chkJumpCancel.AutoSize = true;
-            this.chkJumpCancel.Location = new System.Drawing.Point(129, 9);
-            this.chkJumpCancel.Name = "chkJumpCancel";
-            this.chkJumpCancel.Size = new System.Drawing.Size(87, 17);
-            this.chkJumpCancel.TabIndex = 5;
-            this.chkJumpCancel.Text = "Jump Cancel";
-            this.chkJumpCancel.UseVisualStyleBackColor = true;
-            this.chkJumpCancel.CheckedChanged += new System.EventHandler(this.ChkJumpCancel_CheckedChanged);
-            // 
-            // chkDashCancel
-            // 
-            this.chkDashCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chkDashCancel.AutoSize = true;
-            this.chkDashCancel.Location = new System.Drawing.Point(129, 45);
-            this.chkDashCancel.Name = "chkDashCancel";
-            this.chkDashCancel.Size = new System.Drawing.Size(87, 17);
-            this.chkDashCancel.TabIndex = 6;
-            this.chkDashCancel.Text = "Dash Cancel";
-            this.chkDashCancel.UseVisualStyleBackColor = true;
-            this.chkDashCancel.CheckedChanged += new System.EventHandler(this.ChkDashCancel_CheckedChanged);
-            // 
-            // chkUniqueActionCancel
-            // 
-            this.chkUniqueActionCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chkUniqueActionCancel.AutoSize = true;
-            this.chkUniqueActionCancel.Location = new System.Drawing.Point(4, 45);
-            this.chkUniqueActionCancel.Name = "chkUniqueActionCancel";
-            this.chkUniqueActionCancel.Size = new System.Drawing.Size(107, 17);
-            this.chkUniqueActionCancel.TabIndex = 7;
-            this.chkUniqueActionCancel.Text = "Unq Actn Cancel";
-            this.chkUniqueActionCancel.UseVisualStyleBackColor = true;
-            this.chkUniqueActionCancel.CheckedChanged += new System.EventHandler(this.ChkUniqueActionCancel_CheckedChanged);
+            this.chkWhiffCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chkWhiffCancel.AutoSize = true;
+            this.chkWhiffCancel.Location = new System.Drawing.Point(87, 16);
+            this.chkWhiffCancel.Name = "chkWhiffCancel";
+            this.chkWhiffCancel.Size = new System.Drawing.Size(104, 17);
+            this.chkWhiffCancel.TabIndex = 5;
+            this.chkWhiffCancel.Text = "Cancel On Whiff";
+            this.chkWhiffCancel.UseVisualStyleBackColor = true;
+            this.chkWhiffCancel.CheckedChanged += new System.EventHandler(this.ChkWhiffCancel_CheckedChanged);
             // 
             // label27
             // 
             this.label27.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(35, 103);
+            this.label27.Location = new System.Drawing.Point(3, 85);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(77, 13);
+            this.label27.Size = new System.Drawing.Size(43, 26);
             this.label27.TabIndex = 8;
             this.label27.Text = "Cancel Routes";
             // 
             // txtCancelRoute
             // 
             this.txtCancelRoute.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCancelRoute.Location = new System.Drawing.Point(118, 75);
+            this.txtCancelRoute.Location = new System.Drawing.Point(52, 52);
             this.txtCancelRoute.Multiline = true;
             this.txtCancelRoute.Name = "txtCancelRoute";
-            this.txtCancelRoute.Size = new System.Drawing.Size(109, 69);
+            this.txtCancelRoute.Size = new System.Drawing.Size(175, 92);
             this.txtCancelRoute.TabIndex = 9;
             this.txtCancelRoute.TextChanged += new System.EventHandler(this.TxtCancelRoute_TextChanged);
             // 
@@ -1730,10 +1687,7 @@
         private System.Windows.Forms.ComboBox cmbJuggleType;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.CheckBox chkSpecialCancel;
-        private System.Windows.Forms.CheckBox chkJumpCancel;
-        private System.Windows.Forms.CheckBox chkDashCancel;
-        private System.Windows.Forms.CheckBox chkUniqueActionCancel;
+        private System.Windows.Forms.CheckBox chkWhiffCancel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button btnAddRootHitbox;

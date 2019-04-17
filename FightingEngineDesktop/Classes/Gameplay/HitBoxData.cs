@@ -20,15 +20,12 @@ namespace FightingEngine.Gameplay
         public JUGGLETYPE JuggleType;
 
         //Cancels
-        public bool SpecialCancel;
-        public bool JumpCancel;
-        public bool UniqueActionCancel;
-        public bool DashCancel;
+        public bool WhiffCancel;
         public string CancelRoutes;
 
         public HitBoxData(HITTYPE hitType, int hitStop, int hitStun, int blockStun, int damage, 
             HITRESULT hitResult, JUGGLETYPE juggleType,
-            bool specialCancel, bool jumpCancel, bool uniqueActionCancel, bool dashCancel, string cancelRoutes)
+            bool whiffCancel, string cancelRoutes)
         {
             HitType = hitType;
             HitStop = hitStop;
@@ -39,10 +36,7 @@ namespace FightingEngine.Gameplay
             HitResult = hitResult;
             JuggleType = juggleType;
 
-            SpecialCancel = specialCancel;
-            JumpCancel = jumpCancel;
-            UniqueActionCancel = uniqueActionCancel;
-            DashCancel = dashCancel;
+            WhiffCancel = whiffCancel;
             CancelRoutes = cancelRoutes;
         }
     }
